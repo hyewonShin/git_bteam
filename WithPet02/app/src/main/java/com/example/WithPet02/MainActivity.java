@@ -149,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
         main_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            
+                Intent intent = new Intent(getApplicationContext(), MyPetInfo.class);
+                startActivity(intent);
             }
         });
 
