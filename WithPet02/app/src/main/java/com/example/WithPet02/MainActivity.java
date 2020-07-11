@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         //메인 로그인 화면
         main_login = findViewById(R.id.main_login);
 
+
         if(loginDTO != null){
             //로그인시
             main_login.setOffscreenPageLimit(3);
@@ -143,6 +144,14 @@ public class MainActivity extends AppCompatActivity {
             mainLogIn.Mli(loginadapter, main_login);
 
         }
+
+        //메인 로그인 누를시 내 동물 정보로 가기
+        main_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            
+            }
+        });
 
 
 
