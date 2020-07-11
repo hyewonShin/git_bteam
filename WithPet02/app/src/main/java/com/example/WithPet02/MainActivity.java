@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -33,6 +34,7 @@ import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
+import com.example.WithPet02.CheckDangerousPermissions.Internet;
 import com.example.WithPet02.MainView.ad.MainAd1;
 import com.example.WithPet02.MainView.ad.MainAd2;
 import com.example.WithPet02.MainView.ad.MainAd3;
@@ -98,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Main activity와 context
+        MainActivity activity = MainActivity.this;
+        Context context = MainActivity.this;
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.example.WithPet02", PackageManager.GET_SIGNATURES);
@@ -112,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
-        checkDangerousPermissions();
+        //인터넷 권한 가져오기
+        Internet internet = new Internet(context, activity);
+        internet.checkDangerousPermissions();
 
         //툴바찾기
         toolbar = findViewById(R.id.toolbar);
