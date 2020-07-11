@@ -15,7 +15,7 @@ public class Internet {
 
     //생성자 초기화
     public Internet(Context context, Activity activity) {
-        this.context = context
+        this.context = context;
         this.activity = activity;
     }
 
