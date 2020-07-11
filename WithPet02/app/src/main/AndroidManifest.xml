@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.WithPet02">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".view.login.GlobalApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/withpetimg"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.pet_Characteristic.PetCharacteristic"></activity>
+        <activity android:name=".view.community.CommunityBoardTest" />
+        <activity android:name=".view.community.CommunityBoardButton" />
+        <activity android:name=".view.community.CommunityBoardWrite" />
+        <activity android:name=".Community" />
+        <activity android:name=".MainView.main_login.MainNotLogIn" />
+        <activity android:name=".MainView.ad.MainAd1" />
+        <activity android:name=".view.mypetinfo.MyPetInfoFragment1" />
+        <activity android:name=".view.mypetinfo.MyPetInfo" />
+        <activity android:name=".view.customerc_service.SiteCsActivity" />
+        <activity android:name=".view.site.SitePetCharActivity" />
+        <activity android:name=".view.MyPet.MypetHospital" />
+        <activity android:name=".view.MyPet.MyPetCheckList" />
+        <activity android:name=".view.mypage.MyPageInfoActivity" />
+        <activity android:name=".view.site.SiteInfoActivity" />
+        <activity android:name=".view.login.LoginFindResultActivity" />
+        <activity android:name=".view.login.LoginFindPwActivity" />
+        <activity android:name=".view.login.LoginFindEmailActivity" />
+        <activity android:name=".view.join.JoinTelActivity" />
+        <activity android:name=".view.join.JoinActivity" />
+        <activity android:name=".view.login.LoginActivity" />
+        <activity android:name=".MainActivity" /> <!-- 광고 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- https가 아니라 http로 오더라도 그냥 허가하는 부분 -->
+        <!-- http 라이브러리 사용 -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.WithPet02.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/my_update"
+        android:title="개인정보수정"
+        android:icon="@drawable/icon_my_update"
+        app:showAsAction="always"/>
+</menu>

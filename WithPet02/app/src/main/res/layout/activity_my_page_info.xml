@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:elevation="1dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My home"
+            android:textAppearance="@style/Widget.AppCompat.Toolbar"
+            android:textSize="30dp"
+            android:textColor="#ffffff"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="100dp"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/myPic"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:src="@drawable/defalt"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="닉네임"
+        android:textColor="#F39E20"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/myHomeEmailTv"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="user@mail.com"
+        android:gravity="center"
+        android:textSize="18sp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:src="#eeeeee"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/myBoardList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="내 게시글"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myCommentList"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="댓글 단 글"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myQnA"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="전문가 상담 글"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myLike"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="'좋아요' 한 글"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myKakao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/myKakaoTv"
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="카카오 계정 연동"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myNaver"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:id="@+id/myNaverTv"
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="네이버 계정 연동"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myLogout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="로그아웃"
+                    android:textSize="16sp"
+                    android:textColor="#008800"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="#eeeeee"/>
+
+            <LinearLayout
+                android:id="@+id/myDelete"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="회원탈퇴"
+                    android:textSize="16sp"
+                    android:textColor="#DD0000"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

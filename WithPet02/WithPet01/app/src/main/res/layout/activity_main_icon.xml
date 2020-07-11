@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/main_icon"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp">
+    <!--아이콘 전체 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <!--1번째 줄 아이콘-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginBottom="25dp"
+            >
+            <!--동물정보-->
+            <LinearLayout
+                android:id="@+id/mypetInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_pets_black_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="내 동물정보"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--동물정보 끝-->
+            <!--운동기록-->
+            <LinearLayout
+                android:id="@+id/fitness"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_fitness_center_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="운동 기록"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--운동기록 끝-->
+            <!--검진기록-->
+            <LinearLayout
+                android:id="@+id/check_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_featured_play_list_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="검진 기록"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--검진기록-->
+        </LinearLayout><!--1번째 줄 아이콘 끝-->
+        <!--2번째 줄 아이콘-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <!--가까운 동물병원-->
+            <LinearLayout
+                android:id="@+id/hospital"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_local_hospital_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="가까운 동물병원"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--가까운 동물병원 끝-->
+            <!--전문가 QnA-->
+            <LinearLayout
+                android:id="@+id/qna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_customer_service_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="전문가 QnA"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--전문가 QnA 끝-->
+            <!--커뮤니티-->
+            <LinearLayout
+                android:id="@+id/main_community"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="100">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_75dp"
+                    android:layout_weight="80"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="커뮤니티"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+            </LinearLayout><!--커뮤니티 끝-->
+        </LinearLayout><!--2번째 줄 아이콘 끝-->
+    </LinearLayout><!--아이콘 전체 끝-->
+</LinearLayout>

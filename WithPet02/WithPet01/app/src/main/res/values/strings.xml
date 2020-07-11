@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">WithPet01</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kakao_app_key">19f2340798b96783c9ffdff89ab3b98b</string>
+
+    <string name="appname">ExpendableListViewDemo</string>
+    <string name="group1">어플이 계속 종료되요.</string>
+    <string name="group2">중고장터에 이런거 팔아도 되나요?</string>
+    <string name="group3">지도에서 내위치를 못찾아요.</string>
+    <string name="group4">비밀번호를 못찾겠어요.</string>
+    <string name="group5">가입하고싶은데 휴대폰이 없어요.</string>
+
+
+    <string-array name="group1">
+        <item>삭제하고 다시 다운받아보세요.</item>
+    </string-array>
+
+    <string-array name="group2">
+        <item>마약은 불법거래입니다.</item>
+    </string-array>
+
+    <string-array name="group3">
+        <item>휴대폰 설정에서 위치를 켜보세요.</item>
+    </string-array>
+
+    <string-array name="group4">
+        <item>고객센터에 전화주세요.</item>
+
+    </string-array>
+
+    <string-array name="group5">
+        <item>이번기회에 사주시라고 말해보세요!</item>
+    </string-array>
+
+
+</resources>
+

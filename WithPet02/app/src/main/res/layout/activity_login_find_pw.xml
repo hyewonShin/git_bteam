@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/loginFindPwToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:src="@drawable/withpetimg" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/loginFindPwTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="비밀번호 찾기"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginFindPwTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="발급된 임시 비밀번호는 다음과 같습니다.\n 임시 비밀번호로 로그인 하신뒤\n 비밀번호를 꼭 변경하여주세요"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFindPwTv1" />
+
+    <EditText
+        android:id="@+id/loginFindPwEt"
+        android:layout_width="200dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="AAAAAA"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFindPwTv2" />
+
+    <Button
+        android:id="@+id/loginFindPwBtn1"
+        android:layout_width="187dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="36dp"
+        android:text="로그인 화면으로"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginFindPwEt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
