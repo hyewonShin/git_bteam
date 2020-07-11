@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
@@ -40,6 +41,9 @@ import com.example.WithPet02.MainView.ad.MainAd2;
 import com.example.WithPet02.MainView.ad.MainAd3;
 import com.example.WithPet02.MainView.ad.MainAd4;
 import com.example.WithPet02.MainView.ad.MainAd5;
+import com.example.WithPet02.MainView.main_login.MainLogIn1;
+import com.example.WithPet02.MainView.main_login.MainLogIn2;
+import com.example.WithPet02.MainView.main_login.MainLogIn3;
 import com.example.WithPet02.MainView.main_login.MainNotLogIn;
 import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
@@ -89,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
     private AdView adView;
 
     ViewFlipper v_flipper;
+
+    MainLogIn1 mainLogIn1;
+    MainLogIn2 mainLogIn2;
+    MainLogIn3 mainLogIn3;
 
     ImageView myPic;
     String filePath = ipConfig + "/app/resources/member/";
@@ -154,8 +162,14 @@ public class MainActivity extends AppCompatActivity {
         main_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MyPetInfo.class);
-                startActivity(intent);
+                if(loginDTO == null){
+                    // 비 로그인시 로그인 화면으로
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), MyPetInfo.class);
+                    startActivity(intent);
+                }
             }
         });
 
