@@ -283,7 +283,7 @@ public class MyPageInfoActivity extends AppCompatActivity {
             }
             case R.id.my_update:{ //개인정보 수정
                 //개인정보 수정화면으로
-                Intent intent = new Intent(getApplicationContext(), MyUpdateActivity.class);
+                Intent intent = new Intent(mContext, MyUpdateActivity.class);
                 startActivity(intent);
                 return true;
             }

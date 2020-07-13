@@ -53,10 +53,6 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             builder.addTextBody("m_name", m_name, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("m_pw", m_pw, ContentType.create("Multipart/related", "UTF-8"));
 
-            Log.d("왜안되는데", "imageDbPath: " + imageDbPath);
-            Log.d("왜안되는데", "imageRealPath: " + imageRealPath);
-
-
             if(imageRealPath != null){
                 builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
                 builder.addPart("image", new FileBody(new File(imageRealPath)));

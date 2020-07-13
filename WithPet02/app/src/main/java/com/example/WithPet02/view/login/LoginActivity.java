@@ -1,10 +1,12 @@
 package com.example.WithPet02.view.login;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     Session session;
 
     private static Context lContext;
+    private static SharedPreferences sf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         lContext = this;
         sessionCallback = new SessionCallback(lContext);
 
-        SharedPreferences sf = getSharedPreferences("WithPetM",MODE_PRIVATE);
+        sf = getSharedPreferences("WithPetM",MODE_PRIVATE);
         String m_tel = sf.getString("m_tel", "");
 
         //툴바를 액션바 대신 사용
@@ -241,7 +244,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // 자동로그인을 위해 SharedPreferences로 파일생성
     public void autoLogin(){
-        SharedPreferences sf = getSharedPreferences("WithPetM", MODE_PRIVATE);
+        //SharedPreferences sf = getSharedPreferences("WithPetM", getApplicationContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = sf.edit();
         Gson gson = new Gson();
         String json = gson.toJson(loginDTO);
