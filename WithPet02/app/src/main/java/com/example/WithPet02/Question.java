@@ -36,7 +36,7 @@ public class Question extends Fragment {
         writebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity.getApplicationContext(), Board_List1.class);
+                Intent intent = new Intent(activity.getApplicationContext(), BoardList1.class);
                 startActivity(intent);
             }//onClick()
         });//setOnClickListener()

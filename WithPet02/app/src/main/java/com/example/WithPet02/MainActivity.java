@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -160,15 +161,26 @@ public class MainActivity extends AppCompatActivity {
 
         //메인 로그인 누를시 내 동물 정보로 가기
         main_login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                ArrayList<Fragment> list = new ArrayList<>();
+                Adapter adapter;
+                list.add(mainLogIn1);
+                list.add(mainLogIn2);
+                list.add(mainLogIn3);
+
+
                 if(loginDTO == null){
                     // 비 로그인시 로그인 화면으로
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
                 }else{
-                    Intent intent = new Intent(getApplicationContext(), MyPetInfo.class);
-                    startActivity(intent);
+                   /* if (list.get(0)){
+                        Intent intent = new Intent(getApplicationContext(), MainLogIn1.class);
+                        startActivity(intent);
+                    }*/
+
                 }
             }
         });

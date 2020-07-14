@@ -58,6 +58,9 @@
 
             </androidx.viewpager.widget.ViewPager>
 
+            <include
+                layout="@layout/activity_db_result"/>
+
             <!--&lt;!&ndash;슬라이드 화면&ndash;&gt;
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/main_ad"

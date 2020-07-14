@@ -27,15 +27,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff">
-
-
+        <!--간단 정보-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="100dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/m_profile"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -47,62 +46,86 @@
                 android:orientation="vertical"
                 android:layout_weight="7.5"
                 android:weightSum="2">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:text="김멍멍쓰"
+                    android:gravity="center"
                     android:textSize="24sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="NickName"
+                        android:gravity="center"
+                        android:textSize="24sp"
+                        android:textColor="#000000"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="견종"
+                        android:gravity="center"
+                        android:textSize="24sp"
+                        android:textColor="#000000"/>
+
+                </LinearLayout>
+
+
+
 
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp">
+                    android:layout_height="0dp"
+                    android:gravity="center">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <Spinner
                             android:id="@+id/spinner1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/spinner_spinner1"/>
 
                         <!--<androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/board_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>-->
-
-
                     </LinearLayout>
 
-
                     <Button
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="사진첩"
-                        android:background="@drawable/smallbuttondesign"/>
-
+                        android:layout_height="match_parent"
+                        android:background="@drawable/smallbuttondesign"
+                        android:text="사 진"
+                        />
                 </LinearLayout>
-
             </LinearLayout>
 
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/camera_picture"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+        <ImageView
+            android:id="@+id/camera_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
         </LinearLayout>
+        <!--간단 정보끝-->
+
 
         <ScrollView
             android:layout_width="match_parent"

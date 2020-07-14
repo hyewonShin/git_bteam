@@ -89,22 +89,28 @@ public class Board extends AppCompatActivity {
         camera = findViewById(R.id.camera);
 
         //액션바 가져오기
-        bar = getSupportActionBar();
+        //bar = getSupportActionBar();
 
         //backlogo가져오기
-        bar.setLogo(R.drawable.back);
+        /*bar.setLogo(R.drawable.back);
         bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
         //액션바 클릭하면 클릭되게 해줌
         bar.setDisplayHomeAsUpEnabled(true);
         //액션바 타이틀 바꾸기
         bar.setTitle("게시물 만들기");
         //액션바 색바꾸기
-        bar.setBackgroundDrawable(new ColorDrawable(0xffff6666));
+        bar.setBackgroundDrawable(new ColorDrawable(0xffff6666));*/
 
         //Spinner사용
         //Spinner에 넣을 목록 데이터
         List<String> spinnerData = new ArrayList<>();
-        spinnerData.add("자유게시판"); spinnerData.add("물어보세요");
+        spinnerData.add("자유");
+        spinnerData.add("물음");
+        spinnerData.add("간식");
+        spinnerData.add("분양");
+        spinnerData.add("사고팔기");
+        spinnerData.add("기타");
+
         //spinner찾기
         Spinner spinner = findViewById(R.id.spinner1);
         //spinner의 어뎁터 찾기

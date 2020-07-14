@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class Board_List1 extends AppCompatActivity {
+public class BoardList1 extends AppCompatActivity {
     //메뉴폴더의 아이템 사용하기
     MenuItem search_bar;
     MenuItem camera;
@@ -27,7 +27,7 @@ public class Board_List1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board__list1);
+        setContentView(R.layout.activity_board_list1);
 
         //툴바위치 찾기
         toolbar = findViewById(R.id.toolbar);

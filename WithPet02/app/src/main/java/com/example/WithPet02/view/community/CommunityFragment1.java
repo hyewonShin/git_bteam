@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.WithPet02.Board;
 import com.example.WithPet02.Community;
 import com.example.WithPet02.R;
 
@@ -42,15 +43,22 @@ public class CommunityFragment1 extends Fragment {
 
 
         boardbutton = rootView.findViewById(R.id.boardbutton);
+        boardbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Board.class);
+                startActivity(intent);
+            }
+        });
 
-        // 게시판글쓰기 버튼 눌렀을 때 board_write2창으로 넘어감
+        /*// 게시판글쓰기 버튼 눌렀을 때 board_write2창으로 넘어감
         boardbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),CommunityBoardButton.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 
