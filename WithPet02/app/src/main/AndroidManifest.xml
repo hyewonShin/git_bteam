@@ -19,12 +19,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".view.pet_Characteristic.PetCharacteristic"/>
-
-
-        <activity android:name=".DbResult"></activity>
-
+        <activity android:name=".view.mypetinfo.MyPetEditActivity"></activity>
+        <activity android:name=".view.mypetinfo.MyPetInfoAddActivity" />
+        <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
+        <activity android:name=".DbResult" />
         <activity android:name=".view.community.CommunityBoardTest" />
         <activity android:name=".view.community.CommunityBoardButton" />
         <activity android:name=".view.community.CommunityBoardWrite" />
@@ -33,7 +31,6 @@
         <activity android:name=".BoardList1" />
         <activity android:name=".MainView.main_login.MainNotLogIn" />
         <activity android:name=".MainView.ad.MainAd1" />
-        <activity android:name=".view.mypetinfo.MyPetInfoFragment1" />
         <activity android:name=".view.mypetinfo.MyPetInfo" />
         <activity android:name=".view.customerc_service.SiteCsActivity" />
         <activity android:name=".view.site.SitePetCharActivity" />
