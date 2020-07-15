@@ -4,7 +4,6 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.WithPet02.dto.MemberDTO;
 import com.example.WithPet02.dto.MyPetDTO;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,17 +20,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
-public class MyPetList extends AsyncTask<Void, Void, Void> {
+public class MyPetListSelect extends AsyncTask<Void, Void, Void> {
 
     String m_tel;
 
-    public MyPetList(String m_tel) {
+    public MyPetListSelect(String m_tel) {
         this.m_tel = m_tel;
     }
 
@@ -94,8 +92,8 @@ public class MyPetList extends AsyncTask<Void, Void, Void> {
 
         Gson gson = new Gson();
         String json = stringBuilder.toString();
-        myPetList = gson.fromJson(json, new TypeToken<ArrayList<MyPetDTO>>(){}.getType());
+        ArrayList<MyPetDTO> list = gson.fromJson(json, new TypeToken<ArrayList<MyPetDTO>>(){}.getType());
 
-        return null;
+        return list;
     }
 }

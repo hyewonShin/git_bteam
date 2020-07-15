@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 //회원 정보 DTO
 public class MemberDTO implements Serializable {
-    String m_tel;
-    String m_pw;
-    String m_name;
-    String m_email;
-    String m_kakao;
-    String m_naver;
-    String m_pic;
-    String m_grade;
+    private String m_tel;
+    private String m_pw;
+    private String m_name;
+    private String m_email;
+    private String m_kakao;
+    private String m_naver;
+    private String m_pic;
+    private String m_grade;
 
     public MemberDTO() {}
 
