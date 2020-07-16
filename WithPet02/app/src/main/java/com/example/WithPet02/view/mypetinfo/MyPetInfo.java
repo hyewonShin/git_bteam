@@ -3,11 +3,12 @@ package com.example.WithPet02.view.mypetinfo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,15 +16,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
+import com.example.WithPet02.Adapter.GridRecyclerViewAdapter;
 import com.example.WithPet02.R;
+import com.example.WithPet02.dto.AlbumDTO;
 import com.example.WithPet02.dto.MyPetDTO;
-import com.example.WithPet02.view.mypage.MyUpdateActivity;
+import com.example.WithPet02.view.mypetinfo.atask.AlbumListSelect;
 import com.example.WithPet02.view.mypetinfo.atask.MyPetListSelect;
 
 import java.util.ArrayList;
@@ -34,10 +36,16 @@ import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
 public class MyPetInfo extends AppCompatActivity {
 
-    Button button1;
+    public static ArrayList<MyPetDTO> myPetList = null;
+    ArrayList<AlbumDTO> albumList;
+
+    AlbumListSelect albumListSelect;
     ViewPager pager;
 
-    public static ArrayList<MyPetDTO> myPetList = null;
+    RecyclerView recyclerView;
+    GridRecyclerViewAdapter gridAdapter;
+    GridLayoutManager gridLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +82,27 @@ public class MyPetInfo extends AppCompatActivity {
         MyPagerAdapter adapter = new MyPagerAdapter(this);
         pager.setAdapter(adapter);
 
-
         //ViewPager 이벤트 처리용 리스너 설정
-        ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener();
+        ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener(this);
         pager.addOnPageChangeListener(viewPagerChangeListener);
+
+        //동물별 앨범 리스트 가져오기
+        albumListSelect = new AlbumListSelect(myPetList.get(0).getP_num());
+        try {
+            albumList = albumListSelect.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        //리사이클러뷰
+        recyclerView = findViewById(R.id.petAlbum);
+        gridAdapter = new GridRecyclerViewAdapter(getApplicationContext(), albumList);
+        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(gridAdapter);
 
     }
 
@@ -111,7 +136,7 @@ public class MyPetInfo extends AppCompatActivity {
             TextView myPetBirth = view.findViewById(R.id.myPetBirth);
             TextView myPetAni = view.findViewById(R.id.myPetAni);
 
-            String filePath = ipConfig + "/app/resources/pet/";
+            String filePath = ipConfig + "/app/resources/upload/pet/";
 
             //동물 사진 설정
             myPetPic.setImageResource(R.drawable.a_defalt);
@@ -151,10 +176,31 @@ public class MyPetInfo extends AppCompatActivity {
 
     class ViewPagerChangeListener implements ViewPager.OnPageChangeListener{
 
+        Context context;
+
+        public ViewPagerChangeListener(Context context) {
+            this.context = context;
+        }
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            //동물별 앨범 리스트 가져오기
+            albumListSelect = new AlbumListSelect(myPetList.get(position).getP_num());
+            try {
+                albumList = albumListSelect.execute().get();
 
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //리사이클러뷰
+            recyclerView = findViewById(R.id.petAlbum);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList);
+            gridLayoutManager = new GridLayoutManager(context, 3);
+            recyclerView.setLayoutManager(gridLayoutManager);
+            recyclerView.setAdapter(gridAdapter);
         }
 
         @Override
@@ -173,7 +219,7 @@ public class MyPetInfo extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.my_home_menu, menu);
+        menuInflater.inflate(R.menu.my_pet_menu, menu);
         return true;
     }
 

@@ -5,6 +5,6 @@
     <item
         android:id="@+id/my_update"
         android:title="개인정보수정"
-        android:icon="@drawable/icon_my_update"
+        android:icon="@drawable/ic_edit_white_24dp"
         app:showAsAction="always"/>
 </menu>

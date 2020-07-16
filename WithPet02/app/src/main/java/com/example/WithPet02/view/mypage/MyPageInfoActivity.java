@@ -46,7 +46,7 @@ public class MyPageInfoActivity extends AppCompatActivity {
     TextView nickname, myHomeEmailTv, myKakaoTv, myNaverTv;
     LinearLayout myLogout, myDelete, myKakao, myNaver;
     ImageView myPic;
-    String filePath = ipConfig + "/app/resources/member/";
+    String filePath = ipConfig + "/app/resources/upload/member/";
 
     // 카카오 로그인 세션
     private SessionCallback sessionCallback;

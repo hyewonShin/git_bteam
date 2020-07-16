@@ -59,7 +59,7 @@ public class MyUpdateActivity extends AppCompatActivity {
 
     JoinCheck joinCheck;
 
-    String filePath = ipConfig + "/app/resources/member/";
+    String filePath = ipConfig + "/app/resources/upload/member/";
 
     public String imageRealPath, imageDbPath;
 
