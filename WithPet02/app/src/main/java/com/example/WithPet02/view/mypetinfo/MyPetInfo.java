@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -46,11 +47,14 @@ public class MyPetInfo extends AppCompatActivity {
     GridRecyclerViewAdapter gridAdapter;
     GridLayoutManager gridLayoutManager;
 
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_pet_info);
+
+        context = this;
 
         //툴바
         Toolbar mToolbar = findViewById(R.id.toolbar);
@@ -104,6 +108,32 @@ public class MyPetInfo extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(gridAdapter);
 
+    }
+
+    // 툴바 메뉴 생성
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.my_pet_menu, menu);
+        return true;
+    }
+
+    // 툴바 메뉴 선택
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar 의 back 키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+            case R.id.btnPetInsert:{    //동물 정보 추가 화면으로
+                Intent intent = new Intent(context, MyPetInfoAddActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class MyPagerAdapter extends PagerAdapter {
@@ -214,29 +244,20 @@ public class MyPetInfo extends AppCompatActivity {
         }
     }
 
-    // 툴바 메뉴 생성
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //return super.onCreateOptionsMenu(menu);
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.my_pet_menu, menu);
-        return true;
-    }
+    protected void onResume() {
+        super.onResume();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{ //toolbar 의 back 키 눌렀을 때 동작
-                finish();
-                return true;
-            }
-            case R.id.btnPetInsert:{ //개인정보 수정
-                //동물 정보 추가 화면으로
-
-                return true;
-            }
+        //DB 에서 나의 동물 정보 목록 가져옴
+        MyPetListSelect myPetListSelect = new MyPetListSelect(loginDTO.getM_tel());
+        try {
+            myPetListSelect.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return super.onOptionsItemSelected(item);
-    }
 
+
+    }
 }
