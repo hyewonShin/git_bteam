@@ -9,7 +9,7 @@
         android:id="@+id/loginToolbar"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@color/colorAccent">
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/titleText"

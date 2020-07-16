@@ -6,14 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.community.CommunityBoardTest"
-    android:orientation="vertical"
-    android:background="@android:color/holo_purple">
-
+    android:orientation="vertical">
+    <!--android:background="@android:color/holo_purple">-->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#EEFB6A"
+        android:background="@color/colorBackground"
         android:gravity="center"
         android:text="제목"
         android:textSize="40dp" />
@@ -24,6 +23,5 @@
         android:layout_height="match_parent"
         android:text="본문"
         android:gravity="center"
-        android:textSize="30dp"
-        android:background="#DCB3F1"/>
+        android:textSize="30dp" />
 </LinearLayout>

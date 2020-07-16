@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0C0404">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView1"
@@ -12,15 +11,15 @@
         android:layout_height="553dp"
         android:gravity="center"
         android:text="문의내역이 없습니다."
-        android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/QnAbutton"
         android:layout_width="match_parent"
         android:layout_height="68dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="@color/colorBackground"
         android:text="1:1 문의하기"
+        android:textColor="@color/colorWhite"
         android:textSize="24sp" />
 
 </LinearLayout>

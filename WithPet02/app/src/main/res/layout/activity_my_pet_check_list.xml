@@ -10,13 +10,13 @@
         android:id="@+id/loginToolbar"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@color/colorAccent">
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="캘린더"
+            android:text="Calendar"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
             android:textColor="#FFFFFF"
             android:textSize="25sp" />
