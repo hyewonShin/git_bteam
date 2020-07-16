@@ -113,18 +113,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity activity = MainActivity.this;
         Context context = MainActivity.this;
 
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo("com.example.WithPet02", PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+
 
         //인터넷 권한 가져오기
         Internet internet = new Internet(context, activity);
