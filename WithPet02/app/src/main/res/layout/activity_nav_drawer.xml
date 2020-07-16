@@ -31,8 +31,8 @@
             android:gravity="center"
             android:paddingTop="8dp"
             android:text="로그인 하세요"
-            android:textColor="@color/colorWhite"
-            android:textSize="18dp" />
+            android:textSize="20dp"
+            />
 
         <Button
             android:id="@+id/logincheck"
@@ -40,9 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:background="#FFFFFF"
             android:text="logIn"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:background="@drawable/circle"/>
+
     </LinearLayout>
 
 

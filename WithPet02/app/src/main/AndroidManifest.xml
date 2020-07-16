@@ -19,12 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".view.pet_Characteristic.PetCharacteristic"/>
-
-
-        <activity android:name=".DbResult"></activity>
-
+        <activity android:name=".view.customerc_service.SiteCsWirte"></activity>
+        <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
+        <activity android:name=".DbResult" />
         <activity android:name=".view.community.CommunityBoardTest" />
         <activity android:name=".view.community.CommunityBoardButton" />
         <activity android:name=".view.community.CommunityBoardWrite" />
