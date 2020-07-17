@@ -12,13 +12,13 @@ import com.example.WithPet02.R;
 import java.util.HashMap;
 import java.util.List;
 
-public class CostomerServiceAdatper extends BaseExpandableListAdapter {
+public class CustomerServiceAdatper extends BaseExpandableListAdapter {
 
     Context context;
     List<String> listGroup;
     HashMap<String,List<String>> listItem;
 
-    public CostomerServiceAdatper(Context context, List<String> listGroup, HashMap<String,List<String>>
+    public CustomerServiceAdatper(Context context, List<String> listGroup, HashMap<String,List<String>>
             listItem) {
         this.context = context;
         this.listGroup = listGroup;

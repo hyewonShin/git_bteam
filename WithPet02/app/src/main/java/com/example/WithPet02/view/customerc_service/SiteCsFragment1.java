@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.WithPet02.Adapter.CostomerServiceAdatper;
+import com.example.WithPet02.Adapter.CustomerServiceAdatper;
 import com.example.WithPet02.R;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class SiteCsFragment1 extends Fragment {
     ExpandableListView expandableListView;
     List<String> listGroup;
     HashMap<String,List<String>> listItem;
-    CostomerServiceAdatper adapter;
+    CustomerServiceAdatper adapter;
 
     SiteCsActivity siteCsActivity;
 
@@ -37,7 +37,7 @@ public class SiteCsFragment1 extends Fragment {
         expandableListView = rootView.findViewById(R.id.expandable_listview);
         listGroup = new ArrayList<>();
         listItem = new HashMap<>();
-        adapter = new CostomerServiceAdatper(siteCsActivity.getApplicationContext(), listGroup, listItem);
+        adapter = new CustomerServiceAdatper(siteCsActivity.getApplicationContext(), listGroup, listItem);
         expandableListView.setAdapter(adapter);
         initListData();
 
