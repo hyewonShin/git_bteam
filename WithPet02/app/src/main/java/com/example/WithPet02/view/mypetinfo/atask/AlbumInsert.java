@@ -1,4 +1,4 @@
-package com.example.WithPet02.view.mypage.atask;
+package com.example.WithPet02.view.mypetinfo.atask;
 
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
@@ -21,19 +21,19 @@ import java.nio.charset.Charset;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 
-public class MyUpdate extends AsyncTask<Void, Void, String> {
+public class AlbumInsert extends AsyncTask<Void, Void, String> {
 
-    String m_tel, m_email, m_name, m_pw;
-    String imageDbPath, imageRealPath;
+    int a_pet;
+    String a_title, a_content, imageRealPath, imageDbPath;
+
     String result;
 
-    public MyUpdate(String m_tel, String m_email, String m_name, String m_pw, String imageDbPath, String imageRealPath) {
-        this.m_tel = m_tel;
-        this.m_email = m_email;
-        this.m_name = m_name;
-        this.m_pw = m_pw;
-        this.imageDbPath = imageDbPath;
+    public AlbumInsert(int a_pet, String a_title, String a_content, String imageRealPath, String imageDbPath) {
+        this.a_pet = a_pet;
+        this.a_title = a_title;
+        this.a_content = a_content;
         this.imageRealPath = imageRealPath;
+        this.imageDbPath = imageDbPath;
     }
 
     HttpClient httpClient;
@@ -48,20 +48,16 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
             builder.setCharset(Charset.forName("UTF-8"));
 
-            builder.addTextBody("m_tel", m_tel, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_email", m_email, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_name", m_name, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_pw", m_pw, ContentType.create("Multipart/related", "UTF-8"));
-
-            if(imageDbPath != null){
-                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
-            }
+            builder.addTextBody("a_pet", String.valueOf(a_pet), ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("a_title", a_title, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("a_content", a_content, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
 
             if(imageRealPath != null){
                 builder.addPart("image", new FileBody(new File(imageRealPath)));
             }
 
-            String postURL = ipConfig + "/app/anUpdateMulti";
+            String postURL = ipConfig + "/app/albumInsert";
 
             //전송
             InputStream inputStream = null;
@@ -76,34 +72,39 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             StringBuilder stringBuilder = new StringBuilder();
             String line = null;
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line + "\n");
             }
             inputStream.close();
 
             // 응답결과
             result = stringBuilder.toString();
-            Log.d("main:MyUpdate", result);
+            Log.d("main:albumInsert", result);
 
             inputStream.close();
 
-        } catch (Exception e){
-            Log.d("main:MyUpdate", e.getMessage());
+        } catch (Exception e) {
+            Log.d("main:albumInsert", e.getMessage());
             e.printStackTrace();
         } finally {
-            if(httpEntity != null){
+            if (httpEntity != null) {
                 httpEntity = null;
             }
-            if(httpResponse != null){
+            if (httpResponse != null) {
                 httpResponse = null;
             }
-            if(httpPost != null){
+            if (httpPost != null) {
                 httpPost = null;
             }
-            if(httpClient != null){
+            if (httpClient != null) {
                 httpClient = null;
             }
         }
         return result;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
     }
 }

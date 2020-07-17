@@ -1,4 +1,4 @@
-package com.example.WithPet02.view.mypage.atask;
+package com.example.WithPet02.view.mypetinfo.atask;
 
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
@@ -21,17 +21,20 @@ import java.nio.charset.Charset;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 
-public class MyUpdate extends AsyncTask<Void, Void, String> {
+public class MyPetUpdate extends AsyncTask<Void, Void, String> {
 
-    String m_tel, m_email, m_name, m_pw;
+    int p_num;
+    String p_name, p_animal, p_a_animal, p_birth, p_gender;
     String imageDbPath, imageRealPath;
     String result;
 
-    public MyUpdate(String m_tel, String m_email, String m_name, String m_pw, String imageDbPath, String imageRealPath) {
-        this.m_tel = m_tel;
-        this.m_email = m_email;
-        this.m_name = m_name;
-        this.m_pw = m_pw;
+    public MyPetUpdate(int p_num, String p_name, String p_animal, String p_a_animal, String p_birth, String p_gender, String imageDbPath, String imageRealPath) {
+        this.p_num = p_num;
+        this.p_name = p_name;
+        this.p_animal = p_animal;
+        this.p_a_animal = p_a_animal;
+        this.p_birth = p_birth;
+        this.p_gender = p_gender;
         this.imageDbPath = imageDbPath;
         this.imageRealPath = imageRealPath;
     }
@@ -48,20 +51,19 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
             builder.setCharset(Charset.forName("UTF-8"));
 
-            builder.addTextBody("m_tel", m_tel, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_email", m_email, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_name", m_name, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_pw", m_pw, ContentType.create("Multipart/related", "UTF-8"));
-
-            if(imageDbPath != null){
-                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
-            }
+            builder.addTextBody("p_num", String.valueOf(p_num), ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_name", p_name, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_animal", p_animal, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_birth", p_birth, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_gender", p_gender, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
 
             if(imageRealPath != null){
                 builder.addPart("image", new FileBody(new File(imageRealPath)));
             }
 
-            String postURL = ipConfig + "/app/anUpdateMulti";
+            String postURL = ipConfig + "/app/petUpdate";
 
             //전송
             InputStream inputStream = null;
@@ -76,34 +78,39 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             StringBuilder stringBuilder = new StringBuilder();
             String line = null;
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line + "\n");
             }
             inputStream.close();
 
             // 응답결과
             result = stringBuilder.toString();
-            Log.d("main:MyUpdate", result);
+            Log.d("main:petUpdate", result);
 
             inputStream.close();
 
-        } catch (Exception e){
-            Log.d("main:MyUpdate", e.getMessage());
+        } catch (Exception e) {
+            Log.d("main:petUpdate", e.getMessage());
             e.printStackTrace();
         } finally {
-            if(httpEntity != null){
+            if (httpEntity != null) {
                 httpEntity = null;
             }
-            if(httpResponse != null){
+            if (httpResponse != null) {
                 httpResponse = null;
             }
-            if(httpPost != null){
+            if (httpPost != null) {
                 httpPost = null;
             }
-            if(httpClient != null){
+            if (httpClient != null) {
                 httpClient = null;
             }
         }
         return result;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
     }
 }
