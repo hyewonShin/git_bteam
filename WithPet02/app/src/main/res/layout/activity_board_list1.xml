@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#E91E63"
+            android:background="@color/colorBackground"
             app:popupTheme="@style/Widget.MaterialComponents.Toolbar"
             tools:targetApi="lollipop">
 
@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:text="게시판"
                 android:textColor="#ffffff"
-                android:textSize="28dp"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 android:layout_marginRight="30dp"/>
 
         </androidx.appcompat.widget.Toolbar>
