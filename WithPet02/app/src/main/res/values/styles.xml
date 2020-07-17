@@ -16,6 +16,6 @@
     <style name="dividerLine">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:background">#000000</item>
+        <item name="android:background">@color/colorBackground</item>
     </style>
 </resources>

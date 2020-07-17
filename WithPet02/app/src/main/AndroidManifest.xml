@@ -19,9 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".common.DatePickerActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name=".view.mypetinfo.MyPetInfoEditActivity" />
         <activity android:name=".view.mypetinfo.MyPetInfoAddActivity" />
+=======
+        <activity android:name=".view.customerc_service.SiteCsWirte"></activity>
+>>>>>>> bds
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".DbResult" />
         <activity android:name=".view.community.CommunityBoardTest" />
