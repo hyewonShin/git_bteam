@@ -61,7 +61,7 @@ public class MyUpdateActivity extends AppCompatActivity {
 
     String filePath = ipConfig + "/app/resources/upload/member/";
 
-    public String imageRealPath, imageDbPath;
+    public String imageRealPath = null, imageDbPath = null;
 
     final int CAMERA_REQUEST = 1000;
     final int LOAD_IMAGE = 1001;
@@ -108,6 +108,7 @@ public class MyUpdateActivity extends AppCompatActivity {
         } else {
             //프로필 사진 있음
             Glide.with(this).load(filePath + loginDTO.getM_pic()).signature(new ObjectKey(System.currentTimeMillis())).into(myUpdatePic);
+            imageDbPath = loginDTO.getM_pic();
         }
 
         //사진 수정 클릭시
@@ -120,14 +121,13 @@ public class MyUpdateActivity extends AppCompatActivity {
 
                 //사진 업로드 방식 선택을 위한 AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(MyUpdateActivity.this);
-                String[] list = {"사진 촬영하기", "내 갤러리에서 선택하기"};
+                String[] list = {"사진 촬영하기", "내 갤러리에서 선택하기", "사진 삭제하기"};
                 builder.setTitle("사진 업로드 방식 선택");
                 builder.setItems(list, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(i == 0){
                             //사진 촬영해서 등록
-
                             try {
                                 file = createFile();
                                 Log.d("FilePath ", file.getAbsolutePath());
@@ -154,6 +154,11 @@ public class MyUpdateActivity extends AppCompatActivity {
                             intent.setType("image/*");
                             intent.setAction(Intent.ACTION_PICK);
                             startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
+                        } else if(i == 2){
+                            //사진 삭제하기
+                            myUpdatePic.setImageResource(R.drawable.defalt);
+                            imageDbPath = null;
+                            imageRealPath = null;
                         }
                     }
                 });
@@ -227,7 +232,7 @@ public class MyUpdateActivity extends AppCompatActivity {
         });
     }
 
-
+    //파일 생성
     private File createFile() throws IOException {
         String imageFileName = loginDTO.getM_tel() + ".jpg";
         File storageDir = Environment.getExternalStorageDirectory();
@@ -417,9 +422,7 @@ public class MyUpdateActivity extends AppCompatActivity {
                         //현재 로그인 정보 갱신
                         loginDTO.setM_email(email);
                         loginDTO.setM_name(name);
-                        if(imageDbPath != null){
-                            loginDTO.setM_pic(imageDbPath);
-                        }
+                        loginDTO.setM_pic(imageDbPath);
 
                         //자동로그인 정보 갱신
                         SharedPreferences sf = getSharedPreferences("WithPetM", MODE_PRIVATE);

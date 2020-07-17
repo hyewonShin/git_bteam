@@ -1,4 +1,4 @@
-package com.example.WithPet02.view.mypage.atask;
+package com.example.WithPet02.view.mypetinfo.atask;
 
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
@@ -11,29 +11,23 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 
-public class MyUpdate extends AsyncTask<Void, Void, String> {
+public class MyPetDelete extends AsyncTask<Void, Void, String> {
 
-    String m_tel, m_email, m_name, m_pw;
-    String imageDbPath, imageRealPath;
+    int p_num;
+    String p_pic;
     String result;
 
-    public MyUpdate(String m_tel, String m_email, String m_name, String m_pw, String imageDbPath, String imageRealPath) {
-        this.m_tel = m_tel;
-        this.m_email = m_email;
-        this.m_name = m_name;
-        this.m_pw = m_pw;
-        this.imageDbPath = imageDbPath;
-        this.imageRealPath = imageRealPath;
+    public MyPetDelete(int p_num, String p_pic) {
+        this.p_num = p_num;
+        this.p_pic = p_pic;
     }
 
     HttpClient httpClient;
@@ -48,20 +42,10 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
             builder.setCharset(Charset.forName("UTF-8"));
 
-            builder.addTextBody("m_tel", m_tel, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_email", m_email, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_name", m_name, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("m_pw", m_pw, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_num", String.valueOf(p_num), ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("p_pic", p_pic, ContentType.create("Multipart/related", "UTF-8"));
 
-            if(imageDbPath != null){
-                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
-            }
-
-            if(imageRealPath != null){
-                builder.addPart("image", new FileBody(new File(imageRealPath)));
-            }
-
-            String postURL = ipConfig + "/app/anUpdateMulti";
+            String postURL = ipConfig + "/app/petDelete";
 
             //전송
             InputStream inputStream = null;
@@ -83,12 +67,12 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
 
             // 응답결과
             result = stringBuilder.toString();
-            Log.d("main:MyUpdate", result);
+            Log.d("main:MyDelete", result);
 
             inputStream.close();
 
         } catch (Exception e){
-            Log.d("main:MyUpdate", e.getMessage());
+            Log.d("main:MyDelete", e.getMessage());
             e.printStackTrace();
         } finally {
             if(httpEntity != null){
@@ -105,5 +89,11 @@ public class MyUpdate extends AsyncTask<Void, Void, String> {
             }
         }
         return result;
+
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
     }
 }

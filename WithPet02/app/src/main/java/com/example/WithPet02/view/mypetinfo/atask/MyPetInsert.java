@@ -56,9 +56,9 @@ public class MyPetInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_birth", p_birth, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_gender", p_gender, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
 
             if(imageRealPath != null){
-                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
                 builder.addPart("image", new FileBody(new File(imageRealPath)));
             }
 
@@ -84,12 +84,12 @@ public class MyPetInsert extends AsyncTask<Void, Void, String> {
 
             // 응답결과
             result = stringBuilder.toString();
-            Log.d("main:JoinInsert", result);
+            Log.d("main:MyPetInsert", result);
 
             inputStream.close();
 
         } catch (Exception e) {
-            Log.d("main:JoinInsert", e.getMessage());
+            Log.d("main:MyPetInsert", e.getMessage());
             e.printStackTrace();
         } finally {
             if (httpEntity != null) {
