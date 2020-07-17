@@ -28,6 +28,7 @@
         android:layout_height="68dp"
         android:background="@color/colorBackground"
         android:text="게시판 글쓰기"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_margin="10dp"/>
 
 </LinearLayout>
