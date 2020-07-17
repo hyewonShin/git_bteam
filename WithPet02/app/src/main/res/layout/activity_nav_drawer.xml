@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/colorBackground"
+        android:background="@color/colorFont"
         android:orientation="vertical">
 
 
@@ -53,7 +53,8 @@
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:weightSum="3"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        >
 
 
         <!--사이트 소개-->
@@ -63,7 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:background="@drawable/icon_circle"
+            android:layout_gravity="center"
+            android:layout_margin="2dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
@@ -76,7 +80,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="20"
-                android:text="사이트 소개" />
+                android:text="사이트 소개"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!--마이페이지-->
@@ -86,7 +92,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:background="@drawable/icon_circle"
+            android:layout_gravity="center"
+            android:layout_margin="2dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
@@ -99,7 +108,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="20"
-                android:text="마이페이지" />
+                android:text="마이페이지"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <!--고객센터-->
@@ -109,21 +120,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:background="@drawable/icon_circle"
+            android:layout_gravity="center"
+            android:layout_margin="2dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="80"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_customer_service_75dp"/>
+                android:layout_weight="80"
+                android:src="@drawable/ic_customer_service_75dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="20"
-                android:text="고객센터" />
+                android:text="고객센터"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
@@ -137,5 +153,9 @@
         android:divider="#000000"
         android:dividerHeight="1dp">
     </ListView>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -53,13 +53,12 @@
                 android:layout_height="150dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/circle"
-                android:layout_marginHorizontal="10dp"
-                android:backgroundTint="@color/colorBackground">
+                android:layout_marginHorizontal="10dp">
 
             </androidx.viewpager.widget.ViewPager>
 
-            <include
-                layout="@layout/activity_db_result"/>
+            <!--<include
+                layout="@layout/activity_db_result"/>-->
 
             <!--&lt;!&ndash;슬라이드 화면&ndash;&gt;
             <androidx.viewpager.widget.ViewPager

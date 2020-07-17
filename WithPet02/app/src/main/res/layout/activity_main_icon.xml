@@ -3,8 +3,9 @@
     android:id="@+id/main_icon"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="10dp">
+    android:layout_height="250dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/colorWhite">
     <!--아이콘 전체 -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +19,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="3"
-            android:layout_marginBottom="25dp"
-            >
+            android:weightSum="3">
             <!--반려동물 특징-->
             <LinearLayout
                 android:id="@+id/pet_Characteristic"
@@ -28,7 +27,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,6 +39,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="반려동물 특징"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--반려동물 특징 끝-->
@@ -48,7 +52,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,6 +64,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="운동 기록"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--운동기록 끝-->
@@ -68,7 +77,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,6 +89,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="검진 기록"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--검진기록-->
@@ -96,7 +110,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,6 +122,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="가까운 동물병원"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--가까운 동물병원 끝-->
@@ -116,7 +135,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,6 +147,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="전문가 QnA"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--전문가 QnA 끝-->
@@ -136,7 +160,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:background="@drawable/icon_circle"
+                android:layout_margin="5dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,6 +172,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorWhite"
                     android:gravity="center"
                     android:layout_weight="20"/>
             </LinearLayout><!--커뮤니티 끝-->
