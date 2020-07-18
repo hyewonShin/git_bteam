@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <application
         android:name=".view.login.GlobalApplication"
@@ -25,7 +27,7 @@
         <activity android:name=".view.mypetinfo.MyPetInfoAddActivity" />
 
         <activity android:name=".view.customerc_service.SiteCsWirte"></activity>
-
+        <activity android:name=".view.MyPet.webview.Webview"></activity>
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".DbResult" />
         <activity android:name=".view.community.CommunityBoardTest" />
@@ -72,7 +74,7 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_app_key" />
+            android:value="90ff91d4c2b0a3afe6952051ff7ef96a" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
