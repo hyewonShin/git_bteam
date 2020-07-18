@@ -69,8 +69,8 @@ dependencies {
     // 다음 지도 라이브러리
     implementation files('src\\main\\jniLibs\\libDaumMapAndroid.jar')
     implementation files('libs\\libDaumMapAndroid.jar')
-
-    // 서클 이미지뷰
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+// 서클 이미지뷰
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     // 로딩 화면
