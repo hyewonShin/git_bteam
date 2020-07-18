@@ -66,7 +66,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- https가 아니라 http로 오더라도 그냥 허가하는 부분 -->
+        </activity> <!-- https가 아니라 http로 오더라도 그냥 허가하는 부분. -->
         <!-- http 라이브러리 사용 -->
         <uses-library
             android:name="org.apache.http.legacy"
