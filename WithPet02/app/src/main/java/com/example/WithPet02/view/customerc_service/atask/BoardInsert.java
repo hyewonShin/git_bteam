@@ -53,13 +53,22 @@ public class BoardInsert extends AsyncTask <Void, Void, Void> {
             builder.addTextBody("title", title, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("content", content, ContentType.create("Multipart/related", "UTF-8"));
             //보낼 때와 받을 때가 같아야 해서 → ("dbImgPath", imageDbPath, 로 설정
-            builder.addTextBody("dbImgPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("pic", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
             //파일 전송시(이미지와 텍스트를 동시에 보낼경우)에는 Multipart를 사용하여 보내는 것이다.
             //imageRealPath의 실제 경로를 통해서 파일을 보내주는 것이다.(여러개 보낼 경우는 name을 다르게 해서 보내준다.)
             builder.addPart("image", new FileBody(new File(imageRealPath)));
 
             //전송 시켜 줄 때 anInsertMulti로 해서보내준다.
             String postURL = ipConfig + "/app/anBoardInsert";
+
+            /*
+            -- b_num을 넣을 때 b_seq를 사용해 넣을 때 1씩 증가시킴
+            create sequence b_seq
+            increment by 1
+            start with 1
+            minvalue 1
+            nomaxvalue
+            */
 
             // 전송
             //InputStream inputStream = null;

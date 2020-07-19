@@ -14,11 +14,11 @@ public class BoardDTO implements Serializable {
 
     private int b_seq;
     private int b_like;
-    private Date b_date;
+    private String b_date;
 
 
     //생성자 초기화
-    public BoardDTO(int b_num, String b_group, String b_name, String b_title, String b_content, String b_file, int b_seq, int b_like, Date b_date) {
+    public BoardDTO(int b_num, String b_group, String b_name, String b_title, String b_content, String b_file, int b_seq, int b_like, String b_date) {
         this.b_num = b_num;
         this.b_group = b_group;
         this.b_name = b_name;
@@ -96,11 +96,11 @@ public class BoardDTO implements Serializable {
         this.b_like = b_like;
     }
 
-    public Date getB_date() {
+    public String getB_date() {
         return b_date;
     }
 
-    public void setB_date(Date b_date) {
+    public void setB_date(String b_date) {
         this.b_date = b_date;
     }
 }//class
