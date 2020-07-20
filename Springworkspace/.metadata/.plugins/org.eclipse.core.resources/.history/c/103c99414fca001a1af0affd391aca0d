@@ -1,6 +1,0 @@
-package health;
-
-public interface HealthService {
-	//동물운동정보 저장
-	//동물운동정보 가져오기
-}
