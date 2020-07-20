@@ -71,7 +71,8 @@ public class MainLogIn {
                 e.printStackTrace();
             }
 
-            if(myPetList.size() <= 0){
+
+            if(myPetList == null){
                 //등록된 동물정보 없음. 클릭시 동물 추가 화면으로
                 main_login.setVisibility(View.GONE);
                 notLogin.setVisibility(View.GONE);

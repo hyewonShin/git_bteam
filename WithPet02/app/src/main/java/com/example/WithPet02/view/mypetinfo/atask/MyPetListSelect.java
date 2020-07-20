@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
-public class MyPetListSelect extends AsyncTask<Void, Void, Void> {
+public class MyPetListSelect extends AsyncTask<Void, Void, ArrayList<MyPetDTO>> {
 
     String m_tel;
 
@@ -39,7 +39,7 @@ public class MyPetListSelect extends AsyncTask<Void, Void, Void> {
     HttpEntity httpEntity;
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected ArrayList<MyPetDTO> doInBackground(Void... voids) {
         try {
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -78,7 +78,7 @@ public class MyPetListSelect extends AsyncTask<Void, Void, Void> {
                 httpClient = null;
             }
         }
-        return null;
+        return myPetList;
     }
 
     private ArrayList<MyPetDTO> readMessage(InputStream inputStream) throws IOException {
@@ -95,5 +95,10 @@ public class MyPetListSelect extends AsyncTask<Void, Void, Void> {
         ArrayList<MyPetDTO> list = gson.fromJson(json, new TypeToken<ArrayList<MyPetDTO>>(){}.getType());
 
         return list;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<MyPetDTO> list) {
+        super.onPostExecute(list);
     }
 }
