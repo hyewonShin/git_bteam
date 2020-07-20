@@ -19,6 +19,7 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,6 +55,8 @@ import com.example.WithPet02.view.mypage.MyPageInfoActivity;
 import com.example.WithPet02.view.MyPet.MypetHospital;
 import com.example.WithPet02.view.customerc_service.SiteCsActivity;
 import com.example.WithPet02.view.mypetinfo.MyPetInfo;
+import com.example.WithPet02.view.mypetinfo.MyPetInfoAddActivity;
+import com.example.WithPet02.view.mypetinfo.atask.MyPetListSelect;
 import com.example.WithPet02.view.pet_Characteristic.PetCharacteristic;
 import com.example.WithPet02.view.site.SiteInfoActivity;
 import com.example.WithPet02.view.site.SitePetCharActivity;
@@ -66,11 +69,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Timer;
+import java.util.concurrent.ExecutionException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
+import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "mainActivity";
@@ -83,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
-    MainNotLogIn mainNotLogIn;
-    //TextView loginID;
+    TextView notLogin, noPet;
+    LinearLayout myPetPager;
     Button logincheck;
     CircleImageView loginImage;
     TextView nickname;
@@ -102,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView myPic;
     String filePath = ipConfig + "/app/resources/member/";
 
-
-
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,9 +115,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Main activity와 context
         MainActivity activity = MainActivity.this;
-        Context context = MainActivity.this;
-
-
+        context = MainActivity.this;
 
         //인터넷 권한 가져오기
         Internet internet = new Internet(context, activity);
@@ -129,52 +131,14 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerView = findViewById(R.id.drawer);
 
-        //메인 로그인 화면
-        main_login = findViewById(R.id.main_login);
 
+        //메인화면 내 동물정보
+        myPetPager = findViewById(R.id.myPetPager);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.layout_main_login, myPetPager, true);
 
-        if(loginDTO != null){
-            //로그인시
-            main_login.setOffscreenPageLimit(3);
-            MainLogIn.MyPagerAdapter loginadapter = new MainLogIn.MyPagerAdapter(getSupportFragmentManager());
-            MainLogIn mainLogIn = new MainLogIn();
-            mainLogIn.Mli(loginadapter, main_login);
-        }else{
-            //비 로그인시
-            main_login.setOffscreenPageLimit(1);
-            MainLogIn.MyPagerAdapter loginadapter = new MainLogIn.MyPagerAdapter(getSupportFragmentManager());
-            MainLogIn mainLogIn = new MainLogIn();
-            mainLogIn.Mli(loginadapter, main_login);
-
-        }
-
-        //메인 로그인 누를시 내 동물 정보로 가기
-        main_login.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                ArrayList<Fragment> list = new ArrayList<>();
-                Adapter adapter;
-                list.add(mainLogIn1);
-                list.add(mainLogIn2);
-                list.add(mainLogIn3);
-
-
-                if(loginDTO == null){
-                    // 비 로그인시 로그인 화면으로
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    startActivity(intent);
-                }else{
-                   /* if (list.get(0)){
-                        Intent intent = new Intent(getApplicationContext(), MainLogIn1.class);
-                        startActivity(intent);
-                    }*/
-
-                }
-            }
-        });
-
-
+        MainLogIn mainLogIn = new MainLogIn(context, myPetPager);
+        mainLogIn.setMyPetPager();
 
 
         //메인 ad(광고) 슬라이드

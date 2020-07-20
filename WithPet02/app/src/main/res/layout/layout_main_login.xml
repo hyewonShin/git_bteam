@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:orientation="vertical">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_login"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/notLogin"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:text="로그인 해주세요\n(디자인 수정시 이미지뷰로 대체)"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/noPet"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:text="우리 가족 추가하기\n(디자인 수정시 이미지뷰로 대체)"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+</LinearLayout>

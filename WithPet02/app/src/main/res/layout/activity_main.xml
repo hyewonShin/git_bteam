@@ -46,29 +46,12 @@
                 android:id="@+id/v_flipper"
                 android:layout_marginBottom="50dp"/>
 
-            <!--로그인 화면-->
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/main_login"
+            <LinearLayout
+                android:id="@+id/myPetPager"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/circle"
-                android:layout_marginHorizontal="10dp">
-
-            </androidx.viewpager.widget.ViewPager>
-
-            <!--<include
-                layout="@layout/activity_db_result"/>-->
-
-            <!--&lt;!&ndash;슬라이드 화면&ndash;&gt;
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/main_ad"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="50dp"
-                android:background="#FFFFFF"
-                android:layout_margin="10px">
-            </androidx.viewpager.widget.ViewPager>-->
+                android:layout_height="190dp"
+                android:orientation="vertical">
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

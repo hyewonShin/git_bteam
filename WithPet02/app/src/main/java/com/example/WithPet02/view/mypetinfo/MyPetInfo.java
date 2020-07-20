@@ -65,6 +65,8 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
 
         context = this;
 
+        pos = getIntent().getIntExtra("pos", 0);
+
         //툴바
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -95,6 +97,8 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             int margin = (int) (dpValue * d);
             pager.setPadding(margin + 30,40, margin + 30, 0);
             pager.setPageMargin(40);
+
+            pager.setCurrentItem(pos);
 
             //ViewPager 를 Adapter 에 연결
             MyPagerAdapter adapter = new MyPagerAdapter(this);
@@ -137,9 +141,6 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             hasPet.setVisibility(View.GONE);
             noPet.setVisibility(View.VISIBLE);
         }
-
-
-
 
     }
 
