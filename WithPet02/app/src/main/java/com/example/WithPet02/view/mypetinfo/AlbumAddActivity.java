@@ -34,12 +34,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
-import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
-import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
 public class AlbumAddActivity extends AppCompatActivity {
 
@@ -188,9 +185,9 @@ public class AlbumAddActivity extends AppCompatActivity {
                     if(state.equals("1")){
                         //MyPetInfoActivity 로 이동
                         Toast.makeText(context, "등록완료!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(context, MyPetInfo.class);
+                        /*Intent intent = new Intent(context, MyPetInfo.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        context.startActivity(intent);
+                        context.startActivity(intent);*/
                         finish();
                         return true;
                     } else {

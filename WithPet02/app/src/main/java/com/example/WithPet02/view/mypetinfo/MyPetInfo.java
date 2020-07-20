@@ -20,12 +20,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.WithPet02.Adapter.GridRecyclerViewAdapter;
-import com.example.WithPet02.MainActivity;
 import com.example.WithPet02.R;
 import com.example.WithPet02.dto.AlbumDTO;
 import com.example.WithPet02.dto.MyPetDTO;
@@ -119,9 +117,9 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
 
             //리사이클러뷰
             recyclerView = findViewById(R.id.petAlbum);
-            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
             gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
             recyclerView.setLayoutManager(gridLayoutManager);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
             recyclerView.setAdapter(gridAdapter);
 
 
@@ -175,8 +173,10 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
     @Override
     public void onItemSelected(View v, int position) {
         GridRecyclerViewAdapter.MyViewHolder viewHolder = (GridRecyclerViewAdapter.MyViewHolder)recyclerView.findViewHolderForAdapterPosition(position);
-        Toast.makeText(this, position + "번째 사진 클릭", Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(context, AlbumDetailActivity.class);
+        AlbumDTO dto = albumList.get(position);
+        intent.putExtra("dto", dto);
+        startActivity(intent);
 
     }
 
@@ -308,7 +308,6 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         @Override
         public void onItemSelected(View v, int position) {
            GridRecyclerViewAdapter.MyViewHolder viewHolder = (GridRecyclerViewAdapter.MyViewHolder)recyclerView.findViewHolderForAdapterPosition(position);
-           Toast.makeText(context, position + "번째 사진 클릭", Toast.LENGTH_SHORT).show();
            Intent intent = new Intent(context, AlbumDetailActivity.class);
            AlbumDTO dto = albumList.get(position);
            intent.putExtra("dto", dto);
@@ -332,6 +331,13 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         }
 
         if (myPetList != null){
+            //뷰페이저
+            MyPagerAdapter adapter = new MyPagerAdapter(this);
+            pager.setAdapter(adapter);
+            ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener(this);
+            pager.addOnPageChangeListener(viewPagerChangeListener);
+            pager.setCurrentItem(pos);
+
             albumListSelect = new AlbumListSelect(myPetList.get(pos).getP_num());
             try {
                 albumList = albumListSelect.execute().get();
@@ -340,13 +346,6 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            //뷰페이저
-            MyPagerAdapter adapter = new MyPagerAdapter(this);
-            pager.setAdapter(adapter);
-            ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener(this);
-            pager.addOnPageChangeListener(viewPagerChangeListener);
-            pager.setCurrentItem(pos);
 
             //리사이클러뷰
             recyclerView = findViewById(R.id.petAlbum);
@@ -399,11 +398,6 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        Intent intent = new Intent(MyPetInfo.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
         finish();
     }
 }
