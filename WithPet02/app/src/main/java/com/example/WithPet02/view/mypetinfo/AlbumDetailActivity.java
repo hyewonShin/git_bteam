@@ -20,6 +20,7 @@ import com.example.WithPet02.R;
 import com.example.WithPet02.dto.AlbumDTO;
 import com.example.WithPet02.view.mypetinfo.atask.AlbumDelete;
 
+import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
@@ -48,10 +49,13 @@ public class AlbumDetailActivity extends AppCompatActivity {
         ImageView uploadPic = findViewById(R.id.uploadPic);
         TextView tvTitle = findViewById(R.id.tvTitle);
         TextView tvContent = findViewById(R.id.tvContent);
+        TextView tvDate = findViewById(R.id.tvDate);
 
         Glide.with(this).load(filePath + dto.getA_pet() + "/" + dto.getA_file()).into(uploadPic);
         tvTitle.setText(dto.getA_title());
         tvContent.setText(dto.getA_content());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+        tvDate.setText(sdf.format(dto.getA_date()));
 
     }
 
