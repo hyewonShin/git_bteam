@@ -32,7 +32,9 @@ import com.example.WithPet02.view.mypetinfo.atask.AlbumInsert;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
@@ -47,7 +49,7 @@ public class AlbumAddActivity extends AppCompatActivity {
     EditText etTitle, etContent;
 
     int a_pet;
-    String a_file, a_title, a_content;
+    String a_title, a_content;
 
     String filePath = ipConfig + "/app/resources/upload/album/";
     public String imageRealPath, imageDbPath;
@@ -58,7 +60,7 @@ public class AlbumAddActivity extends AppCompatActivity {
     File file = null;
     long fileSize = 0;
 
-    long cal;
+    String time;
 
     String state;
 
@@ -84,8 +86,9 @@ public class AlbumAddActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etContent = findViewById(R.id.etContent);
 
-        Calendar calendar = Calendar.getInstance();
-        cal = calendar.get(Calendar.LONG);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        time = sdf.format(cal.getTime());
 
         uploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +142,7 @@ public class AlbumAddActivity extends AppCompatActivity {
 
     //파일 생성
     private File createFile() throws IOException {
-        String imageFileName = a_pet + "_" + cal + ".jpg";
+        String imageFileName = a_pet + "_" + time + ".jpg";
         File storageDir = Environment.getExternalStorageDirectory();
         File curFile = new File(storageDir, imageFileName);
         return curFile;
@@ -186,7 +189,7 @@ public class AlbumAddActivity extends AppCompatActivity {
                         //MyPetInfoActivity 로 이동
                         Toast.makeText(context, "등록완료!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(context, MyPetInfo.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         context.startActivity(intent);
                         finish();
                         return true;
@@ -223,7 +226,7 @@ public class AlbumAddActivity extends AppCompatActivity {
                 //String uploadFileName = imageRealPath.split("/")[imageRealPath.split("/").length - 1];
                 int pos = imageRealPath.lastIndexOf(".");
                 String uploadFileType = imageRealPath.substring(pos + 1);
-                imageDbPath = a_pet + "_" + cal + uploadFileType;
+                imageDbPath = a_pet + "_" + time + "." + uploadFileType;
 
                 fileSize = file.length();
             } catch (Exception e){
@@ -255,7 +258,7 @@ public class AlbumAddActivity extends AppCompatActivity {
 
                 int pos = imageRealPath.lastIndexOf(".");
                 String uploadFileType = imageRealPath.substring(pos + 1);
-                imageDbPath = a_pet + "_" + cal + uploadFileType;
+                imageDbPath = a_pet + "_" + time + "." + uploadFileType;
 
                 fileSize = file.length();
             } catch (Exception e){

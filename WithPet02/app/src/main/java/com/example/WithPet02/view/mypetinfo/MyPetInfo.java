@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
@@ -28,8 +29,6 @@ import com.example.WithPet02.MainActivity;
 import com.example.WithPet02.R;
 import com.example.WithPet02.dto.AlbumDTO;
 import com.example.WithPet02.dto.MyPetDTO;
-import com.example.WithPet02.view.join.JoinActivity;
-import com.example.WithPet02.view.login.LoginActivity;
 import com.example.WithPet02.view.mypetinfo.atask.AlbumListSelect;
 import com.example.WithPet02.view.mypetinfo.atask.MyPetListSelect;
 
@@ -39,7 +38,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
-public class MyPetInfo extends AppCompatActivity {
+public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdapter.OnListItemSelectedInterface {
 
     public static ArrayList<MyPetDTO> myPetList = null;
     ArrayList<AlbumDTO> albumList;
@@ -56,7 +55,8 @@ public class MyPetInfo extends AppCompatActivity {
     Context context;
 
     String animal;
-    int cur = 0;
+    int cur;    //현재 페이지의 동물정보
+    int pos;    //다른창에서 돌아올 경우 기존의 position
 
     ImageView btnUpload;
 
@@ -87,6 +87,7 @@ public class MyPetInfo extends AppCompatActivity {
         }
 
         if(myPetList.size() > 0) {
+            cur = myPetList.get(0).getP_num();
             //뷰페이저
             pager = findViewById(R.id.viewpager);
             pager.setOffscreenPageLimit(3);
@@ -118,7 +119,7 @@ public class MyPetInfo extends AppCompatActivity {
 
             //리사이클러뷰
             recyclerView = findViewById(R.id.petAlbum);
-            gridAdapter = new GridRecyclerViewAdapter(getApplicationContext(), albumList);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
             gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(gridAdapter);
@@ -130,7 +131,7 @@ public class MyPetInfo extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, AlbumAddActivity.class);
-                    intent.putExtra("a_pet", myPetList.get(cur).getP_num());
+                    intent.putExtra("a_pet", cur);
                     startActivity(intent);
                 }
             });
@@ -170,6 +171,15 @@ public class MyPetInfo extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //리사이클러 뷰 아이템 선택
+    @Override
+    public void onItemSelected(View v, int position) {
+        GridRecyclerViewAdapter.MyViewHolder viewHolder = (GridRecyclerViewAdapter.MyViewHolder)recyclerView.findViewHolderForAdapterPosition(position);
+        Toast.makeText(this, position + "번째 사진 클릭", Toast.LENGTH_SHORT).show();
+
+
+    }
+
     class MyPagerAdapter extends PagerAdapter {
 
         Context mContext = null;
@@ -190,7 +200,6 @@ public class MyPetInfo extends AppCompatActivity {
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, final int position) {
             //return super.instantiateItem(container, position);
-            cur = position;
 
             View view = null;
             view = mInflater.inflate(R.layout.layout_my_pet_info, null);
@@ -256,7 +265,7 @@ public class MyPetInfo extends AppCompatActivity {
         }
     }
 
-    class ViewPagerChangeListener implements ViewPager.OnPageChangeListener{
+    class ViewPagerChangeListener implements ViewPager.OnPageChangeListener, GridRecyclerViewAdapter.OnListItemSelectedInterface {
 
         Context context;
 
@@ -266,11 +275,17 @@ public class MyPetInfo extends AppCompatActivity {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
             //동물별 앨범 리스트 가져오기
+            pos = position;
+            cur = myPetList.get(position).getP_num();
             albumListSelect = new AlbumListSelect(myPetList.get(position).getP_num());
             try {
                 albumList = albumListSelect.execute().get();
-
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -279,22 +294,28 @@ public class MyPetInfo extends AppCompatActivity {
 
             //리사이클러뷰
             recyclerView = findViewById(R.id.petAlbum);
-            gridAdapter = new GridRecyclerViewAdapter(context, albumList);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
             gridLayoutManager = new GridLayoutManager(context, 3);
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(gridAdapter);
         }
 
         @Override
-        public void onPageSelected(int position) {
+        public void onPageScrollStateChanged(int state) {
 
         }
 
         @Override
-        public void onPageScrollStateChanged(int state) {
-
+        public void onItemSelected(View v, int position) {
+           GridRecyclerViewAdapter.MyViewHolder viewHolder = (GridRecyclerViewAdapter.MyViewHolder)recyclerView.findViewHolderForAdapterPosition(position);
+           Toast.makeText(context, position + "번째 사진 클릭", Toast.LENGTH_SHORT).show();
+           Intent intent = new Intent(context, AlbumDetailActivity.class);
+           AlbumDTO dto = albumList.get(position);
+           intent.putExtra("dto", dto);
+           startActivity(intent);
         }
     }
+
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -311,7 +332,7 @@ public class MyPetInfo extends AppCompatActivity {
         }
 
         if (myPetList != null){
-            albumListSelect = new AlbumListSelect(myPetList.get(0).getP_num());
+            albumListSelect = new AlbumListSelect(myPetList.get(pos).getP_num());
             try {
                 albumList = albumListSelect.execute().get();
             } catch (ExecutionException e) {
@@ -320,10 +341,58 @@ public class MyPetInfo extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            //뷰페이저
             MyPagerAdapter adapter = new MyPagerAdapter(this);
             pager.setAdapter(adapter);
             ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener(this);
             pager.addOnPageChangeListener(viewPagerChangeListener);
+            pager.setCurrentItem(pos);
+
+            //리사이클러뷰
+            recyclerView = findViewById(R.id.petAlbum);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
+            gridLayoutManager = new GridLayoutManager(context, 3);
+            recyclerView.setLayoutManager(gridLayoutManager);
+            recyclerView.setAdapter(gridAdapter);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //DB 에서 나의 동물 정보 목록 가져옴
+        MyPetListSelect myPetListSelect = new MyPetListSelect(loginDTO.getM_tel());
+        try {
+            myPetListSelect.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (myPetList != null){
+            //뷰페이저
+            MyPagerAdapter adapter = new MyPagerAdapter(this);
+            pager.setAdapter(adapter);
+            ViewPagerChangeListener viewPagerChangeListener = new ViewPagerChangeListener(this);
+            pager.addOnPageChangeListener(viewPagerChangeListener);
+            pager.setCurrentItem(pos);
+
+            albumListSelect = new AlbumListSelect(myPetList.get(pos).getP_num());
+            try {
+                albumList = albumListSelect.execute().get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //리사이클러뷰
+            recyclerView = findViewById(R.id.petAlbum);
+            gridAdapter = new GridRecyclerViewAdapter(context, albumList, this);
+            gridLayoutManager = new GridLayoutManager(context, 3);
+            recyclerView.setLayoutManager(gridLayoutManager);
+            recyclerView.setAdapter(gridAdapter);
         }
     }
 

@@ -20,19 +20,28 @@ import static com.example.WithPet02.common.CommonMethod.ipConfig;
 
 public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerViewAdapter.MyViewHolder> {
 
+    public interface OnListItemSelectedInterface {
+        void onItemSelected(View v, int position);
+    }
+
+    private OnListItemSelectedInterface mListener;
+
     Context context;
     ArrayList<AlbumDTO> list;
     String filePath = ipConfig + "/app/resources/upload/album/";;
 
-    public GridRecyclerViewAdapter(Context context, ArrayList<AlbumDTO> list) {
+    public GridRecyclerViewAdapter(Context context, ArrayList<AlbumDTO> list
+            , OnListItemSelectedInterface listener) {
         super();
         this.context = context;
         this.list = list;
+        this.mListener = listener;
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Glide.with(context).load(filePath + list.get(position).getA_file())
+        Glide.with(context).load(filePath + list.get(position).getA_pet() + "/" + list.get(position).getA_file())
                 .signature(new ObjectKey(System.currentTimeMillis()))
                 .into(holder.imageView);
         //holder.imageView.setImageResource(list.get(position).getA_file());
@@ -57,6 +66,14 @@ public class GridRecyclerViewAdapter extends RecyclerView.Adapter<GridRecyclerVi
         public MyViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.gridImage);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    mListener.onItemSelected(view, getAdapterPosition());
+                }
+            });
         }
     }
 

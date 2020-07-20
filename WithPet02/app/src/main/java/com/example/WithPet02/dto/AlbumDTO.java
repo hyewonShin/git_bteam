@@ -1,8 +1,9 @@
 package com.example.WithPet02.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AlbumDTO {
+public class AlbumDTO implements Serializable {
     private int a_num, a_pet;
     private String a_title, a_content, a_file;
     private Date a_date;
