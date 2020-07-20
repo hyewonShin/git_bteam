@@ -39,7 +39,6 @@
         <activity android:name=".Community" />
         <activity android:name=".Board" />
         <activity android:name=".BoardList1" />
-        <activity android:name=".MainView.main_login.MainNotLogIn" />
         <activity android:name=".MainView.ad.MainAd1" />
         <activity android:name=".view.mypetinfo.MyPetInfo" />
         <activity android:name=".view.customerc_service.SiteCsActivity" />
@@ -77,7 +76,7 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="90ff91d4c2b0a3afe6952051ff7ef96a" />
+            android:value="19f2340798b96783c9ffdff89ab3b98b" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
