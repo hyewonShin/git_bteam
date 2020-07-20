@@ -96,4 +96,7 @@ dependencies {
 
     //SharedPreferences를 이용해 자동로그인시 MemberDTO 저장을 위한 Gson 종속성 추가
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    //이미지 gif 넣기
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 }

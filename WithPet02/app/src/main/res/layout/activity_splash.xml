@@ -9,6 +9,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/spin_kit"
         style="@style/SpinKitView.Large.FadingCircle"
@@ -17,4 +18,5 @@
         android:layout_gravity="center_horizontal"
         app:SpinKit_Color="#D2DC1A53"
         android:layout_marginTop="200dp"/>
+
 </LinearLayout>
