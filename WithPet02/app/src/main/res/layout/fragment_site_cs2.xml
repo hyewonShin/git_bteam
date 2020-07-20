@@ -4,23 +4,65 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:weightSum="100.3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="8"
+        android:weightSum="14">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="번호"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/cs_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:text="제목"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/cs_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="작성일"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:src="#aaaaaa"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cs2_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8">
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/QnAbutton"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="0dp"
         android:background="@color/colorBackground"
         android:text="1:1 문의하기"
         android:textSize="24sp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:layout_weight="12"
+        android:layout_gravity="bottom"/>
 
 </LinearLayout>

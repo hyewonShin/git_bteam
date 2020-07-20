@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -24,11 +25,14 @@ public class SiteCsActivity extends AppCompatActivity {
 
     Bundle mBundle;
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_cs);
 
+        context = this;
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,9 +41,8 @@ public class SiteCsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);  // 타이틀 안보이게 하기
 
 
-
         fragment1 = new SiteCsFragment1();
-        fragment2 = new SiteCsFragment2();
+        fragment2 = new SiteCsFragment2(context);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment1).commit();

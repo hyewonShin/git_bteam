@@ -74,7 +74,9 @@ public class BoardController {
 	}//anBoardInsert()
 	
 	//게시판 목록 가져오기
-	@RequestMapping(value = "/anBoardGet", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/anBoardGet"
+			, method = { RequestMethod.GET, RequestMethod.POST }
+			, produces = "text/html; charset=utf-8")
 	public String anBoardGet(HttpServletRequest req, Model model) {
 		String name = (String) req.getParameter("name");
 		List<BoardDTO> list = service.anBoardGet(name);

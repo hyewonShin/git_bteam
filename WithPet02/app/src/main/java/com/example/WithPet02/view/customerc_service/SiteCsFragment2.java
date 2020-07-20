@@ -1,6 +1,7 @@
 package com.example.WithPet02.view.customerc_service;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,13 +24,24 @@ import com.example.WithPet02.view.customerc_service.atask.BoardGet;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
+
 public class SiteCsFragment2 extends Fragment {
+
+    Context context;
 
     RecyclerView recyclerView;
     ArrayList<BoardDTO> list = new ArrayList<>();
 
     TextView textView2;
     Button QnAbutton;
+
+    LinearLayoutManager layoutManager;
+    SiteCsFragment2Adapter adapter;
+
+    public SiteCsFragment2(Context context) {
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -38,14 +50,10 @@ public class SiteCsFragment2 extends Fragment {
                 container, false);
 
         //recyclerView찾기
-        rootView.findViewById(R.id.cs2_recyclerview);
-
-        //recyclerview에 Recyclerview 형태 설정하고 사용하겠다고 넣어줌
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView = rootView.findViewById(R.id.cs2_recyclerview);
 
         //DB와 통신해서 list의 값을 가지고 와줌(지금은 이름을 따로 가져오지 않고 1로 넣어줌)
-        BoardGet boardGet = new BoardGet("1");
+        BoardGet boardGet = new BoardGet(loginDTO.getM_name());
         try {
           list =  boardGet.execute().get();
         } catch (ExecutionException e) {
@@ -54,12 +62,12 @@ public class SiteCsFragment2 extends Fragment {
             e.printStackTrace();
         }
 
-        SiteCsFragment2Adapter adapter = new SiteCsFragment2Adapter();
-        adapter.addItem(list);
-
+        //recyclerview에 Recyclerview 형태 설정하고 사용하겠다고 넣어줌
+        layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new SiteCsFragment2Adapter(context, list);
         recyclerView.setAdapter(adapter);
 
-        //textView2 = rootView.findViewById(R.id.textView2);
 
         QnAbutton = rootView.findViewById(R.id.QnAbutton);
 
