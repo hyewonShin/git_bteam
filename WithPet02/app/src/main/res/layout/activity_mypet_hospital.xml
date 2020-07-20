@@ -29,7 +29,7 @@
     <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="727dp" />
+        android:layout_height="305dp" />
 
     <Button
         android:id="@+id/nowLocation"

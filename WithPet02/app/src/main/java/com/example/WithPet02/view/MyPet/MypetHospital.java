@@ -82,7 +82,7 @@ public class MypetHospital extends AppCompatActivity implements MapView.POIItemE
         //현재위치 찾는거
         nowLocation= findViewById(R.id.nowLocation);
         //트래킹 모드(동물 운동시 움직임과 거리 구하는거) 자동으로 폴리라인 하는거 구하기 7/18.
-        //mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeadingWithoutMapMoving);
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeadingWithoutMapMoving);
 
         //현위치 폴리라인 (강아지가 움직일시 거리 재기위한 폴리라인 자동으로 구해지는거 구해야함 7/18)
         MapPolyline polyline = new MapPolyline();
