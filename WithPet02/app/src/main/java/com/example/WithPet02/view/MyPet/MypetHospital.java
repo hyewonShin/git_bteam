@@ -345,7 +345,7 @@ public class MypetHospital extends AppCompatActivity implements MapView.POIItemE
         String[] permissions = {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-
+                Manifest.permission.ACCESS_WIFI_STATE
         };
 
         int permissionCheck = PackageManager.PERMISSION_GRANTED;
