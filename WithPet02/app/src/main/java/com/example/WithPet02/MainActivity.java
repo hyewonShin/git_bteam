@@ -43,10 +43,6 @@ import com.example.WithPet02.MainView.ad.MainAd2;
 import com.example.WithPet02.MainView.ad.MainAd3;
 import com.example.WithPet02.MainView.ad.MainAd4;
 import com.example.WithPet02.MainView.ad.MainAd5;
-import com.example.WithPet02.MainView.main_login.MainLogIn1;
-import com.example.WithPet02.MainView.main_login.MainLogIn2;
-import com.example.WithPet02.MainView.main_login.MainLogIn3;
-import com.example.WithPet02.MainView.main_login.MainNotLogIn;
 import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
@@ -99,10 +95,6 @@ public class MainActivity extends AppCompatActivity {
     private AdView adView;
 
     ViewFlipper v_flipper;
-
-    MainLogIn1 mainLogIn1;
-    MainLogIn2 mainLogIn2;
-    MainLogIn3 mainLogIn3;
 
     ImageView myPic;
     String filePath = ipConfig + "/app/resources/member/";
