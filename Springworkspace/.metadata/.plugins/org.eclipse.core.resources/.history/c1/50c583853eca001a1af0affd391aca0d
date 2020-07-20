@@ -1,0 +1,29 @@
+package calendar;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CalendarServiceImpl implements CalendarService {
+	@Autowired private CalendarDAO dao;
+	
+	@Override
+	public List<DiagnosisDTO> anDiagnosisGet(int pet) {
+		return dao.anDiagnosisGet(pet);
+	}
+
+	@Override
+	public int anCalendarInsert(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<CalenderDTO> anCalenderGet(String tel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,8 @@
+package board;
+
+public class BoardService{
+	//글쓰기 내용 저장하기
+	
+	//게시판 목록 가져오기(JsonArray)
+	
+}

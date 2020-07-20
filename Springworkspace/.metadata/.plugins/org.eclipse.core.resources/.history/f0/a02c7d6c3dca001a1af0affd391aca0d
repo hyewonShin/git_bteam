@@ -1,0 +1,9 @@
+package calendar;
+
+import java.util.ArrayList;
+
+public interface CalendarService {
+	//검진기록가져오기
+	ArrayList<DiagnosisDTO> anDiagnosisGet(int pet);
+	
+}

@@ -1,0 +1,33 @@
+package pet;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class PetDAO implements PetService{
+	
+	@Override
+	public ArrayList<PetVO> pet_select(String m_tel) {
+		return null;
+	}
+
+	@Override
+	public int pet_insert(String m_tel) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int pet_update(int p_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int pet_delete(int p_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

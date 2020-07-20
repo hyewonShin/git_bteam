@@ -1,0 +1,95 @@
+package com.withpet.app;
+
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import common.CommonService;
+import member.MemberServiceImpl;
+import member.MemberVO;
+
+@Controller
+public class MemberController {
+	@Autowired private MemberServiceImpl service;
+	@Autowired private CommonService common;
+	
+	//로그인요청
+	@RequestMapping(value="/anLogin", method = {RequestMethod.GET, RequestMethod.POST})
+	public String login(HttpServletRequest request, Model model) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("m_email", request.getParameter("m_email"));
+		map.put("m_pw", request.getParameter("m_pw"));		
+		MemberVO vo = service.member_login(map);
+		
+		model.addAttribute("vo", vo);
+		return "member/login";
+	}
+	
+	//회원가입처리 요청
+	@RequestMapping(value="/anJoin", produces = "text/html; charset=utf-8")
+	public String join(HttpServletRequest req, Model model) {
+		String m_tel = (String) req.getParameter("m_tel");
+		String m_email = (String) req.getParameter("m_email");
+		String m_name = (String) req.getParameter("m_name");
+		String m_pw = (String) req.getParameter("m_pw");
+		
+		String m_kakao = null, m_naver = null;
+		if (req.getParameter("m_kakao") != null) {
+			m_kakao = (String) req.getParameter("m_kakao");
+		}
+		if (req.getParameter("m_naver") != null) {
+			m_naver = (String) req.getParameter("m_naver");
+		}
+		
+		int succ = -1;
+		MemberVO vo = new MemberVO(m_tel, m_email, m_name, m_pw, m_kakao, m_naver);
+		succ = service.member_insert(vo);
+		model.addAttribute("succ", succ);
+		return "member/join";
+	}
+	
+	//핸드폰 인증번호 전송
+	@RequestMapping(value="/anSmsMulti", method = {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=utf-8")
+	public String anSmsMulti(HttpServletRequest req, Model model){
+		String m_tel = (String) req.getParameter("m_tel");
+		String randomNum = (String) req.getParameter("randomNum");
+		
+		model.addAttribute("m_tel", m_tel);
+		model.addAttribute("randomNum", randomNum);
+		
+		//SMS로 인증번호 전송
+		int succ = common.sendSms(m_tel, randomNum);
+		model.addAttribute("succ", succ);
+		return "member/anSmsMulti";
+	}
+	
+	//아이디 중복확인 요청
+	@ResponseBody @RequestMapping("/id_check")
+	public boolean id_check(String id) {
+		return service.member_id_check(id);
+	}
+	
+	//회원가입화면 요청
+	@RequestMapping("/member")
+	public String member(HttpSession session) {
+		session.setAttribute("category", "join");
+		return "member/join";
+	}
+	
+	//로그아웃요청
+	@ResponseBody @RequestMapping("/logout")
+	public void logout(HttpSession session) {
+		session.removeAttribute("login_info");
+	}
+	
+	
+	
+}

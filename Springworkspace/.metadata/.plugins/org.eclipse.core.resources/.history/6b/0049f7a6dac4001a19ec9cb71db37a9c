@@ -1,0 +1,55 @@
+package member;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import customer.CustomerService;
+import customer.CustomerVO;
+
+@Service
+public class MemberServiceImpl implements MemberService {
+	@Autowired private MemberDAO dao;
+	
+	@Override
+	public int member_insert(MemberVO vo) {
+		return dao.member_insert(vo);
+	}
+
+	@Override
+	public MemberVO member_select(String id) {
+		return null;
+	}
+
+	@Override
+	public MemberVO member_login(HashMap<String, String> map) {
+		return dao.member_login(map);
+	}
+
+	@Override
+	public boolean member_update(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean member_delete(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int member_join_select(HashMap<String, String> map) {
+		return dao.member_join_select(map);
+	}
+
+	@Override
+	public String member_sns_login(String snsId) {
+		return dao.member_sns_login(snsId);
+	}
+	
+
+}

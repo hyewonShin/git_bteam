@@ -1,0 +1,30 @@
+package calendar;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CalendarDAO implements CalendarService {
+	@Autowired private SqlSession sql;
+
+	@Override
+	public ArrayList<DiagnosisDTO> anDiagnosisGet(int pet) {
+		return sql.selectList("m", pet);
+	}
+
+	@Override
+	public int anCalendarInsert(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<CalenderDTO> anCalenderGet(String tel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

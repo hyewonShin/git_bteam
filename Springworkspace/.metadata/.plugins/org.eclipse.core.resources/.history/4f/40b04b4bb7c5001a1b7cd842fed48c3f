@@ -1,0 +1,14 @@
+package pet;
+
+import java.util.ArrayList;
+
+public interface PetService {
+	//동물 정보 리스트 가져오기
+	ArrayList<PetVO> pet_select(String m_tel);
+	//동물 정보 추가하기
+	int pet_insert(String m_tel);
+	//동물 정보 수정하기
+	int pet_update(int p_num);
+	//동물 정보 삭제하기
+	int pet_delete(int p_num);
+}

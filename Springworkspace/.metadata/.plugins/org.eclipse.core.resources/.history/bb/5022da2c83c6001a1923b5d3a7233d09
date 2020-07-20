@@ -1,0 +1,16 @@
+package album;
+
+import java.util.List;
+
+import pet.PetVO;
+
+public interface AlbumService {
+	//앨범 리스트 가져오기
+		List<PetVO> album_list(String a_pet);
+		//동물 정보 추가하기
+		int album_insert(String m_tel);
+		//동물 정보 수정하기
+		int pet_update(int p_num);
+		//동물 정보 삭제하기
+		int pet_delete(int p_num);
+}

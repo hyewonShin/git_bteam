@@ -1,0 +1,5 @@
+package com.withpet.app;
+
+public class HealthController {
+
+}

@@ -1,0 +1,19 @@
+package health;
+
+import java.util.List;
+
+public class HealthDAO implements HealthService{
+
+	@Override
+	public int anHealth(HealthDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<HealthDTO> anHealthGet(int pet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
