@@ -74,7 +74,7 @@ public class MyPetInfoAddActivity extends AppCompatActivity {
         context = this;
 
         //몇번째로 추가할 동물인지 확인
-        if(myPetList.size() == 0){
+        if(myPetList == null){
             cur = 1;
         } else {
             cur = myPetList.get(myPetList.size() - 1).getP_num() + 1;
