@@ -46,6 +46,7 @@ import com.example.WithPet02.MainView.ad.MainAd5;
 import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
+import com.example.WithPet02.view.MyPet.PetBody;
 import com.example.WithPet02.view.login.LoginActivity;
 import com.example.WithPet02.view.mypage.MyPageInfoActivity;
 import com.example.WithPet02.view.MyPet.MypetHospital;
@@ -235,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     // 운동기록 화면!!!!
-                    Intent intent = new Intent(getApplicationContext(), SitePetCharActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PetBody.class);
                     startActivity(intent);
                 }
             }
