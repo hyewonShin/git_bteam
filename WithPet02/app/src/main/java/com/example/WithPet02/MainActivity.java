@@ -47,6 +47,7 @@ import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
 import com.example.WithPet02.view.MyPet.PetBody;
+import com.example.WithPet02.view.community.CommunityActivity;
 import com.example.WithPet02.view.login.LoginActivity;
 import com.example.WithPet02.view.mypage.MyPageInfoActivity;
 import com.example.WithPet02.view.MyPet.MypetHospital;
@@ -283,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 // 커뮤니티 화면!!!!
                 //Intent intent = new Intent(getApplicationContext(), SiteInfoActivity.class);
-                Intent intent = new Intent(getApplicationContext(), Community.class);
+                Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
                 startActivity(intent);
             }
             }
