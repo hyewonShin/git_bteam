@@ -155,42 +155,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="4">
-                <TextView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5">
-
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="심박수(bpm)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:id="@+id/bpm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="bpm"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="2"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="bpm"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="0.5"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
