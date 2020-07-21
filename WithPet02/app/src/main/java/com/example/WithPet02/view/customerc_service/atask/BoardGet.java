@@ -4,7 +4,10 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
+import com.example.WithPet02.dto.AlbumDTO;
 import com.example.WithPet02.dto.BoardDTO;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,6 +17,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -58,7 +62,7 @@ public class BoardGet extends AsyncTask<Void, Void, ArrayList<BoardDTO>> {
             httpEntity = httpResponse.getEntity();
             inputStream = httpEntity.getContent();
 
-            readJsonStream(inputStream);
+            list = readMessage(inputStream);
 
             inputStream.close();
 
@@ -83,73 +87,25 @@ public class BoardGet extends AsyncTask<Void, Void, ArrayList<BoardDTO>> {
 
     }//doInBackground
 
-    //json가져오기
-    public void readJsonStream(InputStream inputStream) throws IOException {
-        JsonReader reader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
-        try {
-            readMessagesArray(reader);
-        } finally {
-            reader.close();
-        }//try
-    }//readJsonStream()
-
-    //json Array형태 읽기
-    public ArrayList<BoardDTO> readMessagesArray(JsonReader reader) throws IOException {
-        list = new ArrayList<BoardDTO>();
-
-        reader.beginArray();
-        while (reader.hasNext()) {
-            list.add(readMessage(reader));
+    private ArrayList<BoardDTO> readMessage(InputStream inputStream) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        while ((line = bufferedReader.readLine()) != null){
+            stringBuilder.append(line + "\n");
         }
-        reader.endArray();
+        inputStream.close();
+
+        Gson gson = new Gson();
+        String json = stringBuilder.toString();
+        ArrayList<BoardDTO> list = gson.fromJson(json, new TypeToken<ArrayList<BoardDTO>>(){}.getType());
+
         return list;
-    }//readMessagesArray()
+    }
 
-    //json Object형태 읽기
-    public BoardDTO readMessage(JsonReader reader) throws IOException {
-        String num = "", group = "", name = "", title = "", content = "", pic = "", seq = "", like = "", date = "";
-
-        reader.beginObject();
-
-        while (reader.hasNext()) {
-            String readStr = reader.nextName();
-            if (readStr.equals("num")) {
-                num = reader.nextString();
-            } else if (readStr.equals("group")) {
-                group = reader.nextString();
-            } else if (readStr.equals("name")) {
-                name = reader.nextString();
-            } else if (readStr.equals("title")) {
-                title = reader.nextString();
-            }else if (readStr.equals("content")) {
-                content = reader.nextString();
-            }else if (readStr.equals("pic")) {
-                pic = reader.nextString();
-            }else if (readStr.equals("seq")) {
-                seq = reader.nextString();
-            }else if (readStr.equals("like")) {
-                like = reader.nextString();
-            }else if (readStr.equals("date")) {
-                date = reader.nextString();
-            }else {
-                reader.skipValue();
-            }//if
-        }//while
-
-        reader.endObject();
-
-
-        /*try {
-            birthD = new SimpleDateFormat("yyMMdd").parse(birth);
-        } catch (android.net.ParseException | java.text.ParseException e) {
-            e.printStackTrace();
-        }*/
-
-        int num2 = Integer.parseInt(num);
-        int seq2 = Integer.parseInt(seq);
-        int like2 = Integer.parseInt(like);
-
-        return new BoardDTO(num2, group ,name, title, content, pic, seq2, like2, date);
-    }//readMessage()
+    @Override
+    protected void onPostExecute(ArrayList<BoardDTO> boardDTOS) {
+        super.onPostExecute(boardDTOS);
+    }
 
 }//BoardGet

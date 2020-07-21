@@ -1,5 +1,6 @@
 package com.example.WithPet02.view.customerc_service;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +15,36 @@ import com.example.WithPet02.dto.BoardDTO;
 import java.util.ArrayList;
 
 public class SiteCsFragment2Adapter extends RecyclerView.Adapter<SiteCsFragment2Adapter.ViewHolder> {
-    ArrayList<BoardDTO> list = new ArrayList<>();
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.layout_site_cs_recyclerview, parent, false);
+    Context context;
+    ArrayList<BoardDTO> list;
 
-        return new ViewHolder(itemView);
-    }//onCreateViewHolder()
+    public SiteCsFragment2Adapter(Context context, ArrayList<BoardDTO> list) {
+        this.context = context;
+        this.list = list;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //각 포지션의 item들은 BoardDTO, BoardDTO가 여러개인것이 ArrayList<BoardDTO> list
         BoardDTO item = list.get(position);
+        holder.num.setText(String.valueOf(item.getB_num()));
+        holder.title.setText(item.getB_title());
+        String date = item.getB_date().substring(0, 10);
+        holder.date.setText(date);
 
-        holder.setItem(item);
+        //holder.setItem(item);
     }//onBindViewHolder()
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context)
+                .inflate(R.layout.layout_site_cs_recyclerview, parent, false);
+
+        return new ViewHolder(itemView);
+    }//onCreateViewHolder()
+
 
     @Override
     public int getItemCount() {
@@ -52,18 +65,18 @@ public class SiteCsFragment2Adapter extends RecyclerView.Adapter<SiteCsFragment2
             date = itemView.findViewById(R.id.cs_date);
         }//ViewHolder()
 
-        public void setItem(BoardDTO item) {
-            num.setText(item.getB_num());
+        /*public void setItem(BoardDTO item) {
+            num.setText(String.valueOf(item.getB_num()));
             title.setText(item.getB_title());
             date.setText(item.getB_date());
-        }//setItem()
+        }//setItem()*/
 
     }//ViewHolder()
 
 
     //가지고 온 DTO를 ArrayList넣어주는 메소드
-    public void addItem (ArrayList<BoardDTO> item) {
+    /*public void addItem (ArrayList<BoardDTO> item) {
         list = item;
-    }//addItem
+    }//addItem*/
 
 }//class
