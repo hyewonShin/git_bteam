@@ -8,5 +8,5 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<import resource="classpath:data/*.xml"/>
 	
-	<context:component-scan base-package="member, common, pet, album, calendar, health, board"/>
+	<context:component-scan base-package="member, common, pet, album, calendar, health, board, freeboard"/>
 </beans>

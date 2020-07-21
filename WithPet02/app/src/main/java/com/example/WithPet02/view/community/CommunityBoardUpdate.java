@@ -25,13 +25,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.WithPet02.CheckDangerousPermissions.Camera;
 import com.example.WithPet02.R;
 import com.example.WithPet02.common.CommonMethod;
-import com.example.WithPet02.view.community.atask.FreeBoardInsert;
-import com.example.WithPet02.view.mypetinfo.AlbumAddActivity;
-import com.example.WithPet02.view.mypetinfo.MyPetInfo;
-import com.example.WithPet02.view.mypetinfo.atask.AlbumInsert;
+import com.example.WithPet02.dto.FreeBoardDTO;
+import com.example.WithPet02.view.community.atask.FreeBoardUpdate;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,16 +39,17 @@ import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
-import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
-public class CommunityBoardWrite extends AppCompatActivity {
+public class CommunityBoardUpdate extends AppCompatActivity {
 
     Context context;
+    FreeBoardDTO dto;
 
     ImageView uploadPic;
     EditText etTitle, etContent;
 
-    String f_tel, f_title, f_content;
+    int f_num;
+    String f_title, f_content, f_file;
 
     String filePath = ipConfig + "/app/resources/upload/freeboard/";
     public String imageRealPath, imageDbPath;
@@ -67,7 +67,9 @@ public class CommunityBoardWrite extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_community_board_write);
+        setContentView(R.layout.activity_community_board_update);
+
+        dto = (FreeBoardDTO) getIntent().getSerializableExtra("dto");
 
         context = this;
 
@@ -82,6 +84,14 @@ public class CommunityBoardWrite extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etContent = findViewById(R.id.etContent);
 
+        //수정할 글 정보 출력
+        if(dto.getF_file() != null){
+            Glide.with(this).load(filePath + dto.getF_file()).into(uploadPic);
+        }
+        etTitle.setText(dto.getF_title());
+        etContent.setText(dto.getF_content());
+        imageDbPath = dto.getF_file();
+
 
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -91,12 +101,12 @@ public class CommunityBoardWrite extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //카메라, 외부 저장소 사용 권한 확인
-                Camera camera = new Camera(context, CommunityBoardWrite.this);
+                Camera camera = new Camera(context, CommunityBoardUpdate.this);
                 camera.checkDangerousPermissions();
 
                 //사진 업로드 방식 선택을 위한 AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                String[] list = {"사진 촬영하기", "내 갤러리에서 선택하기"};
+                String[] list = {"사진 촬영하기", "내 갤러리에서 선택하기", "기존 사진 삭제하기"};
                 builder.setTitle("사진 업로드 방식 선택");
                 builder.setItems(list, new DialogInterface.OnClickListener() {
                     @Override
@@ -127,6 +137,11 @@ public class CommunityBoardWrite extends AppCompatActivity {
                             intent.setType("image/*");
                             intent.setAction(Intent.ACTION_PICK);
                             startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
+                        } else if(i == 2){
+                        //사진 삭제하기
+                        uploadPic.setImageResource(0);
+                        imageDbPath = null;
+                        imageRealPath = null;
                         }
                     }
                 });
@@ -161,22 +176,23 @@ public class CommunityBoardWrite extends AppCompatActivity {
                 return true;
             }
             case R.id.my_ok:{
-                //등록 처리후 CommunityActivity 로 다시 이동
+                //수정 처리후 CommunityActivity 로 다시 이동
                 //글쓴이 정보 가져오기
-                f_tel = loginDTO.getM_tel();
                 //사용자가 입력한 제목, 내용 가져오기
+                f_num = dto.getF_num();
                 f_title = etTitle.getText().toString();
                 f_content = etContent.getText().toString();
+                f_file = dto.getF_file();
 
                 if(f_title.trim().equals("")) {
                     Toast.makeText(context, "제목을 입력해주세요!", Toast.LENGTH_SHORT).show();
                 } else if(f_content.trim().equals("")){
                     Toast.makeText(context, "내용을 입력해주세요!", Toast.LENGTH_SHORT).show();
                 } else {
-                    //등록 처리
-                    FreeBoardInsert freeBoardInsert = new FreeBoardInsert(f_tel, f_title, f_content, imageRealPath, imageDbPath);
+                    //수정 처리
+                    FreeBoardUpdate freeBoardUpdate = new FreeBoardUpdate(f_num, f_title, f_content, f_file, imageRealPath, imageDbPath);
                     try {
-                        state = freeBoardInsert.execute().get().trim();
+                        state = freeBoardUpdate.execute().get().trim();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
@@ -185,14 +201,14 @@ public class CommunityBoardWrite extends AppCompatActivity {
 
                     if(state.equals("1")){
                         //CommunityActivity 로 이동
-                        Toast.makeText(context, "등록완료!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "수정완료!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(context, CommunityActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         context.startActivity(intent);
                         finish();
                         return true;
                     } else {
-                        Toast.makeText(context, "등록에 실패하였습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "수정에 실패하였습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                         return false;
                     }
 
