@@ -41,7 +41,7 @@ public class Webview extends AppCompatActivity {
             }
         });
         //myWebView.loadUrl("https://m.map.kakao.com/actions/routeView?startLoc=한울직업전문학교&sxEnc=LPRQTQ&syEnc=LQNNMN&endLoc=" + hospital +"&exEnc=&eyEnc=&ids=P22320373%2C&service=");
-        myWebView.loadUrl("https://m.map.kakao.com/actions/routeView?startLoc=&sxEnc=LPRQTQ&syEnc=LQNNMN&endLoc=" + hospital +"&exEnc=LPMQNU&eyEnc=LQOOUQ&ids=%2C&service=");
+        myWebView.loadUrl("https://m.map.kakao.com/actions/routeView?startLoc=&sxEnc=LPRQTQ&syEnc=&endLoc=" + hospital +"&exEnc=LPMQNU&eyEnc=%2C&service=");
 
         //myWebView.loadUrl("https://m.map.kakao.com/actions/carRoute?startLoc=한울직업전문학교&sxEnc=LPRQTLHRQSRWPMRVRM&syEnc=LQNNMLHVYRMQMSRSS&endLoc=" + hospital + "&exEnc=LPMQNU&eyEnc=LQOOUQ&ids=%2C&service=");
 
