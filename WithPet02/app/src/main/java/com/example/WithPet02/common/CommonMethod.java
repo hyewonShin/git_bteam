@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class CommonMethod {
-    public static String ipConfig = "http://192.168.0.32:8080";
+    public static String ipConfig = "http://121.179.5.11:8080";
 
     // 네트워크 연결 확인 메소드
     public static boolean isNetworkConnected(Context context) {

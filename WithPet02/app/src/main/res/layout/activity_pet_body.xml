@@ -2,13 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FAFAFA"
     >
-
+<!--5454-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -29,138 +28,176 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <LinearLayout
         android:id="@+id/myPetPager"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_height="196dp"
+        android:orientation="vertical"></LinearLayout>
 
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/loading_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            app:srcCompat="@raw/heart2" />
+
+
+
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000"/>
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="7">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="심박수"
+                    android:textSize="20sp" />
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="체온"
+                    android:textSize="20sp" />
+
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+
+
+
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="걸음수"
+                    android:textSize="20sp" />
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-           <!-- <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="4">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="몸무게(kg)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:id="@+id/weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="(DB값)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="2"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="kg"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="0.5"/>
-                <Button
-                    android:id="@+id/btnUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="등록"/>
-            </LinearLayout>-->
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="4">
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5">
-
-                </ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="심박수(bpm)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:id="@+id/bpm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="bpm"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="2"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="bpm"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="0.5"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="4">
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="등록">
-                </ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="체온(ºC)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:id="@+id/temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="(DB값)"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="2"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="ºC"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    android:layout_weight="0.5"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
+        </FrameLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

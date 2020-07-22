@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freeboard.mapper">
+
+<select id="list" resultType="freeboard.FreeBoardVO">
+select f_num, ( select m_name
+                from member
+                where m_tel = f_tel) f_tel, f_title, f_content, f_file, f_date
+from freeboard
+order by f_num desc
+</select>
+
+<insert id="insert">
+insert into freeboard (f_tel, f_title, f_content, f_file)
+values (#{f_tel}, #{f_title}, #{f_content}, #{f_file, jdbcType=VARCHAR})
+</insert>
+
+<delete id="delete">
+delete from freeboard where f_num = #{f_num}
+</delete>
+
+<update id="update">
+update freeboard set f_title = #{f_title}, f_content = #{f_content}, f_file = #{f_file, jdbcType=VARCHAR} where f_num = #{f_num}
+</update>
+
+</mapper>

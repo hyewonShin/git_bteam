@@ -45,7 +45,7 @@ public class Community extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment1).commit();
 
-        c_tabs = findViewById(R.id.c_tabs);
+        //c_tabs = findViewById(R.id.c_tabs);
         c_tabs.addTab(c_tabs.newTab().setText("자유게시판"));
         c_tabs.addTab(c_tabs.newTab().setText("1:1 문의"));
 

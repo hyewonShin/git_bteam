@@ -34,7 +34,7 @@ public class MainLogIn {
     LinearLayout myPetPager;
 
     ViewPager main_login;
-    TextView notLogin, noPet;
+    ImageView notLogin, noPet;
 
     int pos;    //현재 뷰페이저 위치
 

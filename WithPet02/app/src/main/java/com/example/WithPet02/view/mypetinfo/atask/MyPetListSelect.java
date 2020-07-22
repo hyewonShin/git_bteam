@@ -28,6 +28,7 @@ import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 public class MyPetListSelect extends AsyncTask<Void, Void, ArrayList<MyPetDTO>> {
 
     String m_tel;
+    ArrayList<MyPetDTO> list = null;
 
     public MyPetListSelect(String m_tel) {
         this.m_tel = m_tel;
@@ -86,13 +87,15 @@ public class MyPetListSelect extends AsyncTask<Void, Void, ArrayList<MyPetDTO>> 
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
         while ((line = bufferedReader.readLine()) != null){
-            stringBuilder.append(line + "\n");
+            stringBuilder.append(line);
         }
         inputStream.close();
 
-        Gson gson = new Gson();
         String json = stringBuilder.toString();
-        ArrayList<MyPetDTO> list = gson.fromJson(json, new TypeToken<ArrayList<MyPetDTO>>(){}.getType());
+        if(!json.equals("[]")){
+            Gson gson = new Gson();
+            list = gson.fromJson(json, new TypeToken<ArrayList<MyPetDTO>>(){}.getType());
+        }
 
         return list;
     }

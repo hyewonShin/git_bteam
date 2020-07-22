@@ -3,6 +3,7 @@ package com.example.WithPet02.view.MyPet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.example.WithPet02.R;
 
 public class MyPetCheckList extends AppCompatActivity {
+    Fragment tabFragment = new Fragment();
 
     Toolbar toolbar;
 
@@ -24,7 +26,11 @@ public class MyPetCheckList extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+
+        //검진기록fragment로 가져오기
+        tabFragment = getSupportFragmentManager().findFragmentById(R.id.fragment);
+
+    }//onCreate()
 
 
     @Override
@@ -32,7 +38,7 @@ public class MyPetCheckList extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_option, menu);
 
         return true;
-    }
+    }//onCreateOptionsMenu()
 
     // 툴바 뒤로가기 클릭시 액티비티 finish
     @Override
@@ -42,7 +48,7 @@ public class MyPetCheckList extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }//onOptionsItemSelected()
 
-}
+}//class
 

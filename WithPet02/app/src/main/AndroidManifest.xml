@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MyPet.PetBody"></activity>
+        <activity android:name=".view.community.CommunityBoardUpdate"></activity>
+        <activity android:name=".view.community.CommunityBoardDetail" />
+        <activity android:name=".view.MyPet.PetBody" />
         <activity
             android:name=".common.DatePickerActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
@@ -33,10 +35,8 @@
         <activity android:name=".view.MyPet.webview.Webview" />
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".DbResult" />
-        <activity android:name=".view.community.CommunityBoardTest" />
-        <activity android:name=".view.community.CommunityBoardButton" />
         <activity android:name=".view.community.CommunityBoardWrite" />
-        <activity android:name=".Community" />
+        <activity android:name=".view.community.CommunityActivity" />
         <activity android:name=".Board" />
         <activity android:name=".BoardList1" />
         <activity android:name=".MainView.ad.MainAd1" />
