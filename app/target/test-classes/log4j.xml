@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.withpet.app">
+	<logger name="com.hanul.iot">
 		<level value="info" />
 	</logger>
 	
