@@ -87,6 +87,8 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         }
 
         if(myPetList != null) {
+            hasPet.setVisibility(View.VISIBLE);
+            noPet.setVisibility(View.GONE);
             cur = myPetList.get(0).getP_num();
             //뷰페이저
             pager = findViewById(R.id.viewpager);
