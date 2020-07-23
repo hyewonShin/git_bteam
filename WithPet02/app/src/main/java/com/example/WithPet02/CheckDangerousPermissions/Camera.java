@@ -23,9 +23,6 @@ public class Camera extends AppCompatActivity {
 
     //권한설정
     public void checkDangerousPermissions() {
-        /*Board board = new Board();
-        Context context = board.getContext();*/
-
         String[] permissions = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,

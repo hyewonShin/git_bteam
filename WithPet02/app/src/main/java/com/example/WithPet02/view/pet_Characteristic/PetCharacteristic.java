@@ -15,7 +15,6 @@ public class PetCharacteristic extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    Toolbar toolbar;
     TabLayout tabs;
     CharacteristicFragmet1 fragment1;
     CharacteristicFragmet2 fragment2;

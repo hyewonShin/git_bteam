@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.WithPet02.Board;
 import com.example.WithPet02.R;
 import com.example.WithPet02.dto.BoardDTO;
 import com.example.WithPet02.view.customerc_service.atask.BoardGet;
@@ -33,7 +32,6 @@ public class SiteCsFragment2 extends Fragment {
     RecyclerView recyclerView;
     ArrayList<BoardDTO> list = new ArrayList<>();
 
-    TextView textView2;
     Button QnAbutton;
 
     LinearLayoutManager layoutManager;

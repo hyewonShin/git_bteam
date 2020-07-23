@@ -12,15 +12,12 @@ import com.google.android.material.tabs.TabLayout;
 
 public class SitePetCharActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
     TabLayout tabs;
     SitePetCharFragment1 fragment1;
     SitePetCharFragment2 fragment2;
     SitePetCharFragment3 fragment3;
 
     Fragment selected = null;
-
-    Bundle mBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
