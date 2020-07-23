@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.WithPet02.MainView.MainLogIn;
@@ -36,11 +40,65 @@ import lecho.lib.hellocharts.view.LineChartView;
 public class PetBody extends AppCompatActivity {
 
     LinearLayout myPetPager;
+    Button btn1, btn2;
+    int click = 0;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_body);
+
+        //툴바
+        androidx.appcompat.widget.Toolbar mToolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+        getSupportActionBar().setDisplayShowTitleEnabled(false);  // 타이틀 안보이게 하기
+
+
+
+        //버튼이벤트
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(click == 0){
+                    btn1.setText("OFF");
+                    btn1.setBackgroundColor(Color.GRAY);
+                    click = 1;
+                } else {
+                    btn1.setText("ON");
+                    btn1.setBackgroundColor(Color.YELLOW);
+                    click = 0;
+                }
+            }
+        });
+
+
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btn2.setText(String.valueOf("OFF"));
+                if(click == 0){
+                    btn2.setText("OFF");
+                    btn2.setBackgroundColor(Color.GRAY);
+                    click = 1;
+                } else {
+                    btn2.setText("ON");
+                    btn2.setBackgroundColor(Color.CYAN);
+                    click = 0;
+                }
+            }
+        });
+
+
+
+
 
 
 
@@ -214,4 +272,17 @@ public class PetBody extends AppCompatActivity {
             }
         }
     }
+
+    //툴바 뒤로가기
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: { //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+
+    }//class
 }
