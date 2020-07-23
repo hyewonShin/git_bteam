@@ -3,28 +3,18 @@ package com.example.WithPet02;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,12 +29,6 @@ import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.WithPet02.CheckDangerousPermissions.Internet;
-import com.example.WithPet02.MainView.ad.MainAd1;
-import com.example.WithPet02.MainView.ad.MainAd2;
-import com.example.WithPet02.MainView.ad.MainAd3;
-import com.example.WithPet02.MainView.ad.MainAd4;
-import com.example.WithPet02.MainView.ad.MainAd5;
-import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
 import com.example.WithPet02.view.MyPet.PetBody;
@@ -54,43 +38,29 @@ import com.example.WithPet02.view.mypage.MyPageInfoActivity;
 import com.example.WithPet02.view.MyPet.MypetHospital;
 import com.example.WithPet02.view.customerc_service.SiteCsActivity;
 import com.example.WithPet02.view.mypetinfo.MyPetInfo;
-import com.example.WithPet02.view.mypetinfo.MyPetInfoAddActivity;
-import com.example.WithPet02.view.mypetinfo.atask.MyPetListSelect;
 import com.example.WithPet02.view.pet_Characteristic.PetCharacteristic;
 import com.example.WithPet02.view.site.SiteInfoActivity;
-import com.example.WithPet02.view.site.SitePetCharActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.concurrent.ExecutionException;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
-import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "mainActivity";
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private ViewPager main_login, main_ad;
     private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community;
     private ImageView hamburger;
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
-    TextView notLogin, noPet;
     LinearLayout myPetPager;
     Button logincheck;
-    CircleImageView loginImage;
     TextView nickname;
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -431,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }else if(loginDTO != null){
                         //로그인시 커뮤니티 넘어감(없음)
-                        Intent intent = new Intent(getApplicationContext(),Community.class);
+                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
                         startActivity(intent);
                     }
                 }else if( i == 3) {
