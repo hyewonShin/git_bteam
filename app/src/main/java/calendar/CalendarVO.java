@@ -1,76 +1,75 @@
 package calendar;
 
 public class CalendarVO {
-	private String tel;
-	private int num;
-	private int year;
-	private int month;
-	private int date;
-	private String content;
+	private String c_tel;
+	private int c_num;
+	private int c_year;
+	private int c_month;
+	private int c_date;
+	private String c_content;
 	
-	public CalendarVO () {
+	public CalendarVO() {
 		
-	}//CalenderDTO()
+	}
 	
-	//생성자 초기화
-	public CalendarVO(String tel, int num, int year, int month, int date, String content) {
+	public CalendarVO(String c_tel, int c_num, int c_year, int c_month, int c_date, String c_content) {
 		super();
-		this.tel = tel;
-		this.num = num;
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.content = content;
-	}//CalenderDTO()
+		this.c_tel = c_tel;
+		this.c_num = c_num;
+		this.c_year = c_year;
+		this.c_month = c_month;
+		this.c_date = c_date;
+		this.c_content = c_content;
+	}
+
+	public String getC_tel() {
+		return c_tel;
+	}
+
+	public void setC_tel(String c_tel) {
+		this.c_tel = c_tel;
+	}
+
+	public int getC_num() {
+		return c_num;
+	}
+
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
+	}
+
+	public int getC_year() {
+		return c_year;
+	}
+
+	public void setC_year(int c_year) {
+		this.c_year = c_year;
+	}
+
+	public int getC_month() {
+		return c_month;
+	}
+
+	public void setC_month(int c_month) {
+		this.c_month = c_month;
+	}
+
+	public int getC_date() {
+		return c_date;
+	}
+
+	public void setC_date(int c_date) {
+		this.c_date = c_date;
+	}
+
+	public String getC_content() {
+		return c_content;
+	}
+
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
+	}
 	
-	//getter & setter
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
 	
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getDate() {
-		return date;
-	}
-
-	public void setDate(int date) {
-		this.date = date;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 	
 }
