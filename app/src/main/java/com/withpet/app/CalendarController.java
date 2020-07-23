@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import calendar.CalendarServiceImpl;
-import calendar.CalenderVO;
-import calendar.DiagnosisDTO;
+import calendar.CalendarVO;
+import calendar.DiagnosisVO;
 
 @Controller
 public class CalendarController {
@@ -24,7 +24,7 @@ public class CalendarController {
 					, produces = "text/html; charset=utf-8")
 	public String anDiagnosisGet(HttpServletRequest req, Model model) {
 		int pet = Integer.parseInt(req.getParameter("d_pet"));
-		List<DiagnosisDTO> list = service.anDiagnosisGet(pet);
+		List<DiagnosisVO> list = service.anDiagnosisGet(pet);
 		model.addAttribute("list", list);
 		return "calendar/anDiagnosisGet";
 	}//anDiagnosisGet()
@@ -34,7 +34,7 @@ public class CalendarController {
 					, method = { RequestMethod.GET, RequestMethod.POST }
 					, produces = "text/html; charset=utf-8")
 	public String anCalendarInsert(HttpServletRequest req, Model model) {
-		CalenderVO vo = new CalenderVO();
+		CalendarVO vo = new CalendarVO();
 		vo.setTel((String) req.getParameter("tel"));
 		vo.setYear(Integer.parseInt(req.getParameter("year")));
 		vo.setMonth(Integer.parseInt(req.getParameter("month")));
@@ -52,7 +52,7 @@ public class CalendarController {
 					, produces = "text/html; charset=utf-8")
 	public String anCalenderGet(HttpServletRequest req, Model model) {
 		String tel = (String) req.getParameter("tel");
-		List<CalenderVO> list = service.anCalenderGet(tel);
+		List<CalendarVO> list = service.anCalenderGet(tel);
 		
 		model.addAttribute("list", list);
 		return "calendar/anCalenderGet";
@@ -61,7 +61,7 @@ public class CalendarController {
 	//캘린더 일정 수정
 	@RequestMapping(value = "/anCalenderUpdate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String anCalendarUpdate(HttpServletRequest req, Model model) {
-		CalenderVO vo = new CalenderVO();
+		CalendarVO vo = new CalendarVO();
 		vo.setNum(Integer.parseInt( req.getParameter("num")));
 		vo.setYear(Integer.parseInt( req.getParameter("year")));
 		vo.setMonth(Integer.parseInt( req.getParameter("month")));
@@ -77,7 +77,7 @@ public class CalendarController {
 	//캘린더 일정 삭제
 	@RequestMapping(value = "/anCalenderDelete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String anCalendarDelete(HttpServletRequest req, Model model) {
-		CalenderVO vo = new CalenderVO();
+		CalendarVO vo = new CalendarVO();
 		vo.setNum(Integer.parseInt(req.getParameter("num")));
 		vo.setYear(Integer.parseInt(req.getParameter("year")));
 		vo.setMonth(Integer.parseInt(req.getParameter("month")));

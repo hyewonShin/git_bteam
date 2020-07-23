@@ -1,6 +1,6 @@
 package calendar;
 
-public class DiagnosisDTO {
+public class DiagnosisVO {
 	private int num;
 	private int pet;
 	private String title;
@@ -8,11 +8,11 @@ public class DiagnosisDTO {
 	private String Hname;
 	private String date;
 	
-	public DiagnosisDTO () {
+	public DiagnosisVO () {
 		
 	}
 
-	public DiagnosisDTO(int num, int pet, String title, String content, String hname, String date) {
+	public DiagnosisVO(int num, int pet, String title, String content, String hname, String date) {
 		super();
 		this.num = num;
 		this.pet = pet;

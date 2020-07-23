@@ -1,6 +1,6 @@
 package board;
 
-public class BoardDTO {
+public class BoardVO {
 	private int b_num;
 	private String b_group;
 	private String b_name;
@@ -11,11 +11,11 @@ public class BoardDTO {
 	private int b_like;
 	private String b_date;
 
-	public BoardDTO () {
+	public BoardVO () {
 		
 	}
 
-	public BoardDTO(int b_num, String b_group, String b_name, String b_title, String b_content, String b_file,
+	public BoardVO(int b_num, String b_group, String b_name, String b_title, String b_content, String b_file,
 			int b_seq, int b_like, String b_date) {
 		super();
 		this.b_num = b_num;

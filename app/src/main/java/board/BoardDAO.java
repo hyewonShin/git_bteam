@@ -11,12 +11,12 @@ public class BoardDAO implements BoardService{
 	@Autowired private SqlSession sql;
 
 	@Override
-	public int anBoardInsert(BoardDTO dto) {
+	public int anBoardInsert(BoardVO dto) {
 		return sql.insert("board.mapper.insert", dto);
 	}
 
 	@Override
-	public List<BoardDTO> anBoardGet(String name) {
+	public List<BoardVO> anBoardGet(String name) {
 		return sql.selectList("board.mapper.get", name);
 	}
 

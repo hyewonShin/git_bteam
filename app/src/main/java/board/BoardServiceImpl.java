@@ -10,12 +10,12 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired private BoardDAO dao;
 	
 	@Override
-	public int anBoardInsert(BoardDTO dto) {
+	public int anBoardInsert(BoardVO dto) {
 		return dao.anBoardInsert(dto);
 	}
 
 	@Override
-	public List<BoardDTO> anBoardGet(String name) {
+	public List<BoardVO> anBoardGet(String name) {
 		return dao.anBoardGet(name);
 	}
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
-import board.BoardDTO;
+import board.BoardVO;
 import board.BoardServiceImpl;
 import common.CommonService;
 
@@ -27,7 +27,7 @@ public class BoardController {
 					, method = { RequestMethod.GET, RequestMethod.POST }
 					, produces = "text/html; charset=utf-8")
 	public String anBoardInsert(HttpServletRequest req, Model model) {
-		BoardDTO dto = new BoardDTO();
+		BoardVO dto = new BoardVO();
 		dto.setB_name((String) req.getParameter("name"));
 		dto.setB_title((String) req.getParameter("title"));
 		dto.setB_content((String) req.getParameter("content"));
@@ -79,7 +79,7 @@ public class BoardController {
 			, produces = "text/html; charset=utf-8")
 	public String anBoardGet(HttpServletRequest req, Model model) {
 		String name = (String) req.getParameter("name");
-		List<BoardDTO> list = service.anBoardGet(name);
+		List<BoardVO> list = service.anBoardGet(name);
 		model.addAttribute("list", list);
 		return "board/anBoardGet";
 	}//anBoardGet()

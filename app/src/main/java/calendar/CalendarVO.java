@@ -1,6 +1,6 @@
 package calendar;
 
-public class CalenderVO {
+public class CalendarVO {
 	private String tel;
 	private int num;
 	private int year;
@@ -8,12 +8,12 @@ public class CalenderVO {
 	private int date;
 	private String content;
 	
-	public CalenderVO () {
+	public CalendarVO () {
 		
 	}//CalenderDTO()
 	
 	//생성자 초기화
-	public CalenderVO(String tel, int num, int year, int month, int date, String content) {
+	public CalendarVO(String tel, int num, int year, int month, int date, String content) {
 		super();
 		this.tel = tel;
 		this.num = num;

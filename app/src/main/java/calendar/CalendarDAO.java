@@ -11,27 +11,27 @@ public class CalendarDAO implements CalendarService {
 	@Autowired private SqlSession sql;
 
 	@Override
-	public List<DiagnosisDTO> anDiagnosisGet(int pet) {
+	public List<DiagnosisVO> anDiagnosisGet(int pet) {
 		return sql.selectList("calendar.mapper.diagnosisGet", pet);
 	}
 
 	@Override
-	public int anCalendarInsert(CalenderVO dto) {
+	public int anCalendarInsert(CalendarVO dto) {
 		return sql.insert("calendar.mapper.calendarInsert", dto);
 	}
 
 	@Override
-	public List<CalenderVO> anCalenderGet(String tel) {
+	public List<CalendarVO> anCalenderGet(String tel) {
 		return sql.selectList("calendar.mapper.calenderGet", tel);
 	}
 
 	@Override
-	public int anCalenderUpdate(CalenderVO vo) {
+	public int anCalenderUpdate(CalendarVO vo) {
 		return sql.update("calendar.mapper.calenderUpdate", vo);
 	}
 
 	@Override
-	public int anCalendarDelete(CalenderVO vo) {
+	public int anCalendarDelete(CalendarVO vo) {
 		return sql.delete("calendar.mapper.calendarDelete", vo);
 	}
 

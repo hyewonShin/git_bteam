@@ -1,4 +1,4 @@
-<%@page import="calendar.CalenderVO"%>
+<%@page import="calendar.CalendarVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.google.gson.reflect.TypeToken"%>
 <%@page import="com.google.gson.Gson"%>
@@ -6,6 +6,6 @@
     pageEncoding="UTF-8"%>
 <%
 	Gson gson = new Gson();
-String json = gson.toJson(request.getAttribute("list"), new TypeToken<List<CalenderVO>>(){}.getType()); 
+String json = gson.toJson(request.getAttribute("list"), new TypeToken<List<CalendarVO>>(){}.getType()); 
 out.print(json);
 %>
