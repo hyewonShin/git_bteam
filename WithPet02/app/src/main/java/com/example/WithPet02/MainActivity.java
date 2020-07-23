@@ -242,8 +242,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //매인 아이콘 내 커뮤니티
-        main_community = findViewById(R.id.main_community);
+        //메인 아이콘 내 커뮤니티
+        /*main_community = findViewById(R.id.main_community);
         main_community.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             }
-        });
+        });*/
 
 
         /*배너광고(테스트)*/

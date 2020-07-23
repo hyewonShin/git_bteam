@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:SpinKit_Color="#D2DC1A53"
+        app:SpinKit_Color="#ffa241"
         android:layout_marginTop="200dp"/>
 
 </LinearLayout>
