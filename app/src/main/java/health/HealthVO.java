@@ -1,16 +1,16 @@
 package health;
 
-public class HealthDTO {
+public class HealthVO {
 	private int num;
 	private int pet;
 	private String location;
 	private String date;
 	
-	public HealthDTO () {
+	public HealthVO () {
 		
 	}
 
-	public HealthDTO(int num, int pet, String location, String date) {
+	public HealthVO(int num, int pet, String location, String date) {
 		super();
 		this.num = num;
 		this.pet = pet;

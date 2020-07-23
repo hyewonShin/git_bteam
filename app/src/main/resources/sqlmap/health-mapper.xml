@@ -6,7 +6,7 @@
 insert into health values(#{num}, #{pet}, #{location}, to_date(#{date}, 'YY/MM/DD'))
 </insert>
 
-<select id="anHealthGet" resultType="health.HealthDTO">
+<select id="anHealthGet" resultType="health.HealthVO">
 select * from health where h_pet=#{pet} order by h_num
 </select>
 
