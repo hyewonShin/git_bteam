@@ -11,12 +11,12 @@ public class HealthDAO implements HealthService{
 	@Autowired private SqlSession sql;
 	
 	@Override
-	public int anHealth(HealthDTO dto) {
+	public int anHealth(HealthVO dto) {
 		return sql.insert("health.mapper.anHealth", dto);
 	}
 
 	@Override
-	public List<HealthDTO> anHealthGet(int pet) {
+	public List<HealthVO> anHealthGet(int pet) {
 		return sql.selectList("health.mapper.anHealthGet", pet);
 	}
 

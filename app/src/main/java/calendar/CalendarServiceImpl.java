@@ -10,18 +10,28 @@ public class CalendarServiceImpl implements CalendarService {
 	@Autowired private CalendarDAO dao;
 	
 	@Override
-	public List<DiagnosisDTO> anDiagnosisGet(int pet) {
+	public List<DiagnosisVO> anDiagnosisGet(int pet) {
 		return dao.anDiagnosisGet(pet);
 	}
 
 	@Override
-	public int anCalendarInsert(CalenderDTO dto) {
-		return dao.anCalendarInsert(dto);
+	public int anCalendarInsert(CalendarVO vo) {
+		return dao.anCalendarInsert(vo);
 	}
 
 	@Override
-	public List<CalenderDTO> anCalenderGet(String tel) {
+	public List<CalendarVO> anCalenderGet(String tel) {
 		return dao.anCalenderGet(tel);
+	}
+
+	@Override
+	public int anCalenderUpdate(CalendarVO vo) {
+		return dao.anCalenderUpdate(vo);
+	}
+
+	@Override
+	public int anCalendarDelete(CalendarVO vo) {
+		return dao.anCalendarDelete(vo);
 	}
 
 }

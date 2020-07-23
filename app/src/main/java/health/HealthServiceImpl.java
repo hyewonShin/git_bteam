@@ -10,12 +10,12 @@ public class HealthServiceImpl implements HealthService{
 	@Autowired private HealthDAO dao;
 	
 	@Override
-	public int anHealth(HealthDTO dto) {
+	public int anHealth(HealthVO dto) {
 		return dao.anHealth(dto);
 	}
 
 	@Override
-	public List<HealthDTO> anHealthGet(int pet) {
+	public List<HealthVO> anHealthGet(int pet) {
 		return dao.anHealthGet(pet);
 	}
 

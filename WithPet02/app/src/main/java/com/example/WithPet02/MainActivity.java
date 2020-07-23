@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -152,27 +153,27 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 switch (position){
                     case 0 :
-                        intent = new Intent(getApplicationContext(), Community.class);
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.google.com"));
                         startActivity(intent);
                         break;
 
                     case 1 :
-                        intent = new Intent(getApplicationContext(), SiteInfoActivity.class);
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.naver.com"));
                         startActivity(intent);
                         break;
 
                     case 2 :
-                        intent = new Intent(getApplicationContext(), SiteCsActivity.class);
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.facebook.com"));
                         startActivity(intent);
                         break;
 
                     case 3 :
-                        intent = new Intent(getApplicationContext(), MyPageInfoActivity.class);
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.daum.net"));
                         startActivity(intent);
                         break;
 
                     case 4 :
-                        intent = new Intent(getApplicationContext(), MyPetInfo.class);
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.apple.com"));
                         startActivity(intent);
                         break;
                 }

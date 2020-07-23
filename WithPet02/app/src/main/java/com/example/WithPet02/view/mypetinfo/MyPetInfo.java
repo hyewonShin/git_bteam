@@ -86,7 +86,9 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             e.printStackTrace();
         }
 
-        if(myPetList.size() > 0) {
+        if(myPetList != null) {
+            hasPet.setVisibility(View.VISIBLE);
+            noPet.setVisibility(View.GONE);
             cur = myPetList.get(0).getP_num();
             //뷰페이저
             pager = findViewById(R.id.viewpager);
@@ -140,6 +142,14 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         } else {
             hasPet.setVisibility(View.GONE);
             noPet.setVisibility(View.VISIBLE);
+            noPet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //동물 정보 추가 화면으로
+                    Intent intent = new Intent(context, MyPetInfoAddActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }

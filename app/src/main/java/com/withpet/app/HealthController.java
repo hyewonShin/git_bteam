@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import health.HealthDTO;
+import health.HealthVO;
 import health.HealthServiceImpl;
 
 @Controller
@@ -26,7 +26,7 @@ public class HealthController {
 		int pet = Integer.parseInt((String) req.getParameter("pet"));
 		String location = (String) req.getParameter("location");
 		String date = (String) req.getParameter("date");
-		HealthDTO dto = new HealthDTO(num, pet, location, date);
+		HealthVO dto = new HealthVO(num, pet, location, date);
 		
 		int state = service.anHealth(dto);
 		model.addAttribute("result", String.valueOf(state));
@@ -40,7 +40,7 @@ public class HealthController {
 					, produces = "text/html; charset=utf-8")
 	public String anHealthGet(HttpServletRequest req, Model model){
 		int pet = Integer.parseInt(req.getParameter("pet"));
-	 	List<HealthDTO> list = service.anHealthGet(pet);
+	 	List<HealthVO> list = service.anHealthGet(pet);
 		model.addAttribute("list", list);
 		service.anHealthGet(pet);
 		return "health/anHealthGet";
