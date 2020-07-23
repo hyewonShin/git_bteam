@@ -173,12 +173,11 @@ public class DiagnosisDialog {
             }//onContent
         });//setContentListener
 
-
+        //ok버튼 눌렀을 때
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(okButton.getText().toString() == updateString) {
-                    Log.d(TAG, "toString: " + "update" + okButton.getText().toString());
                     CalenderUpdate calenderUpdate = new CalenderUpdate(calenderDialogDTO.getNum(), calenderDialogDTO.getYear(),
                             calenderDialogDTO.getMonth(), calenderDialogDTO.getDate(), message.getText().toString());
                     try {
@@ -187,17 +186,15 @@ public class DiagnosisDialog {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }
+                    }//try
 
                 }else if (okButton.getText().toString() == submitString) {
-                    Log.d(TAG, "toString: " + "submit" + okButton.getText().toString());
                     // 커스텀 다이얼로그에서 입력한 메시지를 대입한다.
                     content[0] = (message.getText().toString());
                     Toast.makeText(DiagnosisDialog.this.context, "\"" +  message.getText().toString() + "\" 을 입력하였습니다.", Toast.LENGTH_SHORT).show();
 
                     //DB에 입력값 넣어주기
                     DBSetText("1", year, month, date, message.getText().toString());
-
                 }//if
 
                 //커스텀 다이얼로그 종료 시 작동되는 listener
