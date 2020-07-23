@@ -25,7 +25,7 @@ import java.util.Date;
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 
 public class CalenderGet extends AsyncTask<Void, Void, ArrayList<CalenderDTO>> {
-    private static final String TAG = "CalenderGet";
+    private static final String TAG = "telCalenderGet";
     ArrayList<CalenderDTO> list = null;
     private String tel;
 
@@ -122,17 +122,17 @@ public class CalenderGet extends AsyncTask<Void, Void, ArrayList<CalenderDTO>> {
 
         while (reader.hasNext()) {
             String readStr = reader.nextName();
-            if (readStr.equals("tel")) {
+            if (readStr.equals("c_tel")) {
                 tel = reader.nextString();
-            } else if (readStr.equals("num")) {
+            } else if (readStr.equals("c_num")) {
                 num = reader.nextString();
-            }else if (readStr.equals("year")) {
+            }else if (readStr.equals("c_year")) {
                 year = reader.nextString();
-            } else if (readStr.equals("month")) {
+            } else if (readStr.equals("c_month")) {
                 month = reader.nextString();
-            } else if (readStr.equals("date")) {
+            } else if (readStr.equals("c_date")) {
                 date = reader.nextString();
-            }else if (readStr.equals("content")) {
+            }else if (readStr.equals("c_content")) {
                 content = reader.nextString();
             }else {
                 reader.skipValue();

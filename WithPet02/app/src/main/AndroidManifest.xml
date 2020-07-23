@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.community.CommunityBoardUpdate"></activity>
+        <activity android:name=".view.MyPet.DiagnosisHistory"></activity>
+        <activity android:name=".view.community.CommunityBoardUpdate" />
         <activity android:name=".view.community.CommunityBoardDetail" />
         <activity android:name=".view.MyPet.PetBody" />
         <activity
