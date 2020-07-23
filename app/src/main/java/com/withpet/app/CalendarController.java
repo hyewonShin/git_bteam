@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import calendar.CalendarServiceImpl;
-import calendar.CalenderDTO;
+import calendar.CalenderVO;
 import calendar.DiagnosisDTO;
 
 @Controller
@@ -34,14 +34,14 @@ public class CalendarController {
 					, method = { RequestMethod.GET, RequestMethod.POST }
 					, produces = "text/html; charset=utf-8")
 	public String anCalendarInsert(HttpServletRequest req, Model model) {
-		CalenderDTO dto = new CalenderDTO();
-		dto.setTel((String) req.getParameter("tel"));
-		dto.setYear(Integer.parseInt(req.getParameter("year")));
-		dto.setMonth(Integer.parseInt(req.getParameter("month")));
-		dto.setDate(Integer.parseInt(req.getParameter("date")));
-		dto.setContent((String) req.getParameter("content"));
+		CalenderVO vo = new CalenderVO();
+		vo.setTel((String) req.getParameter("tel"));
+		vo.setYear(Integer.parseInt(req.getParameter("year")));
+		vo.setMonth(Integer.parseInt(req.getParameter("month")));
+		vo.setDate(Integer.parseInt(req.getParameter("date")));
+		vo.setContent((String) req.getParameter("content"));
 		
-		int state = service.anCalendarInsert(dto);
+		int state = service.anCalendarInsert(vo);
 		model.addAttribute("result", String.valueOf(state));
 		return "calendar/result";
 	}//anCalendarInsert()
@@ -52,10 +52,39 @@ public class CalendarController {
 					, produces = "text/html; charset=utf-8")
 	public String anCalenderGet(HttpServletRequest req, Model model) {
 		String tel = (String) req.getParameter("tel");
-		List<CalenderDTO> list = service.anCalenderGet(tel);
+		List<CalenderVO> list = service.anCalenderGet(tel);
 		
 		model.addAttribute("list", list);
 		return "calendar/anCalenderGet";
 	}//anCalenderGet()
 	
+	//캘린더 일정 수정
+	@RequestMapping(value = "/anCalenderUpdate", method = { RequestMethod.GET, RequestMethod.POST })
+	public String anCalendarUpdate(HttpServletRequest req, Model model) {
+		CalenderVO vo = new CalenderVO();
+		vo.setNum(Integer.parseInt( req.getParameter("num")));
+		vo.setYear(Integer.parseInt( req.getParameter("year")));
+		vo.setMonth(Integer.parseInt( req.getParameter("month")));
+		vo.setDate(Integer.parseInt(req.getParameter("date")));
+		vo.setContent((String) req.getParameter("content"));
+		
+		int result = service.anCalenderUpdate(vo);
+		model.addAttribute("result", result);
+		return "calendar/result";
+	}//anCalenderUpdate()
+	
+	
+	//캘린더 일정 삭제
+	@RequestMapping(value = "/anCalenderDelete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String anCalendarDelete(HttpServletRequest req, Model model) {
+		CalenderVO vo = new CalenderVO();
+		vo.setNum(Integer.parseInt(req.getParameter("num")));
+		vo.setYear(Integer.parseInt(req.getParameter("year")));
+		vo.setMonth(Integer.parseInt(req.getParameter("month")));
+		vo.setDate(Integer.parseInt(req.getParameter("date")));
+		
+		int result  = service.anCalendarDelete(vo);
+		model.addAttribute("result", result);
+		return "calendar/result";
+	}// anPet
 }

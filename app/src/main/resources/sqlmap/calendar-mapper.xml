@@ -7,12 +7,20 @@ select * from diagnosis where d_pet=#{pet} order by d_num
 </select>
 
 <insert id="calendarInsert">
-insert into calender (c_tel, c_num, c_year, c_month, c_date, c_content)
+insert into calendar (c_tel, c_num, c_year, c_month, c_date, c_content)
 values(#{tel}, c_seq.nextval, #{year}, #{month}, #{date}, #{content})
 </insert>
 
 <select id="calenderGet">
-select * from calender where c_tel=#{tel} order by c_num"
+select * from calendar where c_tel=#{tel} order by c_num"
 </select>
+
+<update id="calenderUpdate">
+update calendar set c_content = #{content} where c_num = #{num} and c_year = #{year} and c_month = #{month} and c_date = #{date}
+</update>
+
+<delete id="calenderDelete">
+delete from calendar where c_num = #{num} and c_year = #{year} and c_month = #{month} and c_date = #{date}
+</delete>
 
 </mapper>

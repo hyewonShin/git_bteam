@@ -16,13 +16,23 @@ public class CalendarDAO implements CalendarService {
 	}
 
 	@Override
-	public int anCalendarInsert(CalenderDTO dto) {
+	public int anCalendarInsert(CalenderVO dto) {
 		return sql.insert("calendar.mapper.calendarInsert", dto);
 	}
 
 	@Override
-	public List<CalenderDTO> anCalenderGet(String tel) {
+	public List<CalenderVO> anCalenderGet(String tel) {
 		return sql.selectList("calendar.mapper.calenderGet", tel);
+	}
+
+	@Override
+	public int anCalenderUpdate(CalenderVO vo) {
+		return sql.update("calendar.mapper.calenderUpdate", vo);
+	}
+
+	@Override
+	public int anCalendarDelete(CalenderVO vo) {
+		return sql.delete("calendar.mapper.calendarDelete", vo);
 	}
 
 }
