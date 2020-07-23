@@ -21,12 +21,6 @@ public class MyPetCheckList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_pet_check_list);
 
-        //툴바를 액션바 대신 사용
-        toolbar = findViewById(R.id.loginToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         //검진기록fragment로 가져오기
         tabFragment = getSupportFragmentManager().findFragmentById(R.id.fragment);
 
