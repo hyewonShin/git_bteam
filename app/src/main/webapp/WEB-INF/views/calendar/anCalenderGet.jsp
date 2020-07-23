@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Gson gson = new Gson();
+Gson gson = new Gson();
 String json = gson.toJson(request.getAttribute("list"), new TypeToken<List<CalendarVO>>(){}.getType()); 
 out.print(json);
 %>

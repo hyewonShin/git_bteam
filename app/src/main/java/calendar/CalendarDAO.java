@@ -22,12 +22,12 @@ public class CalendarDAO implements CalendarService {
 
 	@Override
 	public List<CalendarVO> anCalenderGet(String tel) {
-		return sql.selectList("calendar.mapper.calenderGet", tel);
+		return sql.selectList("calendar.mapper.calendarGet", tel);
 	}
 
 	@Override
 	public int anCalenderUpdate(CalendarVO vo) {
-		return sql.update("calendar.mapper.calenderUpdate", vo);
+		return sql.update("calendar.mapper.calendarUpdate", vo);
 	}
 
 	@Override

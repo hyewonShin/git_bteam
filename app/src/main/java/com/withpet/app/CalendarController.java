@@ -35,11 +35,11 @@ public class CalendarController {
 					, produces = "text/html; charset=utf-8")
 	public String anCalendarInsert(HttpServletRequest req, Model model) {
 		CalendarVO vo = new CalendarVO();
-		vo.setTel((String) req.getParameter("tel"));
-		vo.setYear(Integer.parseInt(req.getParameter("year")));
-		vo.setMonth(Integer.parseInt(req.getParameter("month")));
-		vo.setDate(Integer.parseInt(req.getParameter("date")));
-		vo.setContent((String) req.getParameter("content"));
+		vo.setC_tel((String) req.getParameter("tel"));
+		vo.setC_year(Integer.parseInt(req.getParameter("year")));
+		vo.setC_month(Integer.parseInt(req.getParameter("month")));
+		vo.setC_date(Integer.parseInt(req.getParameter("date")));
+		vo.setC_content((String) req.getParameter("content"));
 		
 		int state = service.anCalendarInsert(vo);
 		model.addAttribute("result", String.valueOf(state));
@@ -53,7 +53,6 @@ public class CalendarController {
 	public String anCalenderGet(HttpServletRequest req, Model model) {
 		String tel = (String) req.getParameter("tel");
 		List<CalendarVO> list = service.anCalenderGet(tel);
-		
 		model.addAttribute("list", list);
 		return "calendar/anCalenderGet";
 	}//anCalenderGet()
@@ -62,11 +61,11 @@ public class CalendarController {
 	@RequestMapping(value = "/anCalenderUpdate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String anCalendarUpdate(HttpServletRequest req, Model model) {
 		CalendarVO vo = new CalendarVO();
-		vo.setNum(Integer.parseInt( req.getParameter("num")));
-		vo.setYear(Integer.parseInt( req.getParameter("year")));
-		vo.setMonth(Integer.parseInt( req.getParameter("month")));
-		vo.setDate(Integer.parseInt(req.getParameter("date")));
-		vo.setContent((String) req.getParameter("content"));
+		vo.setC_num(Integer.parseInt( req.getParameter("num")));
+		vo.setC_year(Integer.parseInt(req.getParameter("year")));
+		vo.setC_month(Integer.parseInt(req.getParameter("month")));
+		vo.setC_date(Integer.parseInt(req.getParameter("date")));
+		vo.setC_content((String) req.getParameter("content"));
 		
 		int result = service.anCalenderUpdate(vo);
 		model.addAttribute("result", result);
@@ -78,10 +77,10 @@ public class CalendarController {
 	@RequestMapping(value = "/anCalenderDelete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String anCalendarDelete(HttpServletRequest req, Model model) {
 		CalendarVO vo = new CalendarVO();
-		vo.setNum(Integer.parseInt(req.getParameter("num")));
-		vo.setYear(Integer.parseInt(req.getParameter("year")));
-		vo.setMonth(Integer.parseInt(req.getParameter("month")));
-		vo.setDate(Integer.parseInt(req.getParameter("date")));
+		vo.setC_num(Integer.parseInt( req.getParameter("num")));
+		vo.setC_year(Integer.parseInt(req.getParameter("year")));
+		vo.setC_month(Integer.parseInt(req.getParameter("month")));
+		vo.setC_date(Integer.parseInt(req.getParameter("date")));
 		
 		int result  = service.anCalendarDelete(vo);
 		model.addAttribute("result", result);
