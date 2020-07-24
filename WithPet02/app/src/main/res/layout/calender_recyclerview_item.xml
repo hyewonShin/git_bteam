@@ -30,7 +30,6 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@drawable/garbage"
-                android:text="삭제"
                 android:layout_marginLeft="-50dp"/>
 
         </LinearLayout>
