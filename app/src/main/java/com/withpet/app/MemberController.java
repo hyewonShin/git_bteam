@@ -215,25 +215,20 @@ public class MemberController {
 	//SNS 계정 추가 연동
 	@RequestMapping(value="/anSnsUpdate", method = {RequestMethod.GET, RequestMethod.POST}, produces = "text/html; charset=utf-8")
 	public String anSnsUpdate(HttpServletRequest req, Model model){
-		String m_tel = null;
 		String m_kakao = null;
 		String m_naver = null;
 				
-		m_tel = (String) req.getParameter("m_tel");
-		System.out.println("m_tel : " + m_tel);
 		if(req.getParameter("m_kakao") != null) {
 			m_kakao = (String) req.getParameter("m_kakao");
-			System.out.println("m_kakao : " + m_kakao);
 		}
 		if(req.getParameter("m_naver") != null) {
 			m_naver = (String) req.getParameter("m_naver");
-			System.out.println("m_naver : " + m_naver);
 		}
 		
 		MemberVO vo = new MemberVO();
-		vo.setM_tel(m_tel);
-		vo.setM_tel(m_kakao);
-		vo.setM_tel(m_naver);
+		vo.setM_tel((String) req.getParameter("m_tel"));
+		vo.setM_kakao(m_kakao);
+		vo.setM_naver(m_naver);
 		
 		int succ = service.member_sns_update(vo);
 		model.addAttribute("result", String.valueOf(succ));
