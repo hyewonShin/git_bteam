@@ -220,11 +220,14 @@ public class MemberController {
 		String m_naver = null;
 				
 		m_tel = (String) req.getParameter("m_tel");
+		System.out.println("m_tel : " + m_tel);
 		if(req.getParameter("m_kakao") != null) {
 			m_kakao = (String) req.getParameter("m_kakao");
+			System.out.println("m_kakao : " + m_kakao);
 		}
 		if(req.getParameter("m_naver") != null) {
 			m_naver = (String) req.getParameter("m_naver");
+			System.out.println("m_naver : " + m_naver);
 		}
 		
 		MemberVO vo = new MemberVO();
