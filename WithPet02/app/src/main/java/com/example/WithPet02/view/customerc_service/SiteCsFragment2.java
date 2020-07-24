@@ -51,7 +51,7 @@ public class SiteCsFragment2 extends Fragment {
         recyclerView = rootView.findViewById(R.id.cs2_recyclerview);
 
         //DB와 통신해서 list의 값을 가지고 와줌(지금은 이름을 따로 가져오지 않고 1로 넣어줌)
-        BoardGet boardGet = new BoardGet(loginDTO.getM_name());
+        BoardGet boardGet = new BoardGet(loginDTO.getM_tel());
         try {
           list =  boardGet.execute().get();
         } catch (ExecutionException e) {
