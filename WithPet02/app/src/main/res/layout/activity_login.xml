@@ -105,40 +105,42 @@
             android:text="로그인"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:background="@color/colorWhite"
-            android:textColor="@color/colorBlack"
+            android:background="#404040"
+            android:textColor="@color/colorWhite"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/btnJoin"
+    <LinearLayout
         android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/snsloginbtn_email"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-    <ImageView
-        android:id="@+id/snsKakaoLogin"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnJoin"
-        app:srcCompat="@drawable/snsloginbtn_kakao" />
+        <ImageView
+            android:id="@+id/btnJoin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/snsloginbtn_email" />
 
-    <ImageView
-        android:id="@+id/snsNaverLogin"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/snsKakaoLogin"
-        app:srcCompat="@drawable/snsloginbtn_naver" />
+        <ImageView
+            android:id="@+id/snsKakaoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/snsloginbtn_kakao" />
+
+        <ImageView
+            android:id="@+id/snsNaverLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/snsloginbtn_naver" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

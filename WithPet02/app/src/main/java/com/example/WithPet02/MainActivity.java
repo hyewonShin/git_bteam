@@ -7,7 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
-    LinearLayout myPetPager;
+    LinearLayout myPetPager, login, logout;
     TextView nickname, email;
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -267,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
+        login = findViewById(R.id.login);
+        logout = findViewById(R.id.logout);
 
         nickname = findViewById(R.id.nickname);
         email = findViewById(R.id.email);
@@ -275,8 +276,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(loginDTO == null){  //로그아웃 상태
             myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
-            nickname.setText("로그인해주세요");
-            email.setText("");
+            login.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
 
             //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
             logincheck.setOnClickListener(new View.OnClickListener() {
@@ -287,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }else{  //로그인 되었을 때
+            login.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
             nickname.setText(loginDTO.getM_name());
             email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
@@ -506,6 +509,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         //로그인 정보 갱신
         if(loginDTO == null){  //로그아웃 상태
+            login.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
             myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
             nickname.setText("로그인해주세요");
             email.setText("");
@@ -519,6 +524,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }else{  //로그인 되었을 때
+            login.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
             nickname.setText(loginDTO.getM_name());
             email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
