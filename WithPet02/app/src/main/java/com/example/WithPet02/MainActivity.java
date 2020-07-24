@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     LinearLayout myPetPager;
     Button logincheck;
-    TextView nickname;
+    TextView nickname, email;
     private long backKeyPressedTime = 0;
     private Toast toast;
 
@@ -272,11 +272,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         nickname = findViewById(R.id.nickname);
+        email = findViewById(R.id.email);
         logincheck = findViewById(R.id.logincheck);
         myPic = findViewById(R.id.myPic);
 
         if(loginDTO == null){  //로그아웃 상태
-            myPic.setImageResource(R.drawable.ic_log_in_40dp);  //로그아웃 이미지
+            myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
 
             //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
             logincheck.setOnClickListener(new View.OnClickListener() {
@@ -288,8 +289,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }else{  //로그인 되었을 때
             logincheck.setText("logout");
-            nickname.setText(loginDTO.getM_name() + " 님 반갑습니다.");
-
+            nickname.setText(loginDTO.getM_name());
+            email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
             myPic.setImageResource(0);
             Log.d("nav_drawer", "m_pic: " + loginDTO.getM_pic());
@@ -455,7 +456,7 @@ public class MainActivity extends AppCompatActivity {
     //옵션바
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.board_list1_action, menu);
+        /*getMenuInflater().inflate(R.menu.board_list1_action, menu);
 
         searchbar = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) searchbar.getActionView();
@@ -492,7 +493,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 return true;
             }
-        });
+        });*/
         return true;
     }
 

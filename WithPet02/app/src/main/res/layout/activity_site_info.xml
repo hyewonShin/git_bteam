@@ -9,9 +9,8 @@
         android:id="@+id/siteInfoToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
-        android:elevation="1dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:background="@color/colorWhite"
+        android:elevation="1dp">
 
         <TextView
             android:id="@+id/titleText"
@@ -19,21 +18,22 @@
             android:layout_height="wrap_content"
             android:text="Site Info "
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp" />
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#06010E">
+        android:background="#FFFFFF">
 
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingHorizontal="15dp"
             android:orientation="vertical"
             >
 
@@ -43,22 +43,22 @@
                 android:layout_height="59dp"
                 android:gravity="center_vertical"
                 android:text="펫과함께는"
-                android:textColor="@android:color/holo_orange_light"
+                android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="118dp"
+                android:layout_height="100dp"
                 android:text="다양한 연구 경험을 가진 학자, 임상 경험이 풍부한 수의사,다년간 반려동물과 함께한 반려인,데이터 전문가 등 각 분야의 전문가들로 구성되어 있습니다."
                 android:textSize="18sp"
-                android:textColor="#FFFEFF"/>
+                android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:gravity="center_vertical"
                 android:text="건강과 행복을 완성시키는 과학과 경험"
-                android:textColor="@android:color/holo_orange_light"
+                android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_height="86dp"
                 android:text="반려동물을 중심에 둔 과학과 경험을 바탕으로 함께 건강하고 행복한 반려 생활을 위한 반려동물 모바일 서비스 '펫과함께'를 선보이게 되었습니다."
                 android:textSize="18sp"
-                android:textColor="#FFFEFF"/>
+                android:textColor="#000000"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_height="64dp"
                 android:gravity="center_vertical"
                 android:text="반려동물의 건강과 행복을 추구하기 위한 노력"
-                android:textColor="@android:color/holo_orange_light"
+                android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_height="171dp"
                 android:gravity="top|center_vertical"
                 android:text="2020년 반려동물을 좋아하는 302호 학생들이 모여서 만든 펫과함께로 시작했습니다. 반려동물이 보다 행복하게 살 수 있는 세상을 만들기 위해 더욱 마음을 모으고 노력해 나가겠습니다."
-                android:textColor="#FFFEFF"
+                android:textColor="#000000"
                 android:textSize="18sp" />
 
 

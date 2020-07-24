@@ -19,23 +19,22 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@color/colorWhite"
                 android:elevation="1dp">
                 <ImageView
                     android:id="@+id/hamburger"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="left"
-                    android:src="@drawable/hamburger"
-                    android:padding="10dp"/>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/hamburger"/>
                 <!--타이틀-->
                 <ImageView
                     android:id="@+id/pet_title"
-                    android:layout_width="250dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:padding="5dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/withpetimg"/>
 
             </androidx.appcompat.widget.Toolbar>
