@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -43,6 +45,8 @@ public class TabFragment extends Fragment {
     public int Dmonth = 0;
     public int Ddate = 0;
 
+    Toolbar toolbar;
+
     public TextView textView;
     public RecyclerView recyclerView;
     public Button before, after;
@@ -54,8 +58,22 @@ public class TabFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         //Fragment 연결
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_tab, container, false);
+
+        //툴바 위치 찾기
+        toolbar = rootView.findViewById(R.id.dialog_toolbar);
+
+        //fragment에서 Toobar사용할 수 있도록 하여 주기
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+
+        //툴바 타이틀 보일지 말지 설정
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //홈버튼 보일지 말지 설정
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Fragment에서 initView메소드를 사용하여 TextView와 recyclerView사용 할 수 있게 하기
         initView(rootView);

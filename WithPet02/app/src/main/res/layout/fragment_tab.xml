@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/dialog_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
@@ -34,8 +35,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
+            android:textColor="#ffffff"
             android:text="이전"
-            android:textSize="10sp"/>
+            android:textSize="12sp"/>
 
         <TextView
             android:id="@+id/title"
@@ -52,8 +54,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
+            android:textColor="#ffffff"
             android:text="이후"
-            android:textSize="10sp"/>
+            android:textSize="12sp"/>
 
     </LinearLayout>
 
