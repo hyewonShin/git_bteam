@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${category eq 'cu' ? '고객관리' : (category eq 'si' ? '사이트소개' :(category eq 'pt' ? '반려동물' : (category eq 'co' ? '자유게시판' : (category eq 'qa' ? 'QnA' : (category eq 'join' ? '회원가입' : ''))))) } ${empty category ? '' : ' : '  } WithPet</title>
+<title>${category eq 'cu' ? '고객관리' : (category eq 'my' ? 'MyPet' :(category eq 'si' ? '사이트소개' :(category eq 'fe' ? '반려동물' : (category eq 'co' ? '자유게시판' : (category eq 'qa' ? 'QnA' : (category eq 'join' ? '회원가입' : '')))))) } ${empty category ? '' : ' : '  } WithPet</title>
 <link rel="icon" type="image/x-icon" href="img/withpet.ico">
 <!--fontawesome  -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
