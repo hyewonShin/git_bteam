@@ -8,8 +8,8 @@ values(b_seq.nextval, 1, #{b_name}, #{b_title}, #{b_content}, #{b_file}, 0, 0, t
 </insert>
 
 <select id="get" resultType="board.BoardVO">
-select b.*, (select m.name from member m where m.m_tel = b_name ) name 
-from board where b_name=#{name} order by b_num
+select b.*, (select m_name from member m where m.m_tel = b_name ) name 
+from board b where b_name=#{name} order by b_num
 </select>
 
 </mapper>
