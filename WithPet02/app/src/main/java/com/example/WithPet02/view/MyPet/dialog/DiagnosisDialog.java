@@ -73,6 +73,8 @@ public class DiagnosisDialog {
 
         Button diaNoButton = null;
 
+        final int[] focusChecker = {0};   //message에 포커스를 했었는지 확인하는 변수
+
         final String[] content = {""};
 
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
@@ -173,54 +175,55 @@ public class DiagnosisDialog {
             }//onContent
         });//setContentListener
 
-        //ok버튼 눌렀을 때
+        //Focus가 message에 했었는지를 통해 입력하려는지 아닌지 확인
+        message.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, final boolean hasFocus) {
+                if(hasFocus){//message에 focus가 있다면
+                    focusChecker[0]++;
+                }//if
+            }//onFocusChange()
+        });//setOnFocusChangeListener()
+
+        //ok버튼 눌렀을 때 작동들 설정
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(okButton.getText().toString() == updateString) {
-                    CalenderUpdate calenderUpdate = new CalenderUpdate(calenderDialogDTO.getNum(), calenderDialogDTO.getYear(),
-                            calenderDialogDTO.getMonth(), calenderDialogDTO.getDate(), message.getText().toString());
-                    try {
-                        calenderUpdate.execute().get();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }//try
 
-                }else if (okButton.getText().toString() == submitString) {
-                    // 커스텀 다이얼로그에서 입력한 메시지를 대입한다.
-                    content[0] = (message.getText().toString());
-                    Toast.makeText(DiagnosisDialog.this.context, "\"" +  message.getText().toString() + "\" 을 입력하였습니다.", Toast.LENGTH_SHORT).show();
+                if((focusChecker[0] % 2) == 1) {
+                    if(okButton.getText().toString() == updateString) {
+                        CalenderUpdate calenderUpdate = new CalenderUpdate(calenderDialogDTO.getNum(), calenderDialogDTO.getYear(),
+                                calenderDialogDTO.getMonth(), calenderDialogDTO.getDate(), message.getText().toString());
+                        try {
+                            calenderUpdate.execute().get();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }//try
+                    }else if (okButton.getText().toString() == submitString) {
+                        // 커스텀 다이얼로그에서 입력한 메시지를 대입한다.
+                        content[0] = (message.getText().toString());
+                        Toast.makeText(DiagnosisDialog.this.context, "\"" +  message.getText().toString() + "\" 을 입력하였습니다.", Toast.LENGTH_SHORT).show();
 
-                    //DB에 입력값 넣어주기
-                    DBSetText("1", year, month, date, message.getText().toString());
+                        //DB에 입력값 넣어주기
+                        DBSetText("1", year, month, date, message.getText().toString());
+                    }//if
+
+                    //커스텀 다이얼로그 종료 시 작동되는 listener
+                    onDismissListener.onDismiss(dlg);
+
+                    // 커스텀 다이얼로그를 종료한다.
+                    dlg.dismiss();
+                }else {
+                    Toast.makeText(context, "입력값이 없습니다.", Toast.LENGTH_SHORT).show();
                 }//if
-
-                //커스텀 다이얼로그 종료 시 작동되는 listener
-                onDismissListener.onDismiss(dlg);
-
-                // 커스텀 다이얼로그를 종료한다.
-                dlg.dismiss();
-
-                /*
-                // 커스텀 다이얼로그에서 입력한 메시지를 대입한다.
-                content[0] = (message.getText().toString());
-                Toast.makeText(DiagnosisDialog.this.context, "\"" +  message.getText().toString() + "\" 을 입력하였습니다.", Toast.LENGTH_SHORT).show();
-                //달력에 입력값 넣어주기
-                //set_text(message.getText().toString(), inflaterContext, day_layouts, showText, context);
-
-                //DB에 입력값 넣어주기
-                DBSetText("1", year, month, date, message.getText().toString());
-
-                //커스텀 다이얼로그 종료 시 작동되는 listener
-                onDismissListener.onDismiss(dlg);
-
-                // 커스텀 다이얼로그를 종료한다.
-                dlg.dismiss();*/
 
             }//onClick()
         });//setOnClickListener()
+
+
+
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,11 +232,6 @@ public class DiagnosisDialog {
                     message.setText("");
                     message.setHint("새 일정을 입력하세요");
                     okButton.setText("확인");
-
-                    //커스텀 다이얼로그 종료 시 작동되는 listener
-                    onDismissListener.onDismiss(dlg);
-                    // 커스텀 다이얼로그를 종료한다.
-                    dlg.dismiss();
 
                 }else{  //그냥 취소했을 때
                     Toast.makeText(DiagnosisDialog.this.context, "취소 했습니다.", Toast.LENGTH_SHORT).show();
