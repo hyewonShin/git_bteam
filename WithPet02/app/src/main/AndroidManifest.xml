@@ -46,7 +46,6 @@
         <activity android:name=".view.mypage.MyUpdateActivity" />
         <activity android:name=".view.mypage.MyDeleteActivity" />
         <activity android:name=".view.site.SiteInfoActivity" />
-        <activity android:name=".view.login.LoginFindResultActivity" />
         <activity android:name=".view.login.LoginFindPwActivity" />
         <activity android:name=".view.login.LoginFindEmailActivity" />
         <activity android:name=".view.join.JoinTelActivity" />
