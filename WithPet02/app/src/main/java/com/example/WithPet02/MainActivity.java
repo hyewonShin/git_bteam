@@ -17,11 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -54,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community;
+    private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community, logincheck;
     private ImageView hamburger;
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
     LinearLayout myPetPager;
-    Button logincheck;
     TextView nickname, email;
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -278,6 +275,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(loginDTO == null){  //로그아웃 상태
             myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
+            nickname.setText("로그인해주세요");
+            email.setText("");
 
             //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
             logincheck.setOnClickListener(new View.OnClickListener() {
@@ -288,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }else{  //로그인 되었을 때
-            logincheck.setText("logout");
             nickname.setText(loginDTO.getM_name());
             email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
@@ -306,14 +304,7 @@ public class MainActivity extends AppCompatActivity {
             logincheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //자동로그인 파일 내용 삭제
-                    SharedPreferences sf = getSharedPreferences("WithPetM", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sf.edit();
-                    editor.clear();
-                    editor.commit();
-
-                    loginDTO = null;
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MyPageInfoActivity.class);
                     startActivity(intent);
                 }
             });
@@ -513,11 +504,50 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        if(loginDTO == null){
-            Glide.with(this).load(filePath + "defalt.jpg").into(myPic);
-            logincheck.setText("Login");
-            nickname.setText("로그인하세요");
+        //로그인 정보 갱신
+        if(loginDTO == null){  //로그아웃 상태
+            myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
+            nickname.setText("로그인해주세요");
+            email.setText("");
+
+            //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
+            logincheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }else{  //로그인 되었을 때
+            nickname.setText(loginDTO.getM_name());
+            email.setText(loginDTO.getM_email());
+            //이미지 서버에서 가져오기
+            myPic.setImageResource(0);
+            Log.d("nav_drawer", "m_pic: " + loginDTO.getM_pic());
+            if(loginDTO.getM_pic() == null){    //사용자 프로필사진 등록 여부 확인
+                //프로필 사진없음
+                Glide.with(this).load(filePath + "defalt.jpg").into(myPic);
+            } else {
+                //프로필 사진 있음
+                Glide.with(this).load(filePath + loginDTO.getM_pic()).signature(new ObjectKey(System.currentTimeMillis())).into(myPic);
+            }
+
+            //logincheck 버튼
+            logincheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MyPageInfoActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
+
+        //내 동물정보 갱신
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.layout_main_login, myPetPager, true);
+
+        MainLogIn mainLogIn = new MainLogIn(context, myPetPager);
+        mainLogIn.setMyPetPager();
         super.onResume();
     }
 
