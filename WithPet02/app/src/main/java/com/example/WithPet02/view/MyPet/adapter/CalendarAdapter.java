@@ -321,7 +321,7 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             String day = ((Day)model).getDay();
 
             //GregorianCalendar는 (년도, 월, 일, 시, 분, 초)형식으로 입력하는 생성자 제공
-            GregorianCalendar cal = new GregorianCalendar(Locale.KOREA);
+            GregorianCalendar cal = new GregorianCalendar();
             int cal_year = cal.get(Calendar.YEAR);
             int cal_month = cal.get(Calendar.MONTH) + 1;
             int cal_day = cal.get(Calendar.DAY_OF_MONTH);   //int로 선언한 변수에 넣어야 int형으로 들어간다.
