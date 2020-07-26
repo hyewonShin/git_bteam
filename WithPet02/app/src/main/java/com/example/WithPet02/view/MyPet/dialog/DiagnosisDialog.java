@@ -124,7 +124,7 @@ public class DiagnosisDialog {
                     int diaMonth = Integer.parseInt(getDate[1]);
                     int diaDate = Integer.parseInt(cutingGetDay[0]);
 
-                    //눌러준 달력의 년달일이 검진기록에서 가져온 년달일과 맞으면 검진기록이라는 버튼이 보이게 하기
+                    //눌러준 달력의 년달일이 맞는 List를 Intent쪽으로 넘기기
                     if(year == diaYear && month == diaMonth) {
                         if(date == diaDate){
                             intent.putExtra("diagnosisList", diaList.get(i));
