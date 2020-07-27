@@ -6,6 +6,12 @@
 	
 	<definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/include/header.jsp"/>
+		<put-attribute name="left" value="/WEB-INF/views/include/left.jsp"/>	
+		<put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp"/>	
+	</definition>
+	
+	<definition name="layout1" template="/WEB-INF/views/tiles/layout1.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/include/header.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp"/>	
 	</definition>
 	
@@ -13,7 +19,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="*" extends="layout">
+	<definition name="*" extends="layout1">
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>
 	

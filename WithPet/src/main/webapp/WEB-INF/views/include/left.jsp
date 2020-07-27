@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="list" style="display: none;">
+<div>
 	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>	
+		<li>sada</li>
+		<li>sada</li>
+		<li>sada</li>
+		<li>sada</li>
+		<li>sada</li>
+		<li>sada</li>
 	</ul>
 </div>

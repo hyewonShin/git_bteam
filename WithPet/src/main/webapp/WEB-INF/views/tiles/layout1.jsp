@@ -11,13 +11,8 @@
 </head>
 <body>
 <tiles:insertAttribute name="header" />
-<div>
-	<div id="left" style="width: 20%;">
-		<tiles:insertAttribute name="left" />
-	</div>
-	<div id="content" style="width: 80%;">
-		<tiles:insertAttribute name="content" />
-	</div>
+<div id="content">
+<tiles:insertAttribute name="content" />
 </div>
 <tiles:insertAttribute name="footer" />
 </body>
