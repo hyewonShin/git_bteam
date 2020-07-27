@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>QnA</h3>
+<h3>마이페이지</h3>
 </body>
 </html>

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class QnaController {
-	@RequestMapping("/list.qa")
+public class SiteInfoController {
+	@RequestMapping("/list.si")
 	public String list(HttpSession session) {
-		session.setAttribute("category", "qa");
-		return"qna/list";
+		session.setAttribute("category", "si");
+		return "siteinfo/list";
 	}
 }

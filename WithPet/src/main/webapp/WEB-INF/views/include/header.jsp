@@ -19,14 +19,15 @@ header ul li input {display: block;}
 	<div class="category" style="margin-left:100px;">
 	<ul>
 		<li><a href="<c:url value='/'/>"><img src="img/withpet.png" alt="홈으로"></a></li>
-		
-		<li><a href="list.cu" ${category eq 'cu' ? 'class="active"' : ''}>고객관리</a></li><!--admin일때만 나오기  -->
+		<c:if test="${login_info.id eq 'admin' }">
+			<li><a href="list.cu" ${category eq 'cu' ? 'class="active"' : ''}>고객관리</a></li><!--admin일때만 나오기  -->
+		</c:if>
 		<li><a href="list.si" ${category eq 'si' ? 'class="active"' : ''}>사이트소개</a></li>
-		<li><a href="list.pt" ${category eq 'fe' ? 'class="active"' : ''}>반려동물</a></li>
-		<li><a href="list.co" ${category eq 'my' ? 'class="active"' : ''}>내 동물정보</a></li><!-- 로그인시  -->
-		<li><a href="list.co" ${category eq 'co' ? 'class="active"' : ''}>자유게시판</a></li>
+		<li><a href="list.fe" ${category eq 'fe' ? 'class="active"' : ''}>반려동물 특징</a></li>
+		<li><a href="list.my" ${category eq 'my' ? 'class="active"' : ''}>내 동물정보</a></li><!-- 로그인시  -->
+		<li><a href="list.co" ${category eq 'co' ? 'class="active"' : ''}>커뮤니티</a></li>
 		<li><a href="list.qa" ${category eq 'qa' ? 'class="active"' : ''}>QnA</a></li>
-		<li><a href="list.co" ${category eq 'pa' ? 'class="active"' : ''}>마이페이지</a></li>
+		<li><a href="list.pa" ${category eq 'pa' ? 'class="active"' : ''}>마이페이지</a></li>
 	</ul>
 	</div>
 	

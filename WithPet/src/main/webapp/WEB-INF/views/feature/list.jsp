@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>QnA</h3>
+<h3>반려동물 특징</h3>
 </body>
 </html>

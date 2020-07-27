@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>QnA</h3>
+<h3>커뮤니티</h3>
 </body>
 </html>
