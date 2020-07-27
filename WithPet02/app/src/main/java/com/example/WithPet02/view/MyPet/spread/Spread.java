@@ -59,10 +59,11 @@ public class Spread extends AppCompatActivity {
         for (int i = 0; i < list.size(); i++){
             String date = list.get(i).getD_date();
             String[] cutDate = date.split("-");
+            String[] cutingDay = cutDate[2].split(" ");
 
             dyear = Integer.parseInt(cutDate[0]);
             dmonth = Integer.parseInt(cutDate[1]);
-            ddate = Integer.parseInt(cutDate[2]);
+            ddate = Integer.parseInt(cutingDay[0]);
 
             if(Syear == dyear && Smonth == dmonth) {
                 if(Sdate == (ddate)) {
@@ -84,10 +85,17 @@ public class Spread extends AppCompatActivity {
                     //동적 뷰생성
                     LinearLayout layout = view.findViewById(R.id.checked); //넣어줄 레이아웃 설정
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT,1f);
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
                     TextView viewText = new TextView(frgContext);
                     Log.d(TAG, "medical_examination: " + calContent);
-                    viewText.setText(calContent.substring(0,3) + "...");
+                    //Content길이에 따라 값 정해주기
+                    if( calContent.length() >= 2 ) {
+                        viewText.setText("· " + calContent.substring(0,2) + "...");
+                    } else if ( calContent.length() < 2 ) {
+                        viewText.setText("· " + calContent);
+                    } else if( calContent == null) {
+                        viewText.setText("· " + "");
+                    }//if
                     Log.d(TAG, "calListCheck: " + calList.get(j).getContent());
                     viewText.setLayoutParams(layoutParams);
                     layout.addView(viewText);
