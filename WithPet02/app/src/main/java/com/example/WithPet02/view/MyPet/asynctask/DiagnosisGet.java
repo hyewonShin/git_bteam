@@ -117,17 +117,17 @@ public class DiagnosisGet extends AsyncTask<Void, Void, ArrayList<DiagnosisDTO>>
 
         while (reader.hasNext()) {
             String readStr = reader.nextName();
-            if (readStr.equals("d_num")) {
+            if (readStr.equals("num")) {
                 num = reader.nextString();
-            } else if (readStr.equals("d_pet")) {
+            } else if (readStr.equals("pet")) {
                 pet = reader.nextString();
-            } else if (readStr.equals("d_title")) {
+            } else if (readStr.equals("title")) {
                 title = reader.nextString();
-            } else if (readStr.equals("d_content")) {
+            } else if (readStr.equals("content")) {
                 content = reader.nextString();
-            }else if (readStr.equals("d_hname")) {
+            }else if (readStr.equals("hname")) {
                 hname = reader.nextString();
-            }else if (readStr.equals("d_date")) {
+            }else if (readStr.equals("date")) {
                 date = reader.nextString();
             }else {
                 reader.skipValue();

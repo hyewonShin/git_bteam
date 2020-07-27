@@ -13,13 +13,17 @@
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/AppTheme">
 
         <ImageView
-            android:layout_width="200dp"
+            android:id="@+id/pet_title"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginLeft="28dp"
-            android:src="@drawable/withpetimg" />
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/withpetimg"/>
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -28,11 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:text="로그인"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <EditText
         android:id="@+id/etId"
@@ -65,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="이메일 찾기"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.594"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,51 +83,64 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="비밀번호찾기"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPASSWD" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="340dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="330dp"
         android:layout_height="60dp"
+        android:layout_marginTop="41dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPASSWD">
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="로그인"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="#404040"
+            android:textColor="@color/colorWhite"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="로그인"
-        android:textSize="24sp"
+        android:orientation="vertical"
+        android:paddingHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPASSWD" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-    <ImageView
-        android:id="@+id/btnJoin"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        app:srcCompat="@drawable/snsloginbtn_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
+        <ImageView
+            android:id="@+id/btnJoin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/snsloginbtn_email" />
 
-    <ImageView
-        android:id="@+id/snsKakaoLogin"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnJoin"
-        app:srcCompat="@drawable/snsloginbtn_kakao" />
+        <ImageView
+            android:id="@+id/snsKakaoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/snsloginbtn_kakao" />
 
-    <ImageView
-        android:id="@+id/snsNaverLogin"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/snsKakaoLogin"
-        app:srcCompat="@drawable/snsloginbtn_naver" />
+        <ImageView
+            android:id="@+id/snsNaverLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/snsloginbtn_naver" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
