@@ -5,9 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -51,12 +51,9 @@ import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
 public class SiteCsWirte extends AppCompatActivity {
 
-
     Activity activity = SiteCsWirte.this;
     Context context = SiteCsWirte.this;
 
-    //액션바 변수 설정
-    ActionBar bar;
     //rootLayout 설정
     SlidingUpPanelLayout rootLayout;
     LinearLayout wrap_content;
@@ -90,6 +87,9 @@ public class SiteCsWirte extends AppCompatActivity {
     //슬라이더 안의 메뉴들
     LinearLayout camera, album;
 
+    //툴바
+    Toolbar toolbar;
+
     //로그인 사람 프로필 ip가져오기
     String filePath = ipConfig + "/app/resources/upload/member/";
 
@@ -98,8 +98,15 @@ public class SiteCsWirte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_cs_wirte);
 
-        //loginDTO.get
-        //myPetList.get
+        //툴바 적용
+        toolbar = findViewById(R.id.cs_toolbar);
+        setSupportActionBar(toolbar);
+
+        //툴바 타이틀 보일지 말지 설정
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //홈버튼 보일지 말지 설정
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         title = findViewById(R.id.title);   //제목 쓰는 곳
         content = findViewById(R.id.content);   //내용 쓰는 곳
@@ -245,6 +252,8 @@ public class SiteCsWirte extends AppCompatActivity {
                         title.getText().toString();
                         content.getText().toString();
 
+                        Toast.makeText(activity, "제출 눌림", Toast.LENGTH_SHORT).show();
+
                         //DB와 연동 시키기 위해서 보내줘야 할 것들을 넣어준다.(id, name, date, imageDbPath, imageRealPath)
                         //AsyncTask를 만들어 준다.
                         BoardInsert boardInsert = new BoardInsert(board_nickname.getText().toString(), title.getText().toString(), content.getText().toString(),
@@ -259,6 +268,9 @@ public class SiteCsWirte extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
+                        SiteCsFragment2 siteCsFragment2 = new SiteCsFragment2();
+                        siteCsFragment2.setRecyclerView();
 
                         finish();
                     }else{  ////파일 사이즈가 30메가보다 크면

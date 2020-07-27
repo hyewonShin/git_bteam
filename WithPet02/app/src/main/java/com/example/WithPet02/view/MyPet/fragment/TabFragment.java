@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,21 +58,8 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         //Fragment 연결
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_tab, container, false);
-
-        //툴바 위치 찾기
-        toolbar = rootView.findViewById(R.id.dialog_toolbar);
-
-        //fragment에서 Toobar사용할 수 있도록 하여 주기
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-
-        //툴바 타이틀 보일지 말지 설정
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //홈버튼 보일지 말지 설정
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Fragment에서 initView메소드를 사용하여 TextView와 recyclerView사용 할 수 있게 하기
         initView(rootView);
@@ -112,12 +98,6 @@ public class TabFragment extends Fragment {
         //Fragment화면 출력
         return rootView;
     }//onCreateView()
-
-    public void dataRefresh() {
-        initSet();
-        setRecycler();
-    }
-
 
     public void initView(View v){
 
@@ -182,8 +162,6 @@ public class TabFragment extends Fragment {
 
         });//setDateClickListener()
 
-
-
     }//setRecycler()
 
     //initCalendarList가져오는 메소드
@@ -206,95 +184,47 @@ public class TabFragment extends Fragment {
     private void setCalendarList(GregorianCalendar cal) {
         calendarList = new ArrayList<>();
 
-            try {
-                calendar = new GregorianCalendar();
-                //GregorianCalendar는 (년도, 월, 일, 시, 분, 초)형식으로 입력가능
-                //현재달만 가져온다.
-                calendar = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + num, 1, 0, 0, 0);
-                Log.d(TAG, "numCheck: " + num);
+        try {
+            calendar = new GregorianCalendar();
+            //GregorianCalendar는 (년도, 월, 일, 시, 분, 초)형식으로 입력가능
+            //현재달만 가져온다.
+            calendar = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + num, 1, 0, 0, 0);
+            Log.d(TAG, "numCheck: " + num);
 
                 /*//i == 0 이면 이번해의 이번달 때를 의미함
                 if (i == 0) {
                     mCenterPosition = calendarList.size();
                 }//if*/
 
-                //캘린더에 제목 넣기
-                CalendarHeader model = new CalendarHeader();
-                String title = model.setHeader2((Long) calendar.getTimeInMillis());
-                textView.setText(title);
+            //캘린더에 제목 넣기
+            CalendarHeader model = new CalendarHeader();
+            String title = model.setHeader2((Long) calendar.getTimeInMillis());
+            textView.setText(title);
 
-                //캘린더에서 현재 날짜와 시간을 가져와서 calendarList의 ArrayList에 넣어줌
-                calendarList.add(calendar.getTimeInMillis());
-                //해당하는 월에 시작하는 요일을 알려주기 때문에 그 전까지는 빈칸이 된다.
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1; //해당 월에 시작하는 요일 -1 을 하면 빈칸을 구할 수 있겠죠 ?
-                //해당하는 월의 마지막요일을 가져와서 넣어줌
-                int max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); // 해당 월에 마지막 요일
+            //캘린더에서 현재 날짜와 시간을 가져와서 calendarList의 ArrayList에 넣어줌
+            calendarList.add(calendar.getTimeInMillis());
+            //해당하는 월에 시작하는 요일을 알려주기 때문에 그 전까지는 빈칸이 된다.
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1; //해당 월에 시작하는 요일 -1 을 하면 빈칸을 구할 수 있겠죠 ?
+            //해당하는 월의 마지막요일을 가져와서 넣어줌
+            int max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); // 해당 월에 마지막 요일
 
-                //ArrayList에 빈칸과 날짜들을 순서대로 넣어준다.
-                //EMPTY 생성
-                for (int j = 0; j < dayOfWeek; j++) {   //해당월의 시작하는 요일 전까지를 빈칸으로 뿌려준다.
-                    calendarList.add(Keys.EMPTY);
-                }//for
-                for (int j = 1; j <= max; j++) {    //해당월의 마지막 요일까지의 날짜를 뿌려준다.
-                    calendarList.add(new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), j));
-                }//for
+            //ArrayList에 빈칸과 날짜들을 순서대로 넣어준다.
+            //EMPTY 생성
+            for (int j = 0; j < dayOfWeek; j++) {   //해당월의 시작하는 요일 전까지를 빈칸으로 뿌려준다.
+                calendarList.add(Keys.EMPTY);
+            }//for
+            for (int j = 1; j <= max; j++) {    //해당월의 마지막 요일까지의 날짜를 뿌려준다.
+                calendarList.add(new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), j));
+            }//for
 
-                // TODO : 결과값 넣을때 여기다하면될듯
+            // TODO : 결과값 넣을때 여기다하면될듯
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }//try
+        } catch (Exception e) {
+            e.printStackTrace();
+        }//try
 
         //전부 계산해준 빈칸과 달력의 날짜를 mCalendarList에 넣어준다.
         mCalendarList = calendarList;
     }//setCalendarList()
-
-
-
-    /*//달력의 빈칸과 모든 날들을 계산하여 ArrayList에 넣어주기
-    public void setCalendarList(GregorianCalendar cal) {
-
-        //setTitle(cal.getTimeInMillis());
-
-        ArrayList<Object> calendarList = new ArrayList<>();
-
-        for (int i = -300; i < 300; i++) {
-            try {
-                //GregorianCalendar는 (년도, 월, 일, 시, 분, 초)형식으로 입력가능
-                //MONTH를 가져온 것에 + i 해줘서 -300 ~ 300까지의 달들을 표시 가능하다.
-                GregorianCalendar calendar = new GregorianCalendar(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + i, 1, 0, 0, 0);
-
-                //i == 0 이면 이번해의 이번달 때를 의미함
-                if (i == 0) {
-                    mCenterPosition = calendarList.size();
-                }//if
-
-
-                //캘린더에서 현재 날짜와 시간을 가져와서 calendarList의 ArrayList에 넣어줌
-                calendarList.add(calendar.getTimeInMillis());
-                //해당하는 월에 시작하는 요일을 알려주기 때문에 그 전까지는 빈칸이 된다.
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1; //해당 월에 시작하는 요일 -1 을 하면 빈칸을 구할 수 있겠죠 ?
-                //해당하는 월의 마지막요일을 가져와서 넣어줌
-                int max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); // 해당 월에 마지막 요일
-
-                //ArrayList에 빈칸과 날짜들을 순서대로 넣어준다.
-                // EMPTY 생성
-                for (int j = 0; j < dayOfWeek; j++) {   //해당월의 시작하는 요일 전까지를 빈칸으로 뿌려준다.
-                    calendarList.add(Keys.EMPTY);
-                }//for
-                for (int j = 1; j <= max; j++) {    //해당월의 마지막 요일까지의 날짜를 뿌려준다.
-                    calendarList.add(new GregorianCalendar(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), j));
-                }//for
-
-                // TODO : 결과값 넣을때 여기다하면될듯
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }//try
-        }//for
-
-        //전부 계산해준 빈칸과 달력의 날짜를 mCalendarList에 넣어준다.
-        mCalendarList = calendarList;
-    }//setCalendarList()*/
 
 }//class
