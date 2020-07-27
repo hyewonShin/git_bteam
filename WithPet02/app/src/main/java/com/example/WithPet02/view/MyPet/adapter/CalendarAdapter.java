@@ -1,18 +1,10 @@
 package com.example.WithPet02.view.MyPet.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,12 +23,8 @@ import com.example.WithPet02.view.MyPet.spread.Spread;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
-
-import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
 public class CalendarAdapter extends RecyclerView.Adapter {
     private static final String TAG = "CalendarAdapter";
@@ -90,8 +78,9 @@ public class CalendarAdapter extends RecyclerView.Adapter {
         //임시로 1로 설정
         list = new ArrayList<>();
 
-        DiagnosisGet diagnosisGet = new DiagnosisGet(Integer.parseInt(loginDTO.getM_tel()));
-        CalenderGet calenderGet = new CalenderGet(loginDTO.getM_tel());
+        int d_pet = 1;
+        DiagnosisGet diagnosisGet = new DiagnosisGet(d_pet);
+        CalenderGet calenderGet = new CalenderGet("1");
 
         try {
             list = diagnosisGet.execute().get();
@@ -203,12 +192,11 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             DayViewHolder holder = (DayViewHolder) viewHolder;
             Object item = mCalendarList.get(position);
             Day model = new Day();
-
             if (item instanceof Calendar) {
-                // Model에 Calendar값을 넣어서 일자 타입형식 지정
-                model.setCalendar((Calendar) item);
-            }//if
 
+                // Model에 Calendar값을 넣어서 몇일인지 데이터 넣기
+                model.setCalendar((Calendar) item);
+            }
             // Model의 데이터를 View에 표현하기
             holder.bind(model);
 
@@ -320,29 +308,8 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             // 일자 값 가져오기
             String day = ((Day)model).getDay();
 
-            //GregorianCalendar는 (년도, 월, 일, 시, 분, 초)형식으로 입력하는 생성자 제공
-            GregorianCalendar cal = new GregorianCalendar(Locale.KOREA);
-            int cal_year = cal.get(Calendar.YEAR);
-            int cal_month = cal.get(Calendar.MONTH) + 1;
-            int cal_day = cal.get(Calendar.DAY_OF_MONTH);   //int로 선언한 변수에 넣어야 int형으로 들어간다.
-
-            if(cal_year == year && cal_month == month) {
-                if (cal_day == Integer.valueOf(day)) {  //오늘과 일자가 맞으면 색깔을 변경하여 넣어준다.
-                    //SpannableStringBuilder ssb = new SpannableStringBuilder(day);
-                    //ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#ff8f1c")), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    itemDay.setTextColor(Color.parseColor("#ffffff"));
-                    itemDay.setBackgroundColor(Color.parseColor("#ff8f1c"));
-                    // 일자 값 View에 보이게하기
-                    itemDay.setText(day);
-                }else {     //오늘 일자가 맞지 않으면 그냥 넣어준다.
-                    // 일자 값 View에 보이게하기
-                    itemDay.setText(day);
-                }//if
-            }else { //년월일이 맞지 않은 것들은 바로 보이게
-                // 일자 값 View에 보이게하기
-                itemDay.setText(day);
-            }//if
-
+            // 일자 값 View에 보이게하기
+            itemDay.setText(day);
 
             //일자 값을 전역변수로 빼주기
             date = Integer.valueOf(itemDay.getText().toString());

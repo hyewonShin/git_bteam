@@ -6,7 +6,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -32,11 +31,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.WithPet02.Adapter.SpinnerAdapter;
+import com.bumptech.glide.Glide;
 import com.example.WithPet02.CheckDangerousPermissions.Camera;
 import com.example.WithPet02.R;
 import com.example.WithPet02.common.CommonMethod;
@@ -45,14 +43,14 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.common.CommonMethod.isNetworkConnected;
+import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
 public class SiteCsWirte extends AppCompatActivity {
+
 
     Activity activity = SiteCsWirte.this;
     Context context = SiteCsWirte.this;
@@ -69,8 +67,8 @@ public class SiteCsWirte extends AppCompatActivity {
     //file크기 한계주기 위한 변수
     long fileSize;
 
-    //찍은 사진 나오는 곳
-    ImageView camera_picture;
+    //ImageView
+    ImageView camera_picture, image_cancel, m_profile;
 
     //사진 직접경로(핸드폰안 경로), DB경로
     public String imageRealPath, imageDbPath;
@@ -79,7 +77,7 @@ public class SiteCsWirte extends AppCompatActivity {
     final  int LOAD_IMAGE = 1001;
 
     //버튼들 변수
-    Button camera, album, board_album;
+    Button board_album;
 
     //글쓰는 곳
     EditText title, content;
@@ -89,40 +87,53 @@ public class SiteCsWirte extends AppCompatActivity {
 
     ScrollView scrollView;
 
-    @SuppressLint("ResourceType")
+    //슬라이더 안의 메뉴들
+    LinearLayout camera, album;
+
+    //로그인 사람 프로필 ip가져오기
+    String filePath = ipConfig + "/app/resources/upload/member/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_cs_wirte);
 
+        //loginDTO.get
+        //myPetList.get
 
-        title = findViewById(R.id.title);
-        content = findViewById(R.id.content);
-        scrollView = findViewById(R.id.scrollView);
-        rootLayout = findViewById(R.id.rootLayout);
-        wrap_content = findViewById(R.id.wrap_content);
-        camera_picture = findViewById(R.id.camera_picture);
-        board_album = findViewById(R.id.board_album);
-        board_nickname = findViewById(R.id.board_nickname);
+        title = findViewById(R.id.title);   //제목 쓰는 곳
+        content = findViewById(R.id.content);   //내용 쓰는 곳
+        scrollView = findViewById(R.id.scrollView); //내용 쓰는 부분 스크롤뷰
+        rootLayout = findViewById(R.id.rootLayout); //슬라이드패널
+        wrap_content = findViewById(R.id.wrap_content); //로그인 한 사람 정보 나오는 곳 전체
+        camera_picture = findViewById(R.id.camera_picture); //사진 올린것 나오는 곳
+        board_album = findViewById(R.id.board_album);   //
+        board_nickname = findViewById(R.id.board_nickname); //로그인 한 사람 nickname
+        image_cancel = findViewById(R.id.image_cancel);     //사진올린거 취소하는 버튼
+        m_profile = findViewById(R.id.m_profile);   //로그인 한 사람 프로필 나오는 곳
 
-        album = findViewById(R.id.album);
-        camera = findViewById(R.id.camera);
+        camera = findViewById(R.id.camera); //슬라이드패널 안의 카메라
+        album = findViewById(R.id.album);   //슬라이드패널 안의 앨범
+
+        //로그인 한사람 정보 넣기
+        Glide.with(this).load(filePath + loginDTO.getM_pic()).into(m_profile);
+        board_nickname.setText(loginDTO.getM_name());
 
         //Spinner사용
         //Spinner에 넣을 목록 데이터
-        List<String> spinnerData = new ArrayList<>();
-        spinnerData.add("자유");
-        spinnerData.add("물음");
-        spinnerData.add("간식");
-        spinnerData.add("분양");
-        spinnerData.add("사고팔기");
-        spinnerData.add("기타");
+        //List<String> spinnerData = new ArrayList<>();
+        //spinnerData.add("자유");
+        //spinnerData.add("물음");
+        //spinnerData.add("간식");
+        //spinnerData.add("분양");
+        //spinnerData.add("사고팔기");
+        //spinnerData.add("기타");
 
         //spinner찾기
-        Spinner spinner = findViewById(R.id.spinner1);
+        //Spinner spinner = findViewById(R.id.spinner1);
         //spinner의 어뎁터 찾기
-        SpinnerAdapter adapter = new SpinnerAdapter(this, spinnerData);
-        spinner.setAdapter(adapter);
+        //SpinnerAdapter adapter = new SpinnerAdapter(this, spinnerData);
+        //spinner.setAdapter(adapter);
 
         //슬라이드 사용
         final SlidingUpPanelLayout rootLayout = findViewById(R.id.rootLayout);
@@ -136,16 +147,19 @@ public class SiteCsWirte extends AppCompatActivity {
             }//onClick()
         });//setOnClickListener()
 
+
         //사진 가져오기(갤러리에서)
-        board_album.setOnClickListener(new View.OnClickListener() {
+        album.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 camera_picture.setVisibility(View.VISIBLE);
+                image_cancel.setVisibility(View.VISIBLE);
 
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
+
             }//onClick()
         });//setOnClickListener()
         //→ onActivityResult에서 받아야 한다.
@@ -165,6 +179,7 @@ public class SiteCsWirte extends AppCompatActivity {
                 }//if
 
                 camera_picture.setVisibility(View.VISIBLE);
+                image_cancel.setVisibility(View.VISIBLE);
 
                 //Capture 할 수 있는 화면생성
                 Intent cameraWindow = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -186,6 +201,17 @@ public class SiteCsWirte extends AppCompatActivity {
                     startActivityForResult(cameraWindow, CAMERA_REQUEST);
                 }
 
+            }//onClick()
+        });//setOnClickListener()
+
+        //이미지없애는 버튼 눌렀을 때 넣어준 이미지 없애기
+        image_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camera_picture.setVisibility(View.GONE);
+                image_cancel.setVisibility(View.GONE);
+                camera_picture.setImageResource(0);
+                camera_picture.setImageBitmap(null);
             }//onClick()
         });//setOnClickListener()
 
@@ -295,6 +321,11 @@ public class SiteCsWirte extends AppCompatActivity {
                 Bitmap newBitmap = CommonMethod.imageRotateAndResize(file.getAbsolutePath());
                 if(newBitmap != null){
                     camera_picture.setImageBitmap(newBitmap);
+
+                    //menuSlide가 올라가 있으면 내려주기
+                    if(rootLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                        rootLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                    }//if
                 }else{
                     Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
                 }
@@ -328,6 +359,11 @@ public class SiteCsWirte extends AppCompatActivity {
                 Bitmap newBitmap = CommonMethod.imageRotateAndResize(path);
                 if (newBitmap != null) {
                     camera_picture.setImageBitmap(newBitmap);
+
+                    //menuSlide가 올라가 있으면 내려주기
+                    if(rootLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                        rootLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                    }//if
                 } else {
                     Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
                 }

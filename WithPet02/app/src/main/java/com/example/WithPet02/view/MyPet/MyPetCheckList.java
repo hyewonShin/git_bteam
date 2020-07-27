@@ -26,23 +26,5 @@ public class MyPetCheckList extends AppCompatActivity {
 
     }//onCreate()
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_option, menu);
-
-        return true;
-    }//onCreateOptionsMenu()
-
-    // 툴바 뒤로가기 클릭시 액티비티 finish
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home ){
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }//onOptionsItemSelected()
-
 }//class
 
