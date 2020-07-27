@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
+        android:background="@color/colorWhite"
         android:elevation="1dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="My home"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="30dp"
-            android:textColor="#ffffff"/>
+            android:textSize="24sp"
+            android:textColor="#000000"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -76,7 +76,7 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/myBoardList"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -170,12 +170,12 @@
                     android:text="'좋아요' 한 글"
                     android:textSize="16sp"
                     android:textColor="#000000"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
-            <ImageView
+            <!--<ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:src="#eeeeee"/>
+                android:src="#eeeeee"/>-->
 
             <LinearLayout
                 android:id="@+id/myKakao"
@@ -242,9 +242,10 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/icon_content"
+                    android:src="@drawable/noun_signout_1583989"
                     android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="5dp"
                     />
                 <TextView
                     android:layout_width="340dp"

@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.WithPet02.dto.MemberDTO;
 import com.google.gson.Gson;
 

@@ -3,24 +3,24 @@
 <mapper namespace="calendar.mapper">
 
 <select id="diagnosisGet" resultType="calendar.DiagnosisVO">
-select * from diagnosis where d_pet=#{pet} order by d_num
+select * from diagnosis where d_pet=#{d_pet} order by d_num
 </select>
 
 <insert id="calendarInsert">
 insert into calendar (c_tel, c_num, c_year, c_month, c_date, c_content)
-values(#{tel}, c_seq.nextval, #{year}, #{month}, #{date}, #{content})
+values(#{c_tel}, c_seq.nextval, #{c_year}, #{c_month}, #{c_date}, #{c_content})
 </insert>
 
 <select id="calendarGet" resultType="calendar.CalendarVO">
-select * from calendar where c_tel=#{tel} order by c_num"
+select * from calendar where c_tel=#{c_tel} order by c_num
 </select>
 
 <update id="calendarUpdate">
-update calendar set c_content = #{content} where c_num = #{num} and c_year = #{year} and c_month = #{month} and c_date = #{date}
+update calendar set c_content = #{c_content} where c_num = #{c_num} and c_year = #{c_year} and c_month = #{c_month} and c_date = #{c_date}
 </update>
 
 <delete id="calendarDelete">
-delete from calendar where c_num = #{num} and c_year = #{year} and c_month = #{month} and c_date = #{date}
+delete from calendar where c_num = #{c_num} and c_year = #{c_year} and c_month = #{c_month} and c_date = #{c_date}
 </delete>
 
 </mapper>

@@ -3,28 +3,18 @@ package com.example.WithPet02;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,12 +29,6 @@ import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.WithPet02.CheckDangerousPermissions.Internet;
-import com.example.WithPet02.MainView.ad.MainAd1;
-import com.example.WithPet02.MainView.ad.MainAd2;
-import com.example.WithPet02.MainView.ad.MainAd3;
-import com.example.WithPet02.MainView.ad.MainAd4;
-import com.example.WithPet02.MainView.ad.MainAd5;
-import com.example.WithPet02.MainView.MainAdSlide;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
 import com.example.WithPet02.view.MyPet.PetBody;
@@ -54,44 +38,30 @@ import com.example.WithPet02.view.mypage.MyPageInfoActivity;
 import com.example.WithPet02.view.MyPet.MypetHospital;
 import com.example.WithPet02.view.customerc_service.SiteCsActivity;
 import com.example.WithPet02.view.mypetinfo.MyPetInfo;
-import com.example.WithPet02.view.mypetinfo.MyPetInfoAddActivity;
-import com.example.WithPet02.view.mypetinfo.atask.MyPetListSelect;
 import com.example.WithPet02.view.pet_Characteristic.PetCharacteristic;
 import com.example.WithPet02.view.site.SiteInfoActivity;
-import com.example.WithPet02.view.site.SitePetCharActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.concurrent.ExecutionException;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
-import static com.example.WithPet02.view.mypetinfo.MyPetInfo.myPetList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "mainActivity";
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private ViewPager main_login, main_ad;
     private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community;
     private ImageView hamburger;
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
-    TextView notLogin, noPet;
     LinearLayout myPetPager;
     Button logincheck;
-    CircleImageView loginImage;
-    TextView nickname;
+    TextView nickname, email;
     private long backKeyPressedTime = 0;
     private Toast toast;
 
@@ -272,8 +242,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //매인 아이콘 내 커뮤니티
-        main_community = findViewById(R.id.main_community);
+        //메인 아이콘 내 커뮤니티
+        /*main_community = findViewById(R.id.main_community);
         main_community.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -289,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             }
-        });
+        });*/
 
 
         /*배너광고(테스트)*/
@@ -302,11 +272,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         nickname = findViewById(R.id.nickname);
+        email = findViewById(R.id.email);
         logincheck = findViewById(R.id.logincheck);
         myPic = findViewById(R.id.myPic);
 
         if(loginDTO == null){  //로그아웃 상태
-            myPic.setImageResource(R.drawable.ic_log_in_40dp);  //로그아웃 이미지
+            myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
 
             //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
             logincheck.setOnClickListener(new View.OnClickListener() {
@@ -318,8 +289,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }else{  //로그인 되었을 때
             logincheck.setText("logout");
-            nickname.setText(loginDTO.getM_name() + " 님 반갑습니다.");
-
+            nickname.setText(loginDTO.getM_name());
+            email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
             myPic.setImageResource(0);
             Log.d("nav_drawer", "m_pic: " + loginDTO.getM_pic());
@@ -431,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }else if(loginDTO != null){
                         //로그인시 커뮤니티 넘어감(없음)
-                        Intent intent = new Intent(getApplicationContext(),Community.class);
+                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
                         startActivity(intent);
                     }
                 }else if( i == 3) {
@@ -485,7 +456,7 @@ public class MainActivity extends AppCompatActivity {
     //옵션바
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.board_list1_action, menu);
+        /*getMenuInflater().inflate(R.menu.board_list1_action, menu);
 
         searchbar = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) searchbar.getActionView();
@@ -522,7 +493,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 return true;
             }
-        });
+        });*/
         return true;
     }
 
