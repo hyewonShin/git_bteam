@@ -16,19 +16,17 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EC02B30C"
+        android:background="@color/colorWhite"
         android:elevation="1dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:theme="@style/AppTheme">
 
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PetBody"
-            android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"/>
+            android:textSize="24sp"
+            android:textColor="@color/colorBlack"/>
 
     </androidx.appcompat.widget.Toolbar>
 

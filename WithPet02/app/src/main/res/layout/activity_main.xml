@@ -39,12 +39,14 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <ViewFlipper
+            <!--상단 ViewFlipper-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/v_flipper"
-                android:layout_marginBottom="20dp"/>
+                android:layout_height="wrap_content">
+                <include layout="@layout/layout_main_view_flipper"/>
+            </LinearLayout>
 
+            <!--내 동물정보-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -59,6 +61,7 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!--메인 아이콘-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

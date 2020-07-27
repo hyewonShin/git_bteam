@@ -39,7 +39,6 @@
         <activity android:name=".MainView.ad.MainAd1" />
         <activity android:name=".view.mypetinfo.MyPetInfo" />
         <activity android:name=".view.customerc_service.SiteCsActivity" />
-        <activity android:name=".view.site.SitePetCharActivity" />
         <activity android:name=".view.MyPet.MypetHospital" />
         <activity android:name=".view.MyPet.MyPetCheckList" />
         <activity android:name=".view.mypage.MyPageInfoActivity" />

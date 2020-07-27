@@ -239,7 +239,7 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             if(myPetList.get(position).getP_a_animal() != null){
                 animal += "-" + myPetList.get(position).getP_a_animal();
             }
-            myPetAni.setText(myPetList.get(position).getP_animal());
+            myPetAni.setText(animal);
 
             //동물 정보 수정화면 버튼
             LinearLayout btnPetMod = view.findViewById(R.id.btnPetMod);
