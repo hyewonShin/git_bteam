@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
+        android:background="@color/colorWhite"
         android:elevation="1dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="내 정보 수정하기"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="30dp"
-            android:textColor="#ffffff"/>
+            android:textSize="24sp"
+            android:textColor="#000000"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -52,159 +52,171 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="5dp">
+        android:background="#F3F3F3"
+        android:paddingVertical="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:paddingRight="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:src="@drawable/icon_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                />
-            <EditText
-                android:id="@+id/etName"
-                android:layout_width="250dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/noun_namecard_2400179"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    />
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="닉네임"
+                    android:text="닉네임"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nanumbarungothic"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/joinTvNameChk"
+                android:layout_width="320dp"
+                android:layout_height="16dp"
+                android:gravity="right"
+                android:textColor="#FF0000"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/noun_email_2801978"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="15dp"
+                    />
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="이메일"
+                    android:text="user@mail.com"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nanumbarungothic"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/joinTvEmailChk"
+                android:layout_width="320dp"
+                android:layout_height="16dp"
+                android:gravity="right"
+                android:textColor="#FF0000"/>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="닉네임"
-                android:text="닉네임"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanumbarungothic"
-                />
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/noun_password"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    />
+                <EditText
+                    android:id="@+id/etCurPw"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="현재 비밀번호"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCurPw"
+                android:layout_width="320dp"
+                android:layout_height="16dp"
+                android:gravity="right"
+                android:textColor="#FF0000"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/noun_password_change"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    />
+                <EditText
+                    android:id="@+id/etPw"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="변경할 비밀번호"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/joinTvPwChk"
+                android:layout_width="320dp"
+                android:layout_height="16dp"
+                android:gravity="right"
+                android:textColor="#FF0000"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/noun_password_change_chk"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    />
+                <EditText
+                    android:id="@+id/etPwChk"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="변경할 비밀번호 확인"
+                    android:textSize="18dp"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:inputType="textPassword"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/joinTvPwCChk"
+                android:layout_width="320dp"
+                android:layout_height="15dp"
+                android:gravity="right"
+                android:textColor="#FF0000"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/joinTvNameChk"
-            android:layout_width="320dp"
-            android:layout_height="16dp"
-            android:gravity="right"
-            android:textColor="#FF0000"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                />
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="이메일"
-                android:text="user@mail.com"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanumbarungothic"
-                />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/joinTvEmailChk"
-            android:layout_width="320dp"
-            android:layout_height="16dp"
-            android:gravity="right"
-            android:textColor="#FF0000"/>
-
-        <LinearLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                />
-            <EditText
-                android:id="@+id/etCurPw"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="현재 비밀번호"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanumbarungothic"
-                android:inputType="textPassword"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvCurPw"
-            android:layout_width="320dp"
-            android:layout_height="16dp"
-            android:gravity="right"
-            android:textColor="#FF0000"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                />
-            <EditText
-                android:id="@+id/etPw"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="변경할 비밀번호"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanumbarungothic"
-                android:inputType="textPassword"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/joinTvPwChk"
-            android:layout_width="320dp"
-            android:layout_height="16dp"
-            android:gravity="right"
-            android:textColor="#FF0000"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_content"
-                android:paddingTop="15dp"
-                android:paddingBottom="10dp"
-                />
-            <EditText
-                android:id="@+id/etPwChk"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="변경할 비밀번호 확인"
-                android:textSize="18dp"
-                android:textColor="#000000"
-                android:fontFamily="@font/nanumbarungothic"
-                android:inputType="textPassword"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/joinTvPwCChk"
-            android:layout_width="320dp"
-            android:layout_height="15dp"
-            android:gravity="right"
-            android:textColor="#FF0000"/>
     </LinearLayout>
+
+
 </LinearLayout>

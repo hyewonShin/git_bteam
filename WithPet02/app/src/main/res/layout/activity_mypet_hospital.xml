@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="100">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#32701E"
+        android:background="@color/colorWhite"
         android:elevation="1dp"
         android:gravity="center"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:theme="@style/AppTheme">
 
         <TextView
             android:id="@+id/titleText"
@@ -20,22 +21,26 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="가까운 동물병원 찾기"
-            android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textColor="#ffffff"
-            android:textSize="30dp" />
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="305dp" />
+        android:layout_height="0dp"
+        android:layout_weight="90"/>
 
     <Button
         android:id="@+id/nowLocation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="내위치 찾기" />
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="내위치 찾기"
+        android:background="#717171"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp"/>
 
 
 </LinearLayout>

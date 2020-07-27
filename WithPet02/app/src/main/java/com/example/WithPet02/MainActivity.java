@@ -7,8 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,11 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -29,6 +25,7 @@ import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.WithPet02.CheckDangerousPermissions.Internet;
+import com.example.WithPet02.MainView.MainFlipper;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
 import com.example.WithPet02.view.MyPet.PetBody;
@@ -49,18 +46,17 @@ import java.util.ArrayList;
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private static final String TAG = "mainActivity";
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-    private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community;
+    private LinearLayout pet_Characteristic, fitness, check_list, hospital, qna, main_community, logincheck;
     private ImageView hamburger;
     private MenuItem searchbar;
     private Toolbar toolbar;
     ListView listView;
-    LinearLayout myPetPager;
-    Button logincheck;
+    LinearLayout myPetPager, login, logout;
     TextView nickname, email;
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -107,50 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         //메인 ad(광고) 슬라이드
-        final int images[] = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3, R.drawable.slider4, R.drawable.slider5};
-
         v_flipper = findViewById(R.id.v_flipper);
-
-        for(int image: images){
-            flipperImages(image);
-        }
-        v_flipper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int position = v_flipper.getDisplayedChild();
-
-                Intent intent;
-                switch (position){
-                    case 0 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.google.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 1 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.naver.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 2 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.facebook.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 3 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.daum.net"));
-                        startActivity(intent);
-                        break;
-
-                    case 4 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.apple.com"));
-                        startActivity(intent);
-                        break;
-                }
-            }
-        });
-
-
+        MainFlipper mainFlipper = new MainFlipper(context, v_flipper);
+        mainFlipper.setFlipper();
 
 
         //메인 햄버거버튼
@@ -224,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //매인 아이콘 내 전문가 QnA
+        /*//매인 아이콘 내 전문가 QnA
         qna = findViewById(R.id.qna);
         qna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
         //메인 아이콘 내 커뮤니티
         /*main_community = findViewById(R.id.main_community);
         main_community.setOnClickListener(new View.OnClickListener() {
@@ -270,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
 
 /*----------------------------------------------------------------------------------------------------------------*/
 
+        login = findViewById(R.id.login);
+        logout = findViewById(R.id.logout);
 
         nickname = findViewById(R.id.nickname);
         email = findViewById(R.id.email);
@@ -278,6 +235,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(loginDTO == null){  //로그아웃 상태
             myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
+            login.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
 
             //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
             logincheck.setOnClickListener(new View.OnClickListener() {
@@ -288,7 +247,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }else{  //로그인 되었을 때
-            logincheck.setText("logout");
+            login.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
             nickname.setText(loginDTO.getM_name());
             email.setText(loginDTO.getM_email());
             //이미지 서버에서 가져오기
@@ -306,14 +266,7 @@ public class MainActivity extends AppCompatActivity {
             logincheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //자동로그인 파일 내용 삭제
-                    SharedPreferences sf = getSharedPreferences("WithPetM", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sf.edit();
-                    editor.clear();
-                    editor.commit();
-
-                    loginDTO = null;
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MyPageInfoActivity.class);
                     startActivity(intent);
                 }
             });
@@ -395,17 +348,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else if(i == 2) {
-                    //list내 커뮤니티
-                    if(loginDTO == null) {
-                        //비로그인시
-                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                        startActivity(intent);
-                    }else if(loginDTO != null){
-                        //로그인시 커뮤니티 넘어감(없음)
-                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
-                        startActivity(intent);
-                    }
-                }else if( i == 3) {
                     //고객센터
                     if(loginDTO == null) {
                         //비로그인시
@@ -416,14 +358,25 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(),SiteCsActivity.class);
                         startActivity(intent);
                     }
+                }else if( i == 3) {
+                    //list내 커뮤니티
+                    if(loginDTO == null) {
+                        //비로그인시
+                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(intent);
+                    }else if(loginDTO != null){
+                        //로그인시 커뮤니티 넘어감(없음)
+                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
 
         list.add("반려 동물 특징");
         list.add("내 동물 정보");
-        list.add("커뮤니티");
         list.add("고객센터");
+        //list.add("커뮤니티");
         adapter.notifyDataSetChanged();
 
 
@@ -462,12 +415,6 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) searchbar.getActionView();
         searchView.setSubmitButtonEnabled(true);
 
-
-
-
-
-
-
         searchbar.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
@@ -497,27 +444,56 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //메인 광고판
-    public void flipperImages(int image){
-        ImageView imageView = new ImageView(this);
-        imageView.setBackgroundResource(image);
-
-        v_flipper.addView(imageView);
-        v_flipper.setFlipInterval(4000);    //4sec
-        v_flipper.setAutoStart(true);
-
-        //animation
-        v_flipper.setInAnimation(this, android.R.anim.slide_in_left);
-        v_flipper.setOutAnimation(this, android.R.anim.slide_out_right);
-    }
-
     @Override
     protected void onResume() {
-        if(loginDTO == null){
-            Glide.with(this).load(filePath + "defalt.jpg").into(myPic);
-            logincheck.setText("Login");
-            nickname.setText("로그인하세요");
+        //로그인 정보 갱신
+        if(loginDTO == null){  //로그아웃 상태
+            login.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
+            myPic.setImageResource(R.drawable.defalt);  //로그아웃 이미지
+            nickname.setText("로그인해주세요");
+            email.setText("");
+
+            //logincheck 버튼 눌렀을 때 로그인화면으로 넘어감
+            logincheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }else{  //로그인 되었을 때
+            login.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
+            nickname.setText(loginDTO.getM_name());
+            email.setText(loginDTO.getM_email());
+            //이미지 서버에서 가져오기
+            myPic.setImageResource(0);
+            Log.d("nav_drawer", "m_pic: " + loginDTO.getM_pic());
+            if(loginDTO.getM_pic() == null){    //사용자 프로필사진 등록 여부 확인
+                //프로필 사진없음
+                Glide.with(this).load(filePath + "defalt.jpg").into(myPic);
+            } else {
+                //프로필 사진 있음
+                Glide.with(this).load(filePath + loginDTO.getM_pic()).signature(new ObjectKey(System.currentTimeMillis())).into(myPic);
+            }
+
+            //logincheck 버튼
+            logincheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MyPageInfoActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
+
+        //내 동물정보 갱신
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.layout_main_login, myPetPager, true);
+
+        MainLogIn mainLogIn = new MainLogIn(context, myPetPager);
+        mainLogIn.setMyPetPager();
         super.onResume();
     }
 
@@ -537,6 +513,7 @@ public class MainActivity extends AppCompatActivity {
             toast.cancel();
         }
     }
+
 
 
 }
