@@ -10,12 +10,11 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 </head>
 <body>
-<div><tiles:insertAttribute name="header" /></div>
-<div>
-	<div style="width: 20%"><tiles:insertAttribute name="left" /></div>
-	<div style="width: 80%"><tiles:insertAttribute name="content" /></div>
+<tiles:insertAttribute name="header" />
+<div id="content">
+<tiles:insertAttribute name="content" />
 </div>
-<div><tiles:insertAttribute name="footer" /></div>
+<tiles:insertAttribute name="footer" />
 </body>
 
 </html>

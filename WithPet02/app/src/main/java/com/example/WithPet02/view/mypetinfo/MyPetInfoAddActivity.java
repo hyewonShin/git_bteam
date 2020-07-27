@@ -94,7 +94,7 @@ public class MyPetInfoAddActivity extends AppCompatActivity {
         btnBirth = findViewById(R.id.btnBirth);
         etBirth = findViewById(R.id.etBirth);
         etAnimal1 = findViewById(R.id.etAnimal1);
-        etAnimal2 = findViewById(R.id.etAnimal2);
+        //etAnimal2 = findViewById(R.id.etAnimal2);
 
         //성별설정
         genMale.setOnClickListener(new View.OnClickListener() {
@@ -235,16 +235,18 @@ public class MyPetInfoAddActivity extends AppCompatActivity {
                 //입력정보 가져오기
                 p_name = name.getText().toString().trim();
                 p_animal = etAnimal1.getText().toString().trim();
-                p_a_animal = etAnimal2.getText().toString().trim();
+                p_a_animal = null;
+                //p_a_animal = etAnimal2.getText().toString().trim();
                 p_birth = etBirth.getText().toString().trim();
 
                 if(p_name.equals("")){
                     Toast.makeText(context, "이름을 입력해주세요!", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-
-                Log.d("myPicUpdate", "imageDbPath: " + imageDbPath);
-                Log.d("myPicUpdate", "imageRealPath: " + imageRealPath);
+                if(p_animal.equals("")){
+                    Toast.makeText(context, "동물 종류를 입력해주세요!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
 
                 //업데이트 처리
                 MyPetInsert myPetInsert = new MyPetInsert(p_tel, p_name, p_animal, p_a_animal, p_birth, p_gender, imageDbPath, imageRealPath);

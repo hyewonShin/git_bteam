@@ -86,19 +86,20 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             e.printStackTrace();
         }
 
+        //뷰페이저
+        pager = findViewById(R.id.viewpager);
+        pager.setOffscreenPageLimit(3);
+        pager.setClipToPadding(false);
+        int dpValue = 15;
+        float d = getResources().getDisplayMetrics().density;
+        int margin = (int) (dpValue * d);
+        pager.setPadding(margin + 30,40, margin + 30, 0);
+        pager.setPageMargin(40);
+
         if(myPetList != null) {
             hasPet.setVisibility(View.VISIBLE);
             noPet.setVisibility(View.GONE);
             cur = myPetList.get(0).getP_num();
-            //뷰페이저
-            pager = findViewById(R.id.viewpager);
-            pager.setOffscreenPageLimit(3);
-            pager.setClipToPadding(false);
-            int dpValue = 15;
-            float d = getResources().getDisplayMetrics().density;
-            int margin = (int) (dpValue * d);
-            pager.setPadding(margin + 30,40, margin + 30, 0);
-            pager.setPageMargin(40);
 
             pager.setCurrentItem(pos);
 
@@ -239,7 +240,7 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             if(myPetList.get(position).getP_a_animal() != null){
                 animal += "-" + myPetList.get(position).getP_a_animal();
             }
-            myPetAni.setText(myPetList.get(position).getP_animal());
+            myPetAni.setText(animal);
 
             //동물 정보 수정화면 버튼
             LinearLayout btnPetMod = view.findViewById(R.id.btnPetMod);
@@ -342,6 +343,9 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         }
 
         if (myPetList != null){
+            hasPet.setVisibility(View.VISIBLE);
+            noPet.setVisibility(View.GONE);
+
             //뷰페이저
             MyPagerAdapter adapter = new MyPagerAdapter(this);
             pager.setAdapter(adapter);
@@ -364,6 +368,9 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             gridLayoutManager = new GridLayoutManager(context, 3);
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(gridAdapter);
+        } else {
+            hasPet.setVisibility(View.GONE);
+            noPet.setVisibility(View.VISIBLE);
         }
     }
 
@@ -381,6 +388,9 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
         }
 
         if (myPetList != null){
+            hasPet.setVisibility(View.VISIBLE);
+            noPet.setVisibility(View.GONE);
+
             //뷰페이저
             MyPagerAdapter adapter = new MyPagerAdapter(this);
             pager.setAdapter(adapter);
@@ -403,7 +413,11 @@ public class MyPetInfo extends AppCompatActivity implements GridRecyclerViewAdap
             gridLayoutManager = new GridLayoutManager(context, 3);
             recyclerView.setLayoutManager(gridLayoutManager);
             recyclerView.setAdapter(gridAdapter);
+        } else {
+            hasPet.setVisibility(View.GONE);
+            noPet.setVisibility(View.VISIBLE);
         }
+
     }
 
     @Override

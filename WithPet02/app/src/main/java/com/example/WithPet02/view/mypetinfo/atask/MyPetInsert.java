@@ -24,7 +24,7 @@ import static com.example.WithPet02.common.CommonMethod.ipConfig;
 public class MyPetInsert extends AsyncTask<Void, Void, String> {
 
     String p_tel, p_name, p_animal, p_a_animal, p_birth, p_gender;
-    String imageDbPath, imageRealPath;
+    String imageDbPath = null, imageRealPath = null;
     String result;
 
     public MyPetInsert(String p_tel, String p_name, String p_animal, String p_a_animal, String p_birth, String p_gender, String imageDbPath, String imageRealPath) {
@@ -53,10 +53,13 @@ public class MyPetInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("p_tel", p_tel, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_name", p_name, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_animal", p_animal, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
+            //builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_birth", p_birth, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_gender", p_gender, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
+
+            if(imageDbPath != null) {
+                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
+            }
 
             if(imageRealPath != null){
                 builder.addPart("image", new FileBody(new File(imageRealPath)));

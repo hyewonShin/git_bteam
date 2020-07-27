@@ -12,7 +12,7 @@ select * from member where (m_email = #{m_email} OR m_tel = #{m_email}) AND m_pw
 </select>
 
 <select id="join_select" resultType="Integer">
-select count(*) cnt from member where ${type} = #{check}
+select count(*) cnt from member where #{type} = #{check}
 </select>
 
 <select id="snsLogin" resultType="member.MemberVO">

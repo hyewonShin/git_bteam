@@ -98,7 +98,7 @@
         android:layout_marginTop="40dp"
         android:text="회원가입"
         android:textSize="24sp"
-        android:background="@color/colorMain"
+        android:background="@color/colorAccent"
         android:textColor="@color/colorWhite"
         android:elevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"

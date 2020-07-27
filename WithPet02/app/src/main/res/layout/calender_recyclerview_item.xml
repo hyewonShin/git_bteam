@@ -6,33 +6,33 @@
     android:orientation="vertical">
 
 
-        <LinearLayout
-            android:id="@+id/recyclerView_parentLayout"
+    <LinearLayout
+        android:id="@+id/recyclerView_parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/redline"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/recyclerView_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            
-            <ImageView
-                android:layout_width="6dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/redline"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+            android:padding="10dp"/>
 
-            <TextView
-                android:id="@+id/recyclerView_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"/>
+        <Button
+            android:id="@+id/recyclerView_garbage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/garbage"
+            android:layout_marginLeft="-50dp"/>
 
-            <Button
-                android:id="@+id/recyclerView_garbage"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/garbage"
-                android:layout_marginLeft="-50dp"/>
-
-        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
