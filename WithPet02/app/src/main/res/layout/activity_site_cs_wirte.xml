@@ -21,14 +21,13 @@
          umanoShadowHeight 는 슬라이딩 패널 윗부분에 그림자 효과
          umanoOverlay 를 false로 해주면 슬라이딩 패널이 위로 보이고 뒷 부분은 반투명하게 보인다. -->
 
-    <!--로그인 한 사람 정보 나오는 곳 시작-->
     <LinearLayout
         android:id="@+id/wrap_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff">
-
+        <!--간단 정보-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -46,9 +45,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="7.5"
-                android:weightSum="2"
-                android:layout_marginBottom="2dp">
-
+                android:weightSum="2">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -58,7 +55,6 @@
                     android:textColor="#000000"
                     android:orientation="horizontal"
                     android:weightSum="5">
-
                     <TextView
                         android:id="@+id/board_nickname"
                         android:layout_width="0dp"
@@ -68,7 +64,6 @@
                         android:gravity="center"
                         android:textSize="24sp"
                         android:textColor="#000000"/>
-
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -80,13 +75,16 @@
 
                 </LinearLayout>
 
+
+
+
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:gravity="center">
 
-                    <!--<LinearLayout
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -97,7 +95,11 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/spinner_spinner1"/>
 
-                    </LinearLayout>-->
+                        <!--<androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/board_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>-->
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/board_album"
@@ -105,42 +107,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@drawable/smallbuttondesign"
-                        android:text="사 진 찍 기"/>
-
+                        android:text="사 진 찍 기"
+                        />
                 </LinearLayout>
-
             </LinearLayout>
 
         </LinearLayout>
-        <!--로그인 한 사람 정보 나오는 곳 끝-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#000000"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/camera_picture"
-                android:layout_width="150pt"
-                android:layout_height="250dp"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/image_cancel"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="-30dp"
-                android:background="@drawable/red_x"/>
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
         </LinearLayout>
+        <!--간단 정보끝-->
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -213,58 +200,13 @@
             android:id="@+id/menu_View"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:orientation="vertical"
-            android:weightSum="5">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <Button
                 android:id="@+id/camera"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/camera"
-                    android:layout_weight="2"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="카메라"
-                    android:textColor="#000000"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="20sp"
-                    android:layout_weight="8"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/album"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/album"
-                    android:layout_weight="2"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="사진앨범"
-                    android:textSize="20sp"
-                    android:textColor="#000000"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="8"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="@drawable/camera"/>
 
         </LinearLayout>
 
