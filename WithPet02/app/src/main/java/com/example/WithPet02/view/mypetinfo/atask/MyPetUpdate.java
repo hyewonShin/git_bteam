@@ -54,10 +54,13 @@ public class MyPetUpdate extends AsyncTask<Void, Void, String> {
             builder.addTextBody("p_num", String.valueOf(p_num), ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_name", p_name, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_animal", p_animal, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
+            //builder.addTextBody("p_a_animal", p_a_animal, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_birth", p_birth, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("p_gender", p_gender, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
+
+            if(imageDbPath != null) {
+                builder.addTextBody("imageDbPath", imageDbPath, ContentType.create("Multipart/related", "UTF-8"));
+            }
 
             if(imageRealPath != null){
                 builder.addPart("image", new FileBody(new File(imageRealPath)));

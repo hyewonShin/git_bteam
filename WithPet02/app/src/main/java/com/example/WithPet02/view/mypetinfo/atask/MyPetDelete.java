@@ -22,7 +22,7 @@ import static com.example.WithPet02.common.CommonMethod.ipConfig;
 public class MyPetDelete extends AsyncTask<Void, Void, String> {
 
     int p_num;
-    String p_pic;
+    String p_pic = null;
     String result;
 
     public MyPetDelete(int p_num, String p_pic) {
@@ -43,7 +43,9 @@ public class MyPetDelete extends AsyncTask<Void, Void, String> {
             builder.setCharset(Charset.forName("UTF-8"));
 
             builder.addTextBody("p_num", String.valueOf(p_num), ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("p_pic", p_pic, ContentType.create("Multipart/related", "UTF-8"));
+            if(p_pic != null){
+                builder.addTextBody("p_pic", p_pic, ContentType.create("Multipart/related", "UTF-8"));
+            }
 
             String postURL = ipConfig + "/app/petDelete";
 
