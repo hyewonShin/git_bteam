@@ -2,6 +2,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="category">
+	<!-- 카테고리 siteinfo 누를시 -->
+	<c:if test="${category eq 'si'}">
+		<ul>
+			<li><a>사이트 소개 </a></li>
+			<li><a>사이트 연혁</a></li>
+			<li><a>오시는길(?)</a></li>
+		</ul>
+	</c:if>
 	
 	<!-- 카테고리 customer 누를시 -->
 	<c:if test="${login_info.id eq 'admmin' }">
