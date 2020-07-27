@@ -9,17 +9,18 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/colorBackground"
         android:elevation="1dp"
-        android:theme="@style/AppTheme">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="내 동물 등록"
-            android:textSize="24sp"
-            android:textColor="@color/colorBlack"/>
+            android:textAppearance="@style/Widget.AppCompat.Toolbar"
+            android:textSize="30dp"
+            android:textColor="#ffffff"/>
 
     </androidx.appcompat.widget.Toolbar>
 

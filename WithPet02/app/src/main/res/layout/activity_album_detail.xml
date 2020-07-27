@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/colorBackground"
         android:elevation="1dp"
         android:theme="@style/AppTheme">
 
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="앨범"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="24sp"
-            android:textColor="@color/colorBlack"/>
+            android:textSize="30dp"
+            android:textColor="#ffffff"/>
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:weightSum="100.2">
+    android:weightSum="100.3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +19,6 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="번호"
-            android:textSize="18sp"
-            android:textColor="@color/colorBlack"
             android:gravity="center"/>
 
         <TextView
@@ -29,8 +27,6 @@
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:text="제목"
-            android:textSize="18sp"
-            android:textColor="@color/colorBlack"
             android:gravity="center"/>
 
         <TextView
@@ -39,8 +35,6 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:text="작성일"
-            android:textSize="18sp"
-            android:textColor="@color/colorBlack"
             android:gravity="center"/>
 
     </LinearLayout>
@@ -48,8 +42,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:src="#000000"/>
+        android:layout_weight="0.3"
+        android:src="#aaaaaa"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cs2_recyclerview"
@@ -64,8 +58,7 @@
         android:id="@+id/QnAbutton"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorMain"
-        android:textColor="@color/colorWhite"
+        android:background="@color/colorBackground"
         android:text="1:1 문의하기"
         android:textSize="24sp"
         android:layout_margin="10dp"

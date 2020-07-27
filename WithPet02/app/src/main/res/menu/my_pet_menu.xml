@@ -5,6 +5,6 @@
     <item
         android:id="@+id/btnPetInsert"
         android:title="추가"
-        android:icon="@drawable/ic_queue_black_24dp"
+        android:icon="@drawable/ic_queue_white_24dp"
         app:showAsAction="always"/>
 </menu>

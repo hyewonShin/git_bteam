@@ -9,9 +9,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/colorBackground"
         android:elevation="1dp"
-        android:theme="@style/AppTheme">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <TextView
             android:id="@+id/titleText"
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="내 동물 정보 수정"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="24sp"
-            android:textColor="#000000"/>
+            android:textSize="30dp"
+            android:textColor="#ffffff"/>
 
     </androidx.appcompat.widget.Toolbar>
 

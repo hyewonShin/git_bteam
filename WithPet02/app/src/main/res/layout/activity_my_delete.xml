@@ -10,9 +10,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@color/colorBackground"
         android:elevation="1dp"
-        android:theme="@style/AppTheme"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,8 +23,8 @@
             android:layout_height="wrap_content"
             android:text="회원 탈퇴"
             android:textAppearance="@style/Widget.AppCompat.Toolbar"
-            android:textSize="24sp"
-            android:textColor="#000000"/>
+            android:textColor="#ffffff"
+            android:textSize="30dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -35,7 +35,6 @@
         android:layout_marginTop="112dp"
         android:gravity="center"
         android:text="정말로 탈퇴 하시겠습니까?\n모든 회원정보가 삭제됩니다.\n동의하신다면 닉네임을 입력해주세요."
-        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -66,7 +65,7 @@
         android:textColor="#FFFFFF"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myDelChkEt" />
 
@@ -77,9 +76,8 @@
         android:layout_marginTop="16dp"
         android:text="취소"
         android:textSize="24dp"
-        android:background="@color/colorBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myDelChkBtn" />
 

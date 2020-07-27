@@ -64,7 +64,7 @@ public class DiagnosisDialog {
 
     // 호출할 다이얼로그 함수를 정의한다.
     public void callFunction(final int year, final int month, final int date, final CalendarAdapter mAdapter,
-                             final LayoutInflater inflaterContext, final View day_layouts, final View showText, ArrayList<DiagnosisDTO> diaList, final ArrayList<CalenderDTO> calList) {
+                             final LayoutInflater inflaterContext, final View day_layouts, final View showText, final ArrayList<DiagnosisDTO> diaList, final ArrayList<CalenderDTO> calList) {
         adapter = mAdapter;
 
         int diaNoYear = 0;
@@ -104,9 +104,10 @@ public class DiagnosisDialog {
         //검진기록 있으면 띄워주기
         for(int i = 0; i<diaList.size(); i++) { //검진기록 DB에서 가져온 값에서 년월일 뽑기
             String[] getDate = diaList.get(i).getD_date().split("-");
+            String[] cutingGetDay = getDate[2].split(" ");
             diaNoYear = Integer.parseInt(getDate[0]);
             diaNoMonth = Integer.parseInt(getDate[1]);
-            diaNoDate = Integer.parseInt(getDate[2]);
+            diaNoDate = Integer.parseInt(cutingGetDay[0]);
 
             //눌러준 달력의 년달일이 검진기록에서 가져온 년달일과 맞으면 검진기록이라는 버튼이 보이게 하기
             if(year == diaNoYear && month == diaNoMonth) {
@@ -121,6 +122,21 @@ public class DiagnosisDialog {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DiagnosisHistory.class);
+                //검진기록 있으면 띄워주기
+                for(int i = 0; i < diaList.size(); i++) { //검진기록 DB에서 가져온 값에서 년월일 뽑기
+                    String[] getDate = diaList.get(i).getD_date().split("-");
+                    String[] cutingGetDay = getDate[2].split(" ");
+                    int diaYear = Integer.parseInt(getDate[0]);
+                    int diaMonth = Integer.parseInt(getDate[1]);
+                    int diaDate = Integer.parseInt(cutingGetDay[0]);
+
+                    //눌러준 달력의 년달일이 검진기록에서 가져온 년달일과 맞으면 검진기록이라는 버튼이 보이게 하기
+                    if(year == diaYear && month == diaMonth) {
+                        if(date == diaDate){
+                            intent.putExtra("diagnosisList", diaList.get(i));
+                        }//if
+                    }//if
+                }//for
                 context.startActivity(intent);
             }//onClick()
         });//setOnClickListener()
@@ -157,12 +173,11 @@ public class DiagnosisDialog {
             }//onContent
         });//setContentListener
 
-
+        //ok버튼 눌렀을 때
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(okButton.getText().toString() == updateString) {
-                    Log.d(TAG, "toString: " + "update" + okButton.getText().toString());
                     CalenderUpdate calenderUpdate = new CalenderUpdate(calenderDialogDTO.getNum(), calenderDialogDTO.getYear(),
                             calenderDialogDTO.getMonth(), calenderDialogDTO.getDate(), message.getText().toString());
                     try {
@@ -171,17 +186,15 @@ public class DiagnosisDialog {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }
+                    }//try
 
                 }else if (okButton.getText().toString() == submitString) {
-                    Log.d(TAG, "toString: " + "submit" + okButton.getText().toString());
                     // 커스텀 다이얼로그에서 입력한 메시지를 대입한다.
                     content[0] = (message.getText().toString());
                     Toast.makeText(DiagnosisDialog.this.context, "\"" +  message.getText().toString() + "\" 을 입력하였습니다.", Toast.LENGTH_SHORT).show();
 
                     //DB에 입력값 넣어주기
                     DBSetText("1", year, month, date, message.getText().toString());
-
                 }//if
 
                 //커스텀 다이얼로그 종료 시 작동되는 listener

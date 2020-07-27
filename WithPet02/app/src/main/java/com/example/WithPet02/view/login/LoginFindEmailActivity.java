@@ -52,7 +52,7 @@ public class LoginFindEmailActivity extends AppCompatActivity {
 
         // TextView 에 m_email 출력
         loginFindEmailTv2 = findViewById(R.id.loginFindEmailTv2);
-        String msg = m_email;
+        String msg = "회원님의 이메일은" + m_email + "입니다.";
         loginFindEmailTv2.setText(msg);
 
         // 로그인 화면으로

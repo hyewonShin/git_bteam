@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:elevation="1dp"
-        android:theme="@style/AppTheme">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <TextView
             android:id="@+id/titleText"
@@ -185,7 +185,7 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/snsloginbtn_kakao_icon"
+                    android:src="@drawable/icon_content"
                     android:paddingTop="15dp"
                     android:paddingBottom="10dp" />
 
@@ -211,7 +211,7 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/snsloginbtn_naver_icon"
+                    android:src="@drawable/icon_content"
                     android:paddingTop="15dp"
                     android:paddingBottom="10dp"
                     />
@@ -243,7 +243,8 @@
                     android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:src="@drawable/noun_signout_1583989"
-                    android:paddingVertical="16dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:paddingRight="5dp"
                     />
                 <TextView
@@ -267,9 +268,9 @@
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/noun_signout_red"
-                    android:paddingVertical="16dp"
-                    android:paddingRight="5dp"
+                    android:src="@drawable/icon_content"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     />
                 <TextView
                     android:layout_width="340dp"

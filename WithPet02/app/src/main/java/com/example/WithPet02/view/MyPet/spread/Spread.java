@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,10 +60,11 @@ public class Spread extends AppCompatActivity {
         for (int i = 0; i < list.size(); i++){
             String date = list.get(i).getD_date();
             String[] cutDate = date.split("-");
+            String[] cutingDay = cutDate[2].split(" ");
 
             dyear = Integer.parseInt(cutDate[0]);
             dmonth = Integer.parseInt(cutDate[1]);
-            ddate = Integer.parseInt(cutDate[2]);
+            ddate = Integer.parseInt(cutingDay[0]);
 
             if(Syear == dyear && Smonth == dmonth) {
                 if(Sdate == (ddate)) {
@@ -87,7 +89,14 @@ public class Spread extends AppCompatActivity {
                             LinearLayout.LayoutParams.WRAP_CONTENT,1f);
                     TextView viewText = new TextView(frgContext);
                     Log.d(TAG, "medical_examination: " + calContent);
-                    viewText.setText(calContent.substring(0,3) + "...");
+                    //Content길이에 따라 값 정해주기
+                    if( calContent.length() >= 3 ) {
+                        viewText.setText("ㆍ" + calContent.substring(0,3) + "...");
+                    } else if ( calContent.length() < 3 ) {
+                        viewText.setText("ㆍ" + calContent);
+                    } else if( calContent == null ) {
+                        viewText.setText("ㆍ");
+                    }//if
                     Log.d(TAG, "calListCheck: " + calList.get(j).getContent());
                     viewText.setLayoutParams(layoutParams);
                     layout.addView(viewText);
