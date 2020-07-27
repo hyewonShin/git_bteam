@@ -26,6 +26,7 @@ header ul li input {display: block;}
 		<li><a href="list.co" ${category eq 'my' ? 'class="active"' : ''}>내 동물정보</a></li><!-- 로그인시  -->
 		<li><a href="list.co" ${category eq 'co' ? 'class="active"' : ''}>자유게시판</a></li>
 		<li><a href="list.qa" ${category eq 'qa' ? 'class="active"' : ''}>QnA</a></li>
+		<li><a href="list.co" ${category eq 'pa' ? 'class="active"' : ''}>마이페이지</a></li>
 	</ul>
 	</div>
 	
