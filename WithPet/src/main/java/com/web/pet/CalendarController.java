@@ -21,14 +21,15 @@ public class CalendarController {
 		
 		//캘린더 계산 해주는 객체 생성
 		GregorianCalendar cal = new GregorianCalendar();
+		//CalendarVO객체 선언
 		CalendarVO calendarVO;
 		
 		//검색 날짜
-		if(vo.getDay().equals(null) && vo.getMonth().equals(null)) {
+		if(vo.getDay().equals("") && vo.getMonth().equals("") ) {
 			//vo에 들어간 Day, Month가 없으면 보여줄 달력 페이지의 년월일을 vo에 넣어주기
-			calendarVO = new CalendarVO(String.valueOf(cal.get(Calendar.YEAR))
-					, String.valueOf(cal.get(Calendar.MONTH)) + 1
-					, String.valueOf(cal.get(Calendar.DAY_OF_MONTH))
+			vo = new CalendarVO(String.valueOf(cal.get(Calendar.YEAR))
+					, String.valueOf(cal.get(Calendar.MONTH) + 1) 
+					, String.valueOf(cal.get(Calendar.DATE))
 					, null);
 		}//if
 		
@@ -53,8 +54,9 @@ public class CalendarController {
 						, String.valueOf(vo.getMonth()), String.valueOf(i), "today");
 			}else {
 				calendarVO = new CalendarVO(String.valueOf(vo.getYear())
-						, String.valueOf(vo.getMonth()), String.valueOf(i), "normal_date");
+						, String.valueOf(vo.getMonth()), String.valueOf(i), "normal_day");
 			}//if		
+			dateList.add(calendarVO);
 		}//for
 		
 		//③남은 달력 빈곳 빈 데이터로 삽입
@@ -71,7 +73,7 @@ public class CalendarController {
 		model.addAttribute("dateList", dateList); // 날짜 데이터 배열
 		model.addAttribute("today_info", today_info);	//오늘 날짜에 대한 정보
 		
-		return "views/calendar";
+		return "calendar";
 		
 	}//calendar
 	
