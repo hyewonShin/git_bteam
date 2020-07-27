@@ -11,9 +11,9 @@
 </head>
 <body>
 <div><tiles:insertAttribute name="header" /></div>
-<div>
-	<div style="width: 20%"><tiles:insertAttribute name="left" /></div>
-	<div style="width: 80%"><tiles:insertAttribute name="content" /></div>
+<div style="overflow: hidden;">
+	<div style="width: 20%; float: left;"><tiles:insertAttribute name="left" /></div>
+	<div style="width: 60%; float: left;"><tiles:insertAttribute name="content" /></div>
 </div>
 <div><tiles:insertAttribute name="footer" /></div>
 </body>
