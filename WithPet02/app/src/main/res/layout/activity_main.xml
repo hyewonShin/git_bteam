@@ -33,7 +33,7 @@
                     android:id="@+id/pet_title"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:padding="5dp"
+                    android:paddingVertical="6dp"
                     android:layout_gravity="center"
                     android:src="@drawable/withpetimg"/>
 
@@ -48,10 +48,17 @@
 
             <!--내 동물정보-->
             <LinearLayout
-                android:id="@+id/myPetPager"
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:orientation="vertical">
+                android:layout_height="200dp"
+                android:background="#434343">
+                <LinearLayout
+                    android:id="@+id/myPetPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+                </LinearLayout>
             </LinearLayout>
 
             <!--메인 아이콘-->

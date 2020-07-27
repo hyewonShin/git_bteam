@@ -21,8 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MyPet.DiagnosisHistory"></activity>
-        <activity android:name=".view.community.CommunityBoardUpdate" />
+        <activity android:name=".view.community.CommunityBoardUpdate"/>
         <activity android:name=".view.community.CommunityBoardDetail" />
         <activity android:name=".view.MyPet.PetBody" />
         <activity
@@ -46,7 +45,6 @@
         <activity android:name=".view.mypage.MyUpdateActivity" />
         <activity android:name=".view.mypage.MyDeleteActivity" />
         <activity android:name=".view.site.SiteInfoActivity" />
-        <activity android:name=".view.login.LoginFindResultActivity" />
         <activity android:name=".view.login.LoginFindPwActivity" />
         <activity android:name=".view.login.LoginFindEmailActivity" />
         <activity android:name=".view.join.JoinTelActivity" />

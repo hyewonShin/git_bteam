@@ -9,6 +9,7 @@
 
     <!--로그인 화면-->
     <LinearLayout
+        android:id="@+id/logincheck"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#ffffff"
@@ -25,28 +26,36 @@
             android:contentDescription="Navigation header"
             android:src="@drawable/defalt" />
 
+
         <LinearLayout
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="로그인 하세요"
+                android:textSize="18sp"
+                android:textColor="#000000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:visibility="visible">
 
-            <Button
-                android:id="@+id/logincheck"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:text="logIn"
-                android:textSize="18sp"
-                android:background="@drawable/circle"
-                android:visibility="gone"/>
             <TextView
                 android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="로그인 하세요"
+                android:text="닉네임닉네임"
                 android:textSize="18sp"
                 android:textColor="#000000"/>
 
@@ -57,8 +66,6 @@
                 android:text="test@google.com"
                 android:textColor="@color/colorMain"
                 android:textSize="14sp"/>
-
-
         </LinearLayout>
     </LinearLayout>
 
@@ -185,7 +192,6 @@
         android:id="@+id/drawerlistView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:listSelector="@color/colorBackground"
         android:divider="#000000"
         android:dividerHeight="1dp">
     </ListView>

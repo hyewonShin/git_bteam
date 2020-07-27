@@ -1,8 +1,6 @@
 package com.example.WithPet02.dto;
 
-import java.io.Serializable;
-
-public class DiagnosisDTO implements Serializable {
+public class DiagnosisDTO {
     private int d_num;
     private int d_pet;
     private String d_title;
