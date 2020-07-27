@@ -53,11 +53,11 @@
 
 	<!-- 카테고리 QnA누를시 -->
 	<c:if test="${category eq 'qa'}">
-		<div class="title">
+		<div class="title" >
 			<ul>
 				<li>Q&nbsp;n&nbsp;A</li>
-				<li><a>전문가 QnA</a></li>
-				<li><a>사이트 문의</a></li>
+				<li><a href="list.qa" >사이트 문의</a></li>
+				<li><a href="faq.qa" >전문가 QnA</a></li>
 			</ul>
 		</div>
 	</c:if>
@@ -76,7 +76,7 @@
 	
 	<!-- 카테고리 mypet 누를시 -->
 	<c:if test="${category eq 'my'}">
-		<div class="title">
+		<div class="title" >
 			<ul>
 				<li>내동물정보</li>
 				<li><a>내 동물정보 </a></li>
@@ -109,6 +109,15 @@
 		margin: 0 auto;
 		line-height: 50px;
 	}
-	.title ul li a.active {font-weight: bold; color: #FF7171;}
-
+	/* .title ul li a{font-weight: bold; color: white; background-color:#ffa241; } */
+	
 </style>
+
+<script>
+function clicked(){
+	$('.title ul li a').click(function(){
+		$(this).css('background-color',"#ffa241");
+		$(this).css('color',"white");
+	});
+}
+</script>

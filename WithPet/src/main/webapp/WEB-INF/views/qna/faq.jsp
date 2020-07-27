@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>사이트 QnA</h3>
+<h3>전문가 qna</h3>
 <table>
 	<tr>
 		<th class="w-px60">번호</th>
@@ -16,13 +16,8 @@
 		<th class="w-px120">작성일</th>
 		<th class="w-px60">첨부파일</th>
 	</tr>
-	<tr>
-		<c:forEach>
-		
-		
-		</c:forEach>
-	</tr>
 
 </table>
+
 </body>
 </html>
