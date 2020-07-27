@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <!--헤더-->
     <LinearLayout
@@ -13,40 +14,33 @@
         android:orientation="horizontal"
         android:weightSum="10">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="검 진 일 정"
-            android:gravity="center"
-            android:textSize="35sp"
-            android:textColor="#ffffff"
-            android:layout_weight="6"/>
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:padding="16dp"
-            android:textSize="18sp"
-            android:visibility="gone"
-            android:textColor="#ffffff"/>
-
         <Button
             android:id="@+id/before"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
+            android:textColor="#ffffff"
             android:text="이전"
-            android:textSize="30sp"/>
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:textColor="#ffffff"/>
 
         <Button
             android:id="@+id/after"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
+            android:textColor="#ffffff"
             android:text="이후"
-            android:textSize="30sp"/>
+            android:textSize="12sp"/>
 
     </LinearLayout>
 

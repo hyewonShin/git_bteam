@@ -9,6 +9,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.WithPet02.Adapter.BoardMenuAdatper;
 import com.example.WithPet02.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -25,14 +26,14 @@ public class SiteCsActivity extends AppCompatActivity {
 
     Bundle mBundle;
 
-    Context context;
+    static Context CsContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_cs);
 
-        context = this;
+        CsContext = this;
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,7 +43,7 @@ public class SiteCsActivity extends AppCompatActivity {
 
 
         fragment1 = new SiteCsFragment1();
-        fragment2 = new SiteCsFragment2(context);
+        fragment2 = new SiteCsFragment2(CsContext);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment1).commit();
@@ -91,4 +92,10 @@ public class SiteCsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BoardMenuAdatper boardMenuAdatper = new BoardMenuAdatper();
+    }
 }

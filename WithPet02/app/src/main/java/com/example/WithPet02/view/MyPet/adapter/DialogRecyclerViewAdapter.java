@@ -70,22 +70,6 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
 
                 listener.onContent(list.get(position));
 
-                //intent띄울 때 Dialog의 환경(contexnt)을 가져와서
-                //Intent intent = new Intent(context, CalenderContent.class);
-
-                //intent.putExtra("calenderContent", list.get(position));
-
-                //플래그 지정
-                //intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                //플래그 추가
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //Dialog의 환경에서 startActivity를 시켜준다.
-                //context.startActivity(intent);
-
-                //dlg.dismiss();
-
-                //Log.d(TAG, "holderClick: " + list.get(position).getContent());
-
             }//onClick()
         });//setOnClickListener()
 
@@ -105,12 +89,12 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
                     e.printStackTrace();
                 }
 
-                list.remove(position);
-                notifyDataSetChanged();
+               //list에서 삭제항목을 지운 후 recyclerview를 갱신시켜준다.
+               list.remove(position);
+               notifyDataSetChanged();
 
             }//onClick
         });//setOnClickListener()
-
 
     }//onBindViewHolder()
 
@@ -138,7 +122,13 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
         }//ViewHolder()
 
         public void setItem(CalenderDTO item) {
-            recyclerView_text.setText(item.getContent());
+            //글 내용이 길경우 보이는 내용 제한 하기
+            if(item.getContent().length() > 18 ){
+                recyclerView_text.setText(item.getContent().substring(0, 18) + "...");
+            }else {
+                recyclerView_text.setText(item.getContent());
+            }//if
+
             Log.d(TAG, "setItem: " + item.getContent());
         }//setItem()
 
@@ -166,8 +156,4 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
 
     }//addItem
 
-    //Data 갱신
-    public void DataUpdate () {
-        notifyDataSetChanged();
-    }
 }//class

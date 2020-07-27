@@ -32,7 +32,8 @@
         <activity android:name=".view.mypetinfo.MyPetInfoAddActivity" />
         <activity android:name=".view.mypetinfo.AlbumDetailActivity" />
         <activity android:name=".view.mypetinfo.AlbumAddActivity" />
-        <activity android:name=".view.customerc_service.SiteCsWirte" />
+        <activity android:name=".view.customerc_service.SiteCsWirte"
+                  android:windowSoftInputMode="stateUnchanged"/>
         <activity android:name=".view.MyPet.webview.Webview" />
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".view.community.CommunityBoardWrite" />
@@ -47,7 +48,6 @@
         <activity android:name=".view.mypage.MyUpdateActivity" />
         <activity android:name=".view.mypage.MyDeleteActivity" />
         <activity android:name=".view.site.SiteInfoActivity" />
-        <activity android:name=".view.login.LoginFindResultActivity" />
         <activity android:name=".view.login.LoginFindPwActivity" />
         <activity android:name=".view.login.LoginFindEmailActivity" />
         <activity android:name=".view.join.JoinTelActivity" />
