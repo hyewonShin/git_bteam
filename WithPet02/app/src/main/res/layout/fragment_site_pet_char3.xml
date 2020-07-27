@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="130dp"
+                android:src="@drawable/site_pet_char_rab" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="앙증맞은 토끼의 특징을 알아봅시다!"
+                android:textColor="#FF9800"
+                android:textSize="23dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="토끼도 훌륭한 반려동물 입니다."
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일반적으로 개나 고양이 이외의 애완동물은 야생적인 면이 많이 남아있어 사람과의 커뮤니케이션이 어렵고, 그 때문에 반려동물로는 적합하지 않다고 생각합니다. 하지만 토끼는 애완용으로서의 소질을 충분히 가지고 있습니다. 애정을 가지고 기르면 사람을 잘 따르며, 개들처럼 손을 햝기도 합니다. 무엇보다도 변도 잘 가리며 큰소리를 내는 경우도 없습니다. 토끼가 환경에 잘 적응한다는 점도 매력적인 부분입니다."/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="기다란 토끼귀의 역할"
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="길고 커다란 귀는 토끼의 가장 큰 특징입니다. 토끼 신체 표면의 12%를 차지하고 있지요. 그만큼 토끼에게 귀는 중요한 기관이라고 할 수 있습니다. 토끼의 귀는 사방에서 들려오는 모든 소리를 모아서 위험을 재빨리 알아차리는 능역을 가지고 있습니다. 좌우로 귀를 움직일 수 있기 때문에 어디서 소리가 나는지 음원을 쉽게 탐지할 수도 있습니다. 또한 체열을 발산해서 체온을 조절하는 역할을 합니다.토끼는 땀샘이 없기 때문에 커다란 귀로 체온을 조절하는데, 이 혈관을 흐르는 혈액이 식으면서 결과적으로 체열이 내려가는 것이지요. 반대로 추울 때는 체온을 빼앗기지 않기 위해 혈관이 수축됩니다. 그렇기 때문에 토끼의 귀를 잡는건 절해로 해서는 안되는 행동입니다"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="토끼의 초롱초롱 눈망울"
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 토끼의 눈은 넓은 시야을 확보해야 하는 초식동물의 특성상 얼굴 양측면에 위치해 있으며, 약간 돌출되어 있습니다. 덕분에 한쪽 눈만으로도 190도, 양쪽 눈으로는 330도 정도의 시야를 볼 수 있어서, 다가오는 천적을 재빨리 발견할 수 있습니다. 하지만 입 주면과 턱 밑을 보지 못하기 때문에 수염과 입술의 감각으로 음식을 식별합니다. 시력이 좋지 않지만 빛에 대한 감도가 사람보다 약 8배 정도 높아서 어두침침한 곳에서도 사물을 볼 수 있습니다." />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="작지만 강인한 다리"
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="토끼는 굴을 파기 위한 강인한 앞다리와 도망치기 위해 튼튼하게 발달한 뒷다리를 가지고 있습니다. 앞다리가 짧고 뒷다리가 길기 때문에 높이 올라갈 수 있지만, 내려오는 것은 잘 못합니다. 토끼의 발다닥에는 쿠션(젤리)이 없으면 오직 얇은 털로만 덮혀 있습니다.때문에 미끄럽고 딱딱한 바닥이나 철망 위에서 생활하면 발바닥에 궤양이 생기는 '비절병'에 쉽게 노출되곤 합니다." />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="토끼의 주변환경을 편안하게"
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반려동물로써 장점이 많은 토끼이지만 스트레스를 많이 받거나 무엇인가 불편한 상황에서는 필요 이상으로 놀라거나 난폭해지는 경우가 있으므로 주의가 필요합니다. 이런 경우 반성하는 마음으로 토끼의 주변환경을 잘 맟추어 주는 자세가 필요합니다." />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="사랑스러운 토끼의 성격"
+                android:textColor="#0D89EC"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="토끼는 확질히 차분한 성격이지만 사육하다 보면 표정이 의외로 다양한것에 놀라게 됩니다. 아주 호기심이 많아 여러가지 물건에 흥미를 보입니다. 예를 들어, 주인이 전화를 하고 있으면 옆으로 와서 전화기를 계속 보고 있기도 하는데, 숨바꼭질, 돌던지기 등을 토끼가 아주 좋아하는 놀이입니다.그리고 주인에게 자신의 냄새를 묻히기 위해 얼굴을 대거나 옆에 붙어서 잠을 자기고 합나다. 토끼는 보통 울음소리를 내지 않지만 소리가 나면 눈을 반짞이며 귀를 움직이면서 반응르 보입니다. 물론 부르면 오기도 합니다. " />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
