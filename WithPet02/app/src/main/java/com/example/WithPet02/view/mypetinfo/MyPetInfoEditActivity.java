@@ -313,8 +313,10 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
                     return false;
                 }
 
-                Log.d("myPicUpdate", "imageDbPath: " + imageDbPath);
-                Log.d("myPicUpdate", "imageRealPath: " + imageRealPath);
+                if(p_animal.equals("")){
+                    Toast.makeText(context, "동물 종류를 입력해주세요!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
 
                 //업데이트 처리
                 MyPetUpdate myPetUpdate = new MyPetUpdate(cur, p_name, p_animal, p_a_animal, p_birth, p_gender, imageDbPath, imageRealPath);

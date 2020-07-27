@@ -16,61 +16,72 @@
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/AppTheme">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="28dp"
-            android:src="@drawable/withpetimg" />
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 찾기"
+            android:textAppearance="@style/Widget.AppCompat.Toolbar"
+            android:textSize="24sp"
+            android:textColor="#000000"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/loginFindPwTv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="비밀번호 찾기"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loginFindPwTv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="84dp"
+        android:gravity="center"
         android:text="발급된 임시 비밀번호는 다음과 같습니다.\n 임시 비밀번호로 로그인 하신뒤\n 비밀번호를 꼭 변경하여주세요"
-        android:gravity="center"
-        android:textSize="18sp"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginFindPwTv1" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFindPwToolbar" />
 
-    <EditText
-        android:id="@+id/loginFindPwEt"
-        android:layout_width="200dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:text="AAAAAA"
-        android:textSize="26sp"
+    <LinearLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#494949"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginFindPwTv2" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFindPwTv2">
+        <EditText
+            android:id="@+id/loginFindPwEt"
+            android:layout_width="200dp"
+            android:layout_height="61dp"
+            android:layout_margin="40dp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:inputType="textPersonName"
+            android:text="AAAAAA"
+            android:textSize="26sp"/>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/loginFindPwBtn1"
-        android:layout_width="187dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/colorAccent"
         android:text="로그인 화면으로"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginFindPwEt" />
+        app:layout_constraintTop_toBottomOf="@+id/box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
