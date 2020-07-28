@@ -18,7 +18,7 @@ header ul li input {display: block;}
 <header style="border-bottom:1px solid #ccc; padding:15px 0; text-align:left;">
 	<div class="category" style="margin-left:100px;">
 	<ul>
-		<li><a href="<c:url value='/'/>"><img src="img/withpet.png" alt="홈으로"></a></li>
+		<li><a href="<c:url value='/'/>"><img src="img/withpet.png" alt="홈으로" width="120"></a></li>
 		<c:if test="${login_info.id eq 'admin' }">
 			<li><a href="list.cu" ${category eq 'cu' ? 'class="active"' : ''}>고객관리</a></li><!--admin일때만 나오기  -->
 		</c:if>
@@ -46,8 +46,8 @@ header ul li input {display: block;}
 		<ul>
 			<li>
 				<span style="position: absolute; top: -8px; left: -120px;">
-					<input type="text" id="userid" placeholder="아이디" />
-					<input type="password" onkeypress="if(event.keyCode == 13){go_login()}" id="userpw" placeholder="패스워드" />
+					<!-- <input type="text" id="userid" placeholder="아이디" />
+					<input type="password" onkeypress="if(event.keyCode == 13){go_login()}" id="userpw" placeholder="패스워드" /> -->
 				</span>
 			</li>
 			<li><a class="btn-fill" onclick="go_login()">로그인</a></li>
