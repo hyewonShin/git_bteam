@@ -95,7 +95,7 @@ public class AlbumDetailActivity extends AppCompatActivity {
                         if (state.equals("1")) {
                             Toast.makeText(context, "정상적으로 삭제되었습니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, MyPetInfo.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             context.startActivity(intent);
                             finish();
                         } else {
