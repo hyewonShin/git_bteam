@@ -98,7 +98,7 @@ public class MainLogIn {
                 int dpValue = 15;
                 float d = context.getResources().getDisplayMetrics().density;
                 int margin = (int) (dpValue * d);
-                main_login.setPadding(margin + 30,40, margin + 30, 0);
+                main_login.setPadding(margin + 30,35, margin + 35, 30);
                 main_login.setPageMargin(40);
 
                 //ViewPager 를 Adapter 에 연결

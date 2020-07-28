@@ -53,7 +53,7 @@ public class Spread extends AppCompatActivity {
         int dyear = 0;
         int dmonth = 0;
         int ddate= 0;
-        Log.d(TAG, "DBSpread: " + list.get(0).getD_date() + list.get(1).getD_date());
+        //Log.d(TAG, "DBSpread: " + list.get(0).getD_date() + list.get(1).getD_date());
 
         //검진기록
         for (int i = 0; i < list.size(); i++){

@@ -25,10 +25,11 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="130dp"
@@ -36,7 +37,6 @@
             app:cardCornerRadius="100dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginRight="20dp">
 
             <ImageView
