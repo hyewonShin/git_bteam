@@ -95,7 +95,7 @@
 	.title ul li:hover:not(:first-child), .left_on{
 		background-color: #ffa241; 
 		color: white;
-		font-size: 1.2em
+		font-size: 1.2em; 
 	}
 	.title ul li:first-child {
 		border-bottom: 1px solid #ccc;
