@@ -101,7 +101,7 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
         btnBirth = findViewById(R.id.btnBirth);
         etBirth = findViewById(R.id.etBirth);
         etAnimal1 = findViewById(R.id.etAnimal1);
-        etAnimal2 = findViewById(R.id.etAnimal2);
+        //etAnimal2 = findViewById(R.id.etAnimal2);
         btnDelete = findViewById(R.id.btnDelete);
 
         //현재 동물 정보 가져오기
@@ -118,7 +118,7 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
         birth = myPetList.get(position).getP_birth().substring(0, 10).replace("-", ".");
         etBirth.setText(birth);                                         //생일
         etAnimal1.setText(myPetList.get(position).getP_animal());
-        etAnimal2.setText(myPetList.get(position).getP_a_animal());
+        //etAnimal2.setText(myPetList.get(position).getP_a_animal());
 
         //현재 동물 사진 가져오기
         if(myPetList.get(position).getP_pic() != null){
@@ -233,7 +233,7 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
                         if(state.equals("1")){
                             Toast.makeText(context, "정상적으로 삭제되었습니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, MyPetInfo.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             context.startActivity(intent);
                             finish();
                         } else {
@@ -305,7 +305,7 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
                 //입력정보 가져오기
                 p_name = name.getText().toString().trim();
                 p_animal = etAnimal1.getText().toString().trim();
-                p_a_animal = etAnimal2.getText().toString().trim();
+                //p_a_animal = etAnimal2.getText().toString().trim();
                 p_birth = etBirth.getText().toString().trim();
 
                 if(p_name.equals("")){
@@ -313,8 +313,10 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
                     return false;
                 }
 
-                Log.d("myPicUpdate", "imageDbPath: " + imageDbPath);
-                Log.d("myPicUpdate", "imageRealPath: " + imageRealPath);
+                if(p_animal.equals("")){
+                    Toast.makeText(context, "동물 종류를 입력해주세요!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
 
                 //업데이트 처리
                 MyPetUpdate myPetUpdate = new MyPetUpdate(cur, p_name, p_animal, p_a_animal, p_birth, p_gender, imageDbPath, imageRealPath);
@@ -330,7 +332,7 @@ public class MyPetInfoEditActivity extends AppCompatActivity {
                 if(state.equals("1")){
                     Toast.makeText(context, "정상적으로 등록되었습니다", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MyPetInfo.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(intent);
                     finish();
                     return true;

@@ -81,7 +81,7 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
                 //DB와 연결해서 해당 데이터 없애주기
                 CalendarDelete calendarDelete = new CalendarDelete(list.get(position).getNum(),
                         list.get(position).getYear(), list.get(position).getMonth(), list.get(position).getDate());
-               try {
+                try {
                     calendarDelete.execute().get();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
@@ -89,9 +89,15 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
                     e.printStackTrace();
                 }
 
+<<<<<<< HEAD
                //list에서 삭제항목을 지운 후 recyclerview를 갱신시켜준다.
                list.remove(position);
                notifyDataSetChanged();
+=======
+                //list에서 삭제항목을 지운 후 recyclerview를 갱신시켜준다.
+                list.remove(position);
+                notifyDataSetChanged();
+>>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 
             }//onClick
         });//setOnClickListener()

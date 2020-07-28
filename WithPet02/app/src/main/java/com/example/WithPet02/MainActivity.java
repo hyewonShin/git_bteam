@@ -7,7 +7,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.net.Uri;
+=======
+>>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +29,7 @@ import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.WithPet02.CheckDangerousPermissions.Internet;
+import com.example.WithPet02.MainView.MainFlipper;
 import com.example.WithPet02.MainView.MainLogIn;
 import com.example.WithPet02.view.MyPet.MyPetCheckList;
 import com.example.WithPet02.view.MyPet.PetBody;
@@ -46,7 +50,7 @@ import java.util.ArrayList;
 import static com.example.WithPet02.common.CommonMethod.ipConfig;
 import static com.example.WithPet02.view.login.LoginActivity.loginDTO;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private static final String TAG = "mainActivity";
 
     private DrawerLayout drawerLayout;
@@ -103,50 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         //메인 ad(광고) 슬라이드
-        final int images[] = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3, R.drawable.slider4, R.drawable.slider5};
-
         v_flipper = findViewById(R.id.v_flipper);
-
-        for(int image: images){
-            flipperImages(image);
-        }
-        v_flipper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int position = v_flipper.getDisplayedChild();
-
-                Intent intent;
-                switch (position){
-                    case 0 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.google.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 1 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.naver.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 2 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.facebook.com"));
-                        startActivity(intent);
-                        break;
-
-                    case 3 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.daum.net"));
-                        startActivity(intent);
-                        break;
-
-                    case 4 :
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.apple.com"));
-                        startActivity(intent);
-                        break;
-                }
-            }
-        });
-
-
+        MainFlipper mainFlipper = new MainFlipper(context, v_flipper);
+        mainFlipper.setFlipper();
 
 
         //메인 햄버거버튼
@@ -220,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //매인 아이콘 내 전문가 QnA
+        /*//매인 아이콘 내 전문가 QnA
         qna = findViewById(R.id.qna);
         qna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
         //메인 아이콘 내 커뮤니티
         /*main_community = findViewById(R.id.main_community);
         main_community.setOnClickListener(new View.OnClickListener() {
@@ -389,17 +352,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else if(i == 2) {
-                    //list내 커뮤니티
-                    if(loginDTO == null) {
-                        //비로그인시
-                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                        startActivity(intent);
-                    }else if(loginDTO != null){
-                        //로그인시 커뮤니티 넘어감(없음)
-                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
-                        startActivity(intent);
-                    }
-                }else if( i == 3) {
                     //고객센터
                     if(loginDTO == null) {
                         //비로그인시
@@ -410,14 +362,25 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(),SiteCsActivity.class);
                         startActivity(intent);
                     }
+                }else if( i == 3) {
+                    //list내 커뮤니티
+                    if(loginDTO == null) {
+                        //비로그인시
+                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(intent);
+                    }else if(loginDTO != null){
+                        //로그인시 커뮤니티 넘어감(없음)
+                        Intent intent = new Intent(getApplicationContext(),CommunityActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
 
         list.add("반려 동물 특징");
         list.add("내 동물 정보");
-        list.add("커뮤니티");
         list.add("고객센터");
+        //list.add("커뮤니티");
         adapter.notifyDataSetChanged();
 
 
@@ -456,12 +419,6 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) searchbar.getActionView();
         searchView.setSubmitButtonEnabled(true);
 
-
-
-
-
-
-
         searchbar.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
@@ -489,20 +446,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
         return true;
-    }
-
-    //메인 광고판
-    public void flipperImages(int image){
-        ImageView imageView = new ImageView(this);
-        imageView.setBackgroundResource(image);
-
-        v_flipper.addView(imageView);
-        v_flipper.setFlipInterval(4000);    //4sec
-        v_flipper.setAutoStart(true);
-
-        //animation
-        v_flipper.setInAnimation(this, android.R.anim.slide_in_left);
-        v_flipper.setOutAnimation(this, android.R.anim.slide_out_right);
     }
 
     @Override
@@ -574,6 +517,7 @@ public class MainActivity extends AppCompatActivity {
             toast.cancel();
         }
     }
+
 
 
 }

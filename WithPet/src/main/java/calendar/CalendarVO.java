@@ -4,21 +4,20 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class CalendarVO {
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//year, month, dayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ Stringï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-	String year, month, day, value, schedule, schedule_detail;
+	//¸â¹öº¯¼ö
+	//year, month, day¿¡ °ªÀÌ ÀÖ´ÂÁö ¾ø´ÂÁö È®ÀÎÇÏ±â À§ÇÑ null°ªÀ» ½áÁà¾ß ÇØ¼­ StringÀ¸·Î »ç¿ë
+	String year="", month="", day="", value="", schedule="", schedule_detail="";
 	
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½-
+	//»ý¼ºÀÚ ¸¸µé±â
 	public CalendarVO () {
 		
 	}//CalendarVO()
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+	//»ý¼ºÀÚ ÃÊ±âÈ­
 	public CalendarVO(String year, String month, String day, String value) {
 		super();
 		this.year = year;
@@ -27,7 +26,7 @@ public class CalendarVO {
 		this.value = value;
 	}//CalendarVO()
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+	//»ý¼ºÀÚ ÃÊ±âÈ­(½ºÄÉÁì±îÁö »ç¿ëÇÒ °æ¿ì)
 	public CalendarVO(String year, String month, String day, String value, String schedule, String schedule_detail) {
 		super();
 		this.year = year;
@@ -98,62 +97,61 @@ public class CalendarVO {
 		this.schedule_detail = schedule_detail;
 	}
 	
-	//ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	//³¯Â¥¿¡ °ü·ÃµÈ ´Þ·ÂÁ¤º¸¸¦ °¡Áö´Â ¸Þ¼­µå
 	public Map<String, Integer> today_info(CalendarVO vo) {
-		//ï¿½ï¿½Â¥ Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//³¯Â¥ Ä¶¸°´õ ÇÔ¼ö¿¡ »ðÀÔ
 		Map<String, Integer> today_Data = new HashMap<String, Integer>();
-		//GregorianCalendarï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½.
-		GregorianCalendar cal = new GregorianCalendar(Integer.parseInt(vo.getYear()), Integer.parseInt(vo.getMonth()), 1);
+		//GregorianCalendar¿¡ ÀÌ¹ø ³â¿ù°ú ½ÃÀÛÀÏÀ» ³Ö¾îÁØ´Ù.
+		//°¡Á®¿Â ´Þ¿¡ -1À» ÇØÁà¾ß ¿Ã¹Ù¸¥ °ªÀÌ ³ª¿È
+		GregorianCalendar cal = new GregorianCalendar(Integer.parseInt(vo.getYear()), Integer.parseInt(vo.getMonth())-1, 1);
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//½ÃÀÛÀÏ
 		int startDay = cal.getMinimum(Calendar.DATE);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//³¡³ª´ÂÀÏ
 		int endDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+		//½ÃÀÛÇÏ´Â ¿äÀÏ ±¸ÇÏ±â ¡æ 1 = ¿ù, 2 = È­ ...
 		int start = cal.get(Calendar.DAY_OF_WEEK);
 		
-		//ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+		//¿À´Ã¿¡ ´ëÇÑ ³â¿ù ±¸ÇÏ±â
 		GregorianCalendar todayCal = new GregorianCalendar();
 		SimpleDateFormat yearf = new SimpleDateFormat("yyyy");
 		SimpleDateFormat monthf = new SimpleDateFormat("MM");
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		//¿À´ÃÀÇ ³â¿ù
 		int today_year = Integer.parseInt(yearf.format(todayCal.getTime()));
 		int today_month = Integer.parseInt(monthf.format(todayCal.getTime()));
 		
-		//Controllerï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Controller¿¡¼­ ³Ö¾îÁØ ¿À´Ã ³â¿ùÀ» °¡Á®¿À±â
 		int search_year = Integer.parseInt(vo.getYear());
-		int search_month = Integer.parseInt(vo.getMonth()) + 1;
+		int search_month = Integer.parseInt(vo.getMonth());
 
-		//Controllerï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµå¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ todayï¿½ï¿½Â¥ ï¿½ï¿½ï¿½Ï±ï¿½
+		//Controller¿¡¼­ ³Ö¾îÁØ ¿À´Ã ³â¿ù°ú ¿©±â ¸Þ¼Òµå¿¡¼­ ±¸ÇÑ ¿À´Ã ³â¿ùÀÌ °°À»°æ¿ì today³¯Â¥ ±¸ÇÏ±â
 		int today = -1;
 		if(today_year == search_year && today_month == search_month) {
 			SimpleDateFormat dayf = new SimpleDateFormat("dd");
 			today = Integer.parseInt(dayf.format(todayCal.getTime()));
 		}//if
-		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ search_monthï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ +1 ï¿½ï¿½ï¿½Ø°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
-		search_month = search_month -1;
-		
+				
 		Map<String, Integer> before_after_calendar = before_after_calendar(search_year, search_month);
 		
-		//ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ hashMapï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö±ï¿½
+		//³¯Â¥¿¡ ´ëÇÑ °ªµé hashMap¿¡ ³Ö¾îÁÖ±â
 		today_Data.put("start", start);
 		today_Data.put("startDay", startDay);
 		today_Data.put("endDay", endDay);
 		today_Data.put("today", today);
 		today_Data.put("search_year", search_year);
-		today_Data.put("search_month", search_month+1);
+		today_Data.put("search_month", search_month);
 		today_Data.put("before_year", before_after_calendar.get("before_year"));
 		today_Data.put("before_month", before_after_calendar.get("before_month"));
 		today_Data.put("after_year", before_after_calendar.get("after_year"));
 		today_Data.put("after_month", before_after_calendar.get("after_month"));
 		
+		//³¯Â¥¸¦ ³ÖÀº hashMapÀü´Þ
 		return today_Data;
 		
 	}//today_info()
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Þ°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+	//ÀÌÀü´Þ°ú ´ÙÀ½´Þ, ÀÌÀü³â°ú ´ÙÀ½³â °ü·Ã ¸Þ¼Òµå
 	private Map<String, Integer> before_after_calendar(int search_year, int search_month) {
 		Map<String, Integer> before_after_data = new HashMap<String, Integer>();
 		int before_year = search_year;
@@ -161,21 +159,21 @@ public class CalendarVO {
 		int after_year = search_year;
 		int after_month = search_month + 1;
 		
-		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ before_month = search_month - 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Âµï¿½
-		//ï¿½Ì¶ï¿½ ï¿½Ì¶ï¿½ berfore_monthï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Û´Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½âµµ 11ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ before_monthï¿½ï¿½ 11ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
-		if(before_month < 0) {
-			before_month = 11;	//ï¿½ï¿½ï¿½âµµ 11ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
-			before_year=search_year-1;	//ï¿½ï¿½ï¿½âµµï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
+		//À§¿¡ ¸â¹öº¯¼ö ¼±¾ð¶§ before_month = search_month - 1À» ÇØÁá´Âµ¥
+		//ÀÌ¶§ ÀÌ¶§ berfore_month°¡ 0º¸´Ù ÀÛ´Ù´Â °ÍÀº Àü³âµµ 12¿ùÀ» ÀÇ¹ÌÇÏ±â ¶§¹®¿¡ before_month¸¦ 12·Î ¹Ù²ãÁØ´Ù.
+		if(before_month < 1) {
+			before_month = 12;	//Àü³âµµ 12¿ù·Î ¹Ù²ãÁØ´Ù.
+			before_year = search_year - 1;	//Àü³âµµ·Î ¹Ù²ãÁØ´Ù.
 		}//if
 		
-		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ before_month = search_month + 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Âµï¿½
-		//ï¿½Ì¶ï¿½ ï¿½Ì¶ï¿½ berfore_monthï¿½ï¿½ 11ï¿½ï¿½ï¿½ï¿½ Å©ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Ç¹ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ after_monthï¿½ï¿½ 0ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
-		if(after_month > 11) {
-			after_month = 0;
-			after_year = search_year + 1;
+		//À§¿¡ ¸â¹öº¯¼ö ¼±¾ð¶§ before_month = search_month + 1À» ÇØÁá´Âµ¥
+		//ÀÌ¶§ ÀÌ¶§ berfore_month°¡ 12º¸´Ù Å©´Ù´Â °ÍÀº ´ÙÀ½ÇØ¸¦ ÀÇ¹ÌÇÏ±â ¶§¹®¿¡ after_month¸¦ 1·Î ¹Ù²ãÁØ´Ù.
+		if(after_month > 12) {
+			after_month = 1;	//´ÙÀ½³âµµ 1¿ù
+			after_year = search_year + 1;	//´ÙÀ½³âµµ·Î ¹Ù²ãÁØ´Ù.
 		}//if
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Þ°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
+		//ÀÌÀü´Þ°ú ´ÙÀ½´Þ, ÀÌÀü³â°ú ´ÙÀ½³â¿¡ °üÇØ¼­ ¸®½ºÆ®¿¡ ´ã°í¼­ µ¹·ÁÁØ´Ù.
 		before_after_data.put("before_year", before_year);
 		before_after_data.put("before_month", before_month);
 		before_after_data.put("after_year", after_year);

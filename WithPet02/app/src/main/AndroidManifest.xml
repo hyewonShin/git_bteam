@@ -21,8 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.MyPet.DiagnosisHistory"></activity>
-        <activity android:name=".view.community.CommunityBoardUpdate" />
+        <activity android:name=".view.MyPet.DiagnosisHistory"/>
+        <activity android:name=".view.community.CommunityBoardUpdate"/>
         <activity android:name=".view.community.CommunityBoardDetail" />
         <activity android:name=".view.MyPet.PetBody" />
         <activity
@@ -33,15 +33,17 @@
         <activity android:name=".view.mypetinfo.AlbumDetailActivity" />
         <activity android:name=".view.mypetinfo.AlbumAddActivity" />
         <activity android:name=".view.customerc_service.SiteCsWirte"
+<<<<<<< HEAD
                   android:windowSoftInputMode="stateUnchanged"/>
+=======
+            android:windowSoftInputMode="stateUnchanged"/>
+>>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
         <activity android:name=".view.MyPet.webview.Webview" />
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".view.community.CommunityBoardWrite" />
         <activity android:name=".view.community.CommunityActivity" />
-        <activity android:name=".MainView.ad.MainAd1" />
         <activity android:name=".view.mypetinfo.MyPetInfo" />
         <activity android:name=".view.customerc_service.SiteCsActivity" />
-        <activity android:name=".view.site.SitePetCharActivity" />
         <activity android:name=".view.MyPet.MypetHospital" />
         <activity android:name=".view.MyPet.MyPetCheckList" />
         <activity android:name=".view.mypage.MyPageInfoActivity" />

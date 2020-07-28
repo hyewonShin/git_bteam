@@ -75,7 +75,11 @@
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:layout_marginTop="56dp"
+<<<<<<< HEAD
         android:background="@color/colorMain"
+=======
+        android:background="@color/colorAccent"
+>>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
         android:text="로그인 화면으로"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"

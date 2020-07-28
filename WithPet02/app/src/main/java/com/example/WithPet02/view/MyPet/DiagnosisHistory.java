@@ -39,7 +39,7 @@ public class DiagnosisHistory extends AppCompatActivity {
 
         //DB에서 날짜 값을 가져와서 검진날 출력 해줄 수 있게 하기
         //DB에서 달력 입력 내용 가져와서 출력 할 수 있게 하기
-        //d_pet을 임시로 1로 설정
+        //d_pet을 임시로 1로 설정(수정필요)
         list = new ArrayList<>();
 
         int d_pet = 1;
