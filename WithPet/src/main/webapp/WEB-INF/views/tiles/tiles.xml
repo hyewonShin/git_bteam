@@ -15,9 +15,14 @@
 		<put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp"/>	
 	</definition>
 	
+	<definition name="*/*/*" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/><!-- 추가 -->		
+	</definition>
+	
 	<definition name="*/*" extends="layout">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
+	
 	
 	<definition name="*" extends="layout1">
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>

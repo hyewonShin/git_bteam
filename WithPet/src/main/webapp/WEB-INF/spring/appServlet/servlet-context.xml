@@ -18,6 +18,8 @@
 	<resources location="/resources/css/" mapping="/css/**"/>
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources location="/resources/js/" mapping="/js/**" />
+	
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,6 +27,7 @@
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="1"/>
 	</beans:bean>
+	
 	
 	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<beans:property name="order" value="0"/>

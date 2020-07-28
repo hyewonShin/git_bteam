@@ -2,13 +2,13 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <left style="border-bottom:1px solid #ccc; padding:15px 0; text-align:center;">
-<div class="category">
+<div class="category" style="width: 200px; margin: 0px 0px 0px calc(100% - 200px);">
 	<!-- 카테고리 siteinfo 누를시 -->
 	<c:if test="${category eq 'si'}">
 		<div class="title">
 			<ul>
-				<li>사이트 소개</li>
-				<li><a>사이트 소개</a></li>
+				<li >사이트 소개</li>
+				<li ><a>사이트 소개</a></li>
 				<li><a>임원진 소개</a></li>
 				<li><a>오시는길</a></li>
 			</ul>
@@ -33,9 +33,9 @@
 		<div class="title">
 			<ul>
 				<li>커뮤니티</li>
-				<li><a>자유게시판</a></li>
-				<li><a>반려동물 분양</a></li>
-				<li><a>반려동물 연애</a></li>
+				<li ${conum eq 'freeboard' ?  'class="left_on"' : ''} ><a href="freeboard_list.co">자유게시판</a></li>
+				<li ${conum eq 'sale' ?  'class="left_on"' : ''}><a href="sale.co">반려동물 분양</a></li>
+				<li ${conum eq 'marry' ?  'class="left_on"' : ''}><a href="marry.co">반려동물 연애</a></li>
 			</ul>
 		</div>
 	</c:if>
@@ -93,12 +93,23 @@
 
 <style>
 	/* .title ul li:hover{ background-color: #ffa241; color: white; } */
-	.title {}
-	.title ul li:hover:not(:first-child), .left_on{
+	left .category .title ul li a { display:block; padding: 13px 10px; text-align: right; }
+	
+	
+	.title ul li:hover:not(:first-child), .left_on {
 		background-color: #ffa241; 
-		color: white;
-		font-size: 1.2em; 
+		font-size: 1.2em;
+		color: #FFFFFF;
+		border-radius: 0 20px 20px 0; 
 	}
+	.left_on a, .title ul li a:hover { color: #FFFFFF; }
+	
+	.title ul li:hover{
+		background-color: #ffa241; 
+		color: #FFFFFF;
+		cursor: pointer;
+	}
+
 	.title ul li:first-child {
 		border-bottom: 1px solid #ccc;
 		font-size: 1.5em;
@@ -106,20 +117,18 @@
 		text-align: center;
 	}
 	.title ul li{
-		width: 250px;
-		height: 50px;
-		margin: 0 auto;
-		line-height: 50px;
+		/* margin: 0 auto; */
 	}
-	/* .title ul li a{font-weight: bold; color: white; background-color:#ffa241; } */
+	
 	
 </style>
 
 <script>
-function clicked(){
-	$('.title ul li a').click(function(){
-		$(this).css('background-color',"#ffa241");
-		$(this).css('color',"white");
+function onClick(){
+	$('.title ul li').click(function(){
+		$(this).css('background-color','#ffa241');
+		$(this).css('color','white');
+		$(this).css('cursor','pointer');
 	});
 }
 </script>

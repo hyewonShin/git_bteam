@@ -25,7 +25,7 @@ header ul li input {display: block;}
 		<li><a href="list.si" ${category eq 'si' ? 'class="active"' : ''}>사이트소개</a></li>
 		<li><a href="list.fe" ${category eq 'fe' ? 'class="active"' : ''}>반려동물 특징</a></li>
 		<li><a href="list.my" ${category eq 'my' ? 'class="active"' : ''}>내 동물정보</a></li><!-- 로그인시  -->
-		<li><a href="list.co" ${category eq 'co' ? 'class="active"' : ''}>커뮤니티</a></li>
+		<li><a href="freeboard_list.co" ${category eq 'co' ? 'class="active"' : ''}>커뮤니티</a></li>
 		<li><a href="list.qa" ${category eq 'qa' ? 'class="active"' : ''}>QnA</a></li>
 		<li><a href="list.pa" ${category eq 'pa' ? 'class="active"' : ''}>마이페이지</a></li>
 	</ul>
