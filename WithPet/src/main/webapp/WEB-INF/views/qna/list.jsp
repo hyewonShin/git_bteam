@@ -17,10 +17,7 @@
 		<th class="w-px60">첨부파일</th>
 	</tr>
 	<tr>
-		<c:forEach>
 		
-		
-		</c:forEach>
 	</tr>
 
 </table>
