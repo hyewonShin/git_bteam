@@ -10,11 +10,13 @@ public class QnaController {
 	@RequestMapping("/list.qa")
 	public String list(HttpSession session) {
 		session.setAttribute("category", "qa");
+		session.setAttribute("qanum", "list");
 		return"qna/list";
 	}
 	
 	@RequestMapping("/faq.qa")
 	public String faq(HttpSession session) {
+		session.setAttribute("qanum", "faq");
 		session.setAttribute("category", "qa");
 		return "qna/faq";
 	}

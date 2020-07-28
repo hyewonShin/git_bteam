@@ -56,8 +56,8 @@
 		<div class="title" >
 			<ul>
 				<li>Q&nbsp;n&nbsp;A</li>
-				<li><a href="list.qa" >사이트 문의</a></li>
-				<li><a href="faq.qa" >전문가 QnA</a></li>
+				<li ${qanum eq 'list' ?  'class="left_on"' : ''} ><a href="list.qa" >사이트 문의</a></li>
+				<li ${qanum eq 'faq' ?  'class="left_on"' : ''} ><a href="faq.qa" >전문가 QnA</a></li>
 			</ul>
 		</div>
 	</c:if>
@@ -92,7 +92,7 @@
 <style>
 	/* .title ul li:hover{ background-color: #ffa241; color: white; } */
 	.title {}
-	.title ul li:hover:not(:first-child){
+	.title ul li:hover:not(:first-child), .left_on{
 		background-color: #ffa241; 
 		color: white;
 		font-size: 1.2em
