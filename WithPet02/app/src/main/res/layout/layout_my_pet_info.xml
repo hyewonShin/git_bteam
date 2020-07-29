@@ -49,11 +49,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-<<<<<<< HEAD
-                    android:layout_marginTop="15dp">
-=======
                     android:orientation="horizontal">
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
                     <TextView
                         android:id="@+id/myPetName"
                         android:layout_width="wrap_content"
@@ -139,113 +135,6 @@
                         android:textSize="16sp"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
-
-<<<<<<< HEAD
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp">
-
-                    <LinearLayout
-                        android:id="@+id/btnPetHth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginRight="5dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            app:cardCornerRadius="20dp"
-                            android:elevation="2dp"
-                            android:layout_gravity="center_horizontal">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="true"
-                                android:scaleType="centerInside"
-                                android:padding="5dp"
-                                android:src="@drawable/main_icon_walk"/>
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:text="운동기록"
-                            android:textSize="13sp"
-                            android:layout_gravity="center_horizontal"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btnPetDia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginRight="5dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            app:cardCornerRadius="20dp"
-                            android:elevation="2dp"
-                            android:layout_gravity="center_horizontal">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="true"
-                                android:scaleType="centerInside"
-                                android:padding="5dp"
-                                android:src="@drawable/main_icon_check"/>
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:text="진료기록"
-                            android:textSize="13sp"
-                            android:layout_gravity="center_horizontal"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btnPetMod"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            app:cardCornerRadius="20dp"
-                            android:elevation="2dp"
-                            android:layout_gravity="center_horizontal">
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="true"
-                                android:scaleType="centerInside"
-                                android:padding="8dp"
-                                android:src="@drawable/icon_my_update"/>
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:text="정보수정"
-                            android:textSize="13sp"
-                            android:layout_gravity="center_horizontal"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-=======
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 
             </LinearLayout>
 

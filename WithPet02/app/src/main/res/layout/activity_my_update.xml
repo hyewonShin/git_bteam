@@ -55,12 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-<<<<<<< HEAD
-        android:background="#F3F3F3">
-=======
         android:background="#F3F3F3"
         android:paddingVertical="10dp">
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 
         <LinearLayout
             android:layout_width="wrap_content"

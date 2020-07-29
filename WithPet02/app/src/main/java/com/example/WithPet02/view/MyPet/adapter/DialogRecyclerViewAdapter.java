@@ -89,15 +89,9 @@ public class DialogRecyclerViewAdapter extends RecyclerView.Adapter<DialogRecycl
                     e.printStackTrace();
                 }
 
-<<<<<<< HEAD
-               //list에서 삭제항목을 지운 후 recyclerview를 갱신시켜준다.
-               list.remove(position);
-               notifyDataSetChanged();
-=======
                 //list에서 삭제항목을 지운 후 recyclerview를 갱신시켜준다.
                 list.remove(position);
                 notifyDataSetChanged();
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 
             }//onClick
         });//setOnClickListener()

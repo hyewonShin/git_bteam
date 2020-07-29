@@ -7,10 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
-import android.net.Uri;
-=======
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

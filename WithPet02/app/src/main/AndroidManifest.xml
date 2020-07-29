@@ -33,11 +33,7 @@
         <activity android:name=".view.mypetinfo.AlbumDetailActivity" />
         <activity android:name=".view.mypetinfo.AlbumAddActivity" />
         <activity android:name=".view.customerc_service.SiteCsWirte"
-<<<<<<< HEAD
-                  android:windowSoftInputMode="stateUnchanged"/>
-=======
             android:windowSoftInputMode="stateUnchanged"/>
->>>>>>> branch 'master' of https://github.com/hyewonShin/git_bteam.git
         <activity android:name=".view.MyPet.webview.Webview" />
         <activity android:name=".view.pet_Characteristic.PetCharacteristic" />
         <activity android:name=".view.community.CommunityBoardWrite" />
