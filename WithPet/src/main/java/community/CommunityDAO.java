@@ -1,5 +1,7 @@
 package community;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class CommunityDAO implements CommunityService{
 	
 	@Autowired private SqlSession sql;
-	
+
 	@Override
 	public int community_insert(CommunityVO vo) {
 		// TODO Auto-generated method stub
@@ -16,23 +18,15 @@ public class CommunityDAO implements CommunityService{
 	}
 
 	@Override
-	public CommunityPage freeboard_list(CommunityPage page) {
-		page.setTotalList((Integer)sql.selectOne("board.mapper.total", page));
-		/* page.setList(sql.selectList("board.mapper.list", page)); */
-		
-		return page;
-	}
-
-	@Override
-	public CommunityVO freeboard_detail(int id) {
+	public List<CommunityVO> freeboard_list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void freeboard_readcnt(int id) {
+	public CommunityVO freeboard_detail(int b_num) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -42,10 +36,11 @@ public class CommunityDAO implements CommunityService{
 	}
 
 	@Override
-	public int freeboard_delete(int id) {
+	public int freeboard_delete(int b_num) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	
 	
 }

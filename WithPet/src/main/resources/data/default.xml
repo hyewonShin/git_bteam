@@ -19,7 +19,7 @@
 <!--DBCP 객체 생성(DB연결 객체)  -->
 <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dbcp"/>
-	<property name="mapperLocations" value="classpath:sqlmap/*_mapper.xml"/>
+	<property name="mapperLocations" value="classpath:sqlmap/*-mapper.xml"/>
 </bean>
 
 <!--쿼리문 실행기능을 가진 객체 생성  -->

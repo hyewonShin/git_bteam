@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community.mapper">
+<!-- <select id="list" resultType="community.CommunityVO"> -->
+<!-- 	select n.*, (select name from member where member.id = writer) name -->
+<!-- 	from -->
+<!-- 		(select b.*, rownum no from -->
+<!-- 			(select * from board <include refid="search"/> order by id) b -->
+<!-- 		order by no desc) n -->
+<!-- 	where no between #{beginList} and #{endList} -->
+<!-- </select> -->
+
+
+
+</mapper>

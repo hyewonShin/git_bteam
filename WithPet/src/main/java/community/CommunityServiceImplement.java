@@ -1,11 +1,16 @@
 package community;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommunityServiceImplement implements CommunityService{
+	
+	
 	@Autowired private CommunityDAO dao;
+
 	@Override
 	public int community_insert(CommunityVO vo) {
 		// TODO Auto-generated method stub
@@ -13,21 +18,15 @@ public class CommunityServiceImplement implements CommunityService{
 	}
 
 	@Override
-	public CommunityPage freeboard_list(CommunityPage page) {
-		
-		return dao.freeboard_list(page);
-	}
-
-	@Override
-	public CommunityVO freeboard_detail(int id) {
+	public List<CommunityVO> freeboard_list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void freeboard_readcnt(int id) {
+	public CommunityVO freeboard_detail(int b_num) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -37,10 +36,12 @@ public class CommunityServiceImplement implements CommunityService{
 	}
 
 	@Override
-	public int freeboard_delete(int id) {
+	public int freeboard_delete(int b_num) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
 	
 }
