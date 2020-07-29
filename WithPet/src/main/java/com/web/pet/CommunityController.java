@@ -23,7 +23,7 @@ public class CommunityController {
 	public String freeboard(HttpSession session, Model model){ 
 		session.setAttribute("category", "co"); 
 		session.setAttribute("conum","freeboard"); 
-		model.addAttribute("page",service.freeboard_list(page));
+		/* model.addAttribute("page",service.freeboard_list(page)); */
 		return "community/freeboard/freeboard_list"; 
 	}
 	 
